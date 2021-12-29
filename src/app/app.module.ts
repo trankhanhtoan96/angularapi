@@ -5,6 +5,8 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {AppRoutingModule} from "./app-routing.module";
+import {ContactModule} from "./contact/contact.module";
+import {GlobalComponentModule} from "./global-component/global-component.module";
 
 @NgModule({
     declarations: [
@@ -15,7 +17,9 @@ import {AppRoutingModule} from "./app-routing.module";
     imports: [
         BrowserModule,
         BrowserModule.withServerTransition({appId: 'serverApp'}),
-        AppRoutingModule
+        AppRoutingModule,
+        ContactModule,
+        GlobalComponentModule
     ],
     providers: [
         Title, Meta
