@@ -1,1 +1,1167 @@
-/* You can add global styles to this file, and also import other style files */
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7lXff1jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7lXff8jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7lXff3jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7lXff2jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7lXff4jvzDP3WG.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4m0qyriQwlOrhSvowK_l5-eRZDf-LVrPHpBXw.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4m0qyriQwlOrhSvowK_l5-eRZKf-LVrPHpBXw.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4m0qyriQwlOrhSvowK_l5-eRZBf-LVrPHpBXw.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4m0qyriQwlOrhSvowK_l5-eRZAf-LVrPHpBXw.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4m0qyriQwlOrhSvowK_l5-eRZOf-LVrPHp.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR71Wvf1jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR71Wvf8jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR71Wvf3jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR71Wvf2jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR71Wvf4jvzDP3WG.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf1jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf8jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf3jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf2jvzDP3WGO5g.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4l0qyriQwlOrhSvowK_l5-eR7NWPf4jvzDP3WG.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l521wRZVcf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l521wRZXMf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l521wRZV8f6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l521wRZVsf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l521wRZWMf6hPvhPQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-440qyriQwlOrhSvowK_l5-cSZMdeX3rsHo.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-440qyriQwlOrhSvowK_l5-eCZMdeX3rsHo.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-440qyriQwlOrhSvowK_l5-cyZMdeX3rsHo.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-440qyriQwlOrhSvowK_l5-ciZMdeX3rsHo.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-440qyriQwlOrhSvowK_l5-fCZMdeX3rg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52xwNZVcf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52xwNZXMf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52xwNZV8f6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52xwNZVsf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52xwNZWMf6hPvhPQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52_wFZVcf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52_wFZXMf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52_wFZV8f6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52_wFZVsf6hPvhPUWH.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/merriweather/v28/u-4n0qyriQwlOrhSvowK_l52_wFZWMf6hPvhPQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+html, body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: #fff;
+}
+
+.no-border {
+    border: none;
+    box-shadow: none;
+}
+
+.bo-goc-7 {
+    border-radius: 7px;
+}
+
+pre.highlight,
+.highlight pre {
+    max-height: 30rem;
+    margin: 1.5rem 0;
+    overflow: auto;
+    font-size: 85.7142857%;
+    border-radius: 4px;
+}
+
+pre.highlight::-webkit-scrollbar,
+.highlight pre::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    -webkit-transition: .3s background;
+    transition: .3s background;
+}
+
+pre.highlight::-webkit-scrollbar-thumb,
+.highlight pre::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #a0a6ae;
+}
+
+pre.highlight::-webkit-scrollbar-track,
+.highlight pre::-webkit-scrollbar-track {
+    background: #e7eaef;
+}
+
+pre.highlight::-webkit-scrollbar-corner,
+.highlight pre::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+pre.highlight:hover::-webkit-scrollbar-thumb,
+.highlight pre:hover::-webkit-scrollbar-thumb {
+    background: #a0a6ae;
+}
+
+.highlight {
+    margin: 0;
+}
+
+.highlight code > * {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.highlight .dl {
+    color: #4070a0;
+}
+
+.highlight .c {
+    color: #727272;
+}
+
+.highlight .c1 {
+    color: #727272;
+}
+
+.highlight .ch {
+    font-style: italic;
+    color: #60a0b0;
+}
+
+.highlight .cm {
+    color: #727272;
+}
+
+.highlight .cp {
+    color: #008085;
+}
+
+.highlight .cpf {
+    color: #007020;
+}
+
+.highlight .cs {
+    color: #727272;
+}
+
+.highlight .gd {
+    background-color: #fcc;
+    border: 1px solid #c00;
+}
+
+.highlight .ge {
+    font-style: italic;
+}
+
+.highlight .gh {
+    color: #030;
+}
+
+.highlight .gi {
+    background-color: #cfc;
+    border: 1px solid #0c0;
+}
+
+.highlight .gl {
+    text-decoration: underline;
+}
+
+.highlight .go {
+    color: #aaa;
+}
+
+.highlight .gp {
+    color: #009;
+}
+
+.highlight .gr {
+    color: #f00;
+}
+
+.highlight .gs {
+    font-weight: 700;
+}
+
+.highlight .gt {
+    color: #9c6;
+}
+
+.highlight .gu {
+    color: #030;
+}
+
+.highlight .il {
+    color: #c24f19;
+}
+
+.highlight .k {
+    color: #069;
+}
+
+.highlight .kc {
+    color: #069;
+}
+
+.highlight .kd {
+    color: #069;
+}
+
+.highlight .kn {
+    color: #069;
+}
+
+.highlight .kp {
+    color: #069;
+}
+
+.highlight .kr {
+    color: #069;
+}
+
+.highlight .kt {
+    color: #078;
+}
+
+.highlight .m {
+    color: #c24f19;
+}
+
+.highlight .mf {
+    color: #c24f19;
+}
+
+.highlight .mb {
+    color: #40a070;
+}
+
+.highlight .mh {
+    color: #c24f19;
+}
+
+.highlight .mi {
+    color: #c24f19;
+}
+
+.highlight .mo {
+    color: #c24f19;
+}
+
+.highlight .na {
+    color: #006ee0;
+}
+
+.highlight .nb {
+    color: #366;
+}
+
+.highlight .nc {
+    color: #168174;
+}
+
+.highlight .nd {
+    color: #6b62de;
+}
+
+.highlight .ne {
+    color: #c00;
+}
+
+.highlight .nf {
+    color: #b715f4;
+}
+
+.highlight .ni {
+    color: #727272;
+}
+
+.highlight .nl {
+    color: #6b62de;
+}
+
+.highlight .nn {
+    color: #007ca5;
+}
+
+.highlight .no {
+    color: #360;
+}
+
+.highlight .nt {
+    color: #2f6f9f;
+}
+
+.highlight .nv {
+    color: #033;
+}
+
+.highlight .o {
+    color: #555;
+}
+
+.highlight .ow {
+    color: #000;
+}
+
+.highlight .s {
+    color: #d73038;
+}
+
+.highlight .s1 {
+    color: #c30;
+}
+
+.highlight .s2 {
+    color: #c30;
+}
+
+.highlight .sa {
+    color: #4070a0;
+}
+
+.highlight .sb {
+    color: #c30;
+}
+
+.highlight .sc {
+    color: #c30;
+}
+
+.highlight .sd {
+    font-style: italic;
+    color: #c30;
+}
+
+.highlight .se {
+    color: #c30;
+}
+
+.highlight .sh {
+    color: #c30;
+}
+
+.highlight .si {
+    color: #a00;
+}
+
+.highlight .sr {
+    color: #337e7e;
+}
+
+.highlight .ss {
+    color: #fc3;
+}
+
+.highlight .sx {
+    color: #c30;
+}
+
+.highlight .w {
+    color: #bbb;
+}
+
+.highlight .language-bash::before, .highlight .language-sh::before {
+    color: #009;
+    content: "$ ";
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.highlight .language-bash .m, .highlight .language-sh .m {
+    color: inherit;
+}
+
+.highlight .language-powershell::before {
+    color: #009;
+    content: "PM> ";
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.example {
+    padding: 2rem;
+    margin: 1rem 0 2rem;
+    border: 1px solid #e6e8e9;
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    min-height: 12rem;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.example-centered {
+    justify-content: center;
+}
+
+.example-centered .example-content {
+    flex: 0 auto;
+}
+
+.example-content {
+    font-size: 0.875rem;
+    line-height: 1.4285714;
+    color: #232e3c;
+    flex: 1;
+    max-width: 100%;
+}
+
+.example-content .page-header {
+    margin-bottom: 0;
+}
+
+.example-bg {
+    background: #f4f6fa;
+}
+
+.example-code {
+    margin: 2rem 0;
+    border: 1px solid #e6e8e9;
+    border-top: none;
+}
+
+.example-code pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0 0 3px 3px;
+}
+
+.example + .example-code {
+    margin-top: -2rem;
+}
+
+.example-column {
+    margin: 0 auto;
+}
+
+.example-column > .card:last-of-type {
+    margin-bottom: 0;
+}
+
+.example-column-1 {
+    max-width: 26rem;
+}
+
+.example-column-2 {
+    max-width: 52rem;
+}
+
+.example-modal-backdrop {
+    background: #232e3c;
+    opacity: 0.24;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 2px 2px 0 0;
+}
+
+@media not print {
+    .theme-dark .example-code {
+        border: 1px solid #e6e8e9;
+        border-top: none;
+    }
+}
+
+@media not print and (prefers-color-scheme: dark) {
+    .theme-dark-auto .example-code {
+        border: 1px solid #e6e8e9;
+        border-top: none;
+    }
+}
+
+.card-sponsor {
+    background: #dbe7f6 no-repeat center/100% 100%;
+    border-color: #548ed2;
+    min-height: 316px;
+}
+
+body.no-transitions * {
+    transition: none !important;
+}
+
+.dropdown-menu-demo {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: 0;
+    margin-bottom: 1rem;
+}
+
+.demo-icon-preview {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.demo-icon-preview svg,
+.demo-icon-preview i {
+    width: 15rem;
+    height: 15rem;
+    font-size: 15rem;
+    stroke-width: 1.5;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 575.98px) {
+    .demo-icon-preview svg,
+    .demo-icon-preview i {
+        width: 10rem;
+        height: 10rem;
+        font-size: 10rem;
+    }
+}
+
+.demo-icon-preview-icon pre {
+    margin: 0;
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    user-select: all;
+}
+
+.demo-dividers > p {
+    opacity: .2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.demo-icons-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 -2px -1px 0;
+    list-style: none;
+}
+
+.demo-icons-list > * {
+    flex: 1 0 7rem;
+}
+
+.demo-icons-list-wrap {
+    overflow: hidden;
+}
+
+.demo-icons-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    text-align: center;
+    padding: .5rem;
+    border-right: 1px solid #e6e8e9;
+    border-bottom: 1px solid #e6e8e9;
+    color: inherit;
+    cursor: pointer;
+}
+
+.demo-icons-list-item .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.demo-icons-list-item:hover {
+    text-decoration: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-menu-header {
+    text-transform: uppercase;
+    color: #02013c;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.my-post-title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.style-description {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Merriweather, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0 0 16px;
+    color: #555;
+    letter-spacing: .16px;
+}
+
+.style-title {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: #292929;
+    margin: 0 0 16px;
+}
+
+.style-name-author {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+    letter-spacing: .01em;
+}
+
+.my-small {
+    font-size: 12px;
+}
+
+.container-sm {
+    width: 90%;
+    max-width: 1336px;
+    -webkit-transition: translate .1s linear;
+    -moz-transition: translate .1s linear;
+    transition: translate .1s linear;
+}
+
+@media only screen and (max-width: 768px) {
+    .container-sm {
+        width: 100%;
+    }
+}
+
+.li-hover {
+    font-size: large;
+    padding: 20px 24px;
+}
+
+.li-hover:hover {
+    background-color: #f7f5f2;
+    font-weight: bolder;
+    color: #000000;
+}
+
+.li-hover.active {
+    background-color: #f7f5f2;
+    display: flex;
+    color: #292929;
+    justify-content: start;
+    align-items: center;
+    border-left: 4px solid #292929;
+    transition: 0.2s all;
+    font-weight: 600;
+}
+
+.form-control {
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.form-control:active, .form-control:focus {
+    border: 1px solid #206bc4;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hhh {
+    /*position: relative;*/
+    /*text-align: center;*/
+    /*font-size: 25px;*/
+    /*font-weight: bold;*/
+    /*color: #292929;*/
+    /*margin: 0 0 2rem;*/
+    /*padding: 0 0 10px;*/
+}
+
+.hhh:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    transform: translate(-50%);
+    width: 100px;
+    height: 4px;
+    background: #00773e;
+}
+
+.my-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+}
+
+.my-large-title {
+    text-transform: uppercase;
+    color: #0d0f39;
+    padding-left: 16px;
+    border-left: 4px solid #0d0f39;
+    font-size: 25px;
+    line-height: 40px;
+    font-weight: 600;
+    margin: 0 0 32px;
+}
+
+.style-navbar-item {
+    margin-right: 0;
+    color: #0d0f39;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    letter-spacing: .16px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.navbar-brand-image {
+    height: 3.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-brand-image {
+        height: 3rem;
+    }
+}
+
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar .navbar-nav .nav-link {
+    position: relative;
+    min-width: 1rem;
+    min-height: 1rem;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.style-titleArticle {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    color: #292929;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.style-titleArticleLarge {
+    font-size: 30px;
+    line-height: 44px;
+    color: #0d0f39;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.style-articleDetail {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 32px;
+    color: #292929;
+    font-family: Merriweather, sans-serif;
+}
+
+/*==================================================
+ * Effect 7
+ * ===============================================*/
+.effect7 {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect7:before, .effect7:after {
+    content: "";
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+.effect7:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
+}
+
+/***********************************/
+
+.col-form-label {
+    text-align: right;
+}
+
+.btn .icon {
+    margin: 0;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active {
+    background-color: #0d0f39;
+}
+
+.navbar-light {
+    background-color: #ffbf00;
+}
+
+.nav-link-title {
+    color: #0d0f39;
+}
+.bg-primary{
+    background-color: #0d0f39 !important;
+}
