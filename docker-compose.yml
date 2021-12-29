@@ -1,0 +1,7 @@
+version: "3"
+services:
+    app:
+        image: angular
+        restart: always
+        ports:
+            - 4000
