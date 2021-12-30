@@ -16,8 +16,10 @@ function bootstrap() {
 
 if (document.readyState === 'complete') {
     bootstrap();
+    //themetkt
     const body = document.getElementsByTagName('body')[0];
     body.classList.add('antialiased');
+    //end
 } else {
     document.addEventListener('DOMContentLoaded', bootstrap);
 }
