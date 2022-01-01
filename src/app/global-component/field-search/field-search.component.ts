@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-field-search',
-  templateUrl: './field-search.component.html',
-  styleUrls: ['./field-search.component.css']
+    selector: 'app-field-search',
+    templateUrl: './field-search.component.html'
 })
 export class FieldSearchComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }
