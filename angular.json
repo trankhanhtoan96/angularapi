@@ -24,16 +24,23 @@
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets"
+                            "src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "node_modules/tinymce",
+                                "output": "/tinymce/"
+                            }
                         ],
                         "styles": [
                             "src/assets/tabler.min.css",
                             "src/assets/tabler-vendors.min.css",
+                            "src/assets/iconfont/tabler-icons.min.css",
                             "src/styles.css"
                         ],
                         "scripts": [
                             "src/assets/tabler.min.js",
-                            "src/assets/apexcharts.min.js"
+                            "src/assets/apexcharts.min.js",
+                            "node_modules/tinymce/tinymce.min.js"
                         ]
                     },
                     "configurations": {

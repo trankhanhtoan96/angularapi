@@ -2,27 +2,26 @@ import {NgModule} from '@angular/core';
 import {BrowserModule, Meta, Title} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
-import {AboutComponent} from './about/about.component';
 import {AppRoutingModule} from "./app-routing.module";
-import {ContactModule} from "./contact/contact.module";
-import {GlobalComponentModule} from "./global-component/global-component.module";
+import {GlobalComponentsModule} from "./globalcomponents/GlobalComponents.module";
+import {HomeModule} from "./home/Home.module";
+import {EditorModule, TINYMCE_SCRIPT_SRC} from '@tinymce/tinymce-angular';
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
-        AboutComponent
     ],
     imports: [
-        BrowserModule,
         BrowserModule.withServerTransition({appId: 'serverApp'}),
         AppRoutingModule,
-        ContactModule,
-        GlobalComponentModule
+        GlobalComponentsModule,
+        HomeModule,
+        EditorModule
     ],
     providers: [
-        Title, Meta
+        Title, Meta,
+        {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
     ],
     bootstrap: [AppComponent]
 })

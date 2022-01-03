@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Title, Meta} from '@angular/platform-browser';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html'
+    selector: 'HeaderComponent',
+    templateUrl: '../templates/header.html'
 })
-export class HomeComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
     constructor(private title: Title, private meta: Meta) {
         this.title.setTitle('Home');
