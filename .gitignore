@@ -44,3 +44,142 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/.angular
+
+# SugarCRM #
+###################
+# Ignore custom .htaccess stuff.
+/api/.htpasswd
+
+# Ignore large parts of the annoying cache directory without breaking things.
+# This will break the current behaviour. Which was often leading to
+# the misuse of the repository as backup replacement.
+# For development the cache directory can be safely ignored and
+# therefore it is ignored.
+/api/cache
+/api/cache/csv/*
+/api/cache/dashlets/*
+/api/cache/diagnostic/*
+/api/cache/dynamic_fields/*
+/api/cache/Expressions/*
+/api/cache/feeds/*
+/api/cache/fts/*
+/api/cache/images/*
+/api/cache/import/*
+/api/cache/include/*
+/api/cache/jsLanguage/*
+/api/cache/modules/*
+/api/cache/htmlclean/*
+/api/cache/htmlclean/HTML/*
+/api/cache/htmlclean/URI/*
+/api/cache/pdf/*
+/api/cache/Relationships/*
+/api/cache/smarty/cache/*
+/api/cache/smarty/templates_c/*
+/api/cache/Sugarpdf/*
+/api/cache/themes/*
+/api/cache/xml/*
+/api/cache/upload/*
+
+/api/modules/SecurityGroups/*
+/api/modules/SpiceUIGenerator/csv/*
+
+# Ignore some files and directories from the custom directory.
+/api/custom/application
+/api/custom/application/*
+/api/custom/blowfish/*.*
+/api/custom/modules/*/Ext
+/api/custom/modules/*/Ext/*
+
+# no media files
+/api/media
+
+# Custom configuration should also be ignored.
+/api/config_override.php
+
+# The silent upgrade scripts aren't needed.
+/api/silentUpgrade*.php
+
+# Ignore the new upload directories.
+/api/upload/*
+/api/upload_backup
+/api/upload_backup/*
+
+# packaging #
+###################
+/api/packaging
+/api/packaging/*
+
+# eclipse #
+###################
+.settings
+.buildpath
+
+# netbeans #
+###################
+/nbproject
+/nbproject/*
+project.xml
+
+# node #
+###################
+/api/node_modules
+/api/node_modules/*
+
+# nphpstorm #
+###################
+/api.idea
+/api/.idea
+
+# sass #
+###################
+.sass-cache
+.sass-cache/*
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+!packaging/*.zip
+
+# Logs and databases #
+######################
+# if you need dumps and configuration scripts, just tag the wanted engine type and file
+*.log
+*.sqlite
+*.sql
+
+# OS generated files #
+######################
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+.~*
+.*~
+composer.lock
+xmlfiles
+package-lock.json
+
+# dompdf
+/api/vendor/dompdf/dompdf/lib/fonts/dompdf_font_family_cache.php

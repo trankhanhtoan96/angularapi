@@ -173,7 +173,7 @@
     "symbol-observable" "4.0.0"
     "uuid" "8.3.2"
 
-"@angular/common@^13.0.1", "@angular/common@>=9.0.0", "@angular/common@~13.1.0", "@angular/common@13.1.1":
+"@angular/common@^13.0.1", "@angular/common@>=12.0.0-0", "@angular/common@>=9.0.0", "@angular/common@~13.1.0", "@angular/common@13.1.1":
   "integrity" "sha512-FQwRZ1XgTH2PbPjBmq2jAZzETVNX9yWQt21MuNGtokC7V4eS0NYlFIDbhy3UPWCzRgd3+P7P4+HdX15VxCjf9g=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-13.1.1.tgz"
   "version" "13.1.1"
@@ -204,7 +204,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^13.0.1", "@angular/core@>=9.0.0", "@angular/core@~13.1.0", "@angular/core@13.1.1":
+"@angular/core@^13.0.1", "@angular/core@>=12.0.0-0", "@angular/core@>=9.0.0", "@angular/core@~13.1.0", "@angular/core@13.1.1":
   "integrity" "sha512-oLGKgzUbHqte/q7EokOJWUiXAtBjwuZM6c9Or2a7WDJNeImQilxk5qy91RPSbP8FhOBysebqAayrfiCYexlShg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-13.1.1.tgz"
   "version" "13.1.1"
@@ -225,7 +225,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/platform-browser@~13.1.0", "@angular/platform-browser@13.1.1":
+"@angular/platform-browser@>=12.0.0-0", "@angular/platform-browser@~13.1.0", "@angular/platform-browser@13.1.1":
   "integrity" "sha512-jk9MGwnaVc98wmw5dRBicduI/a8dHtUzaAi1dV003fUWldS9a5FBuj/ym7DJubaD5Njl8l79SFbjrP9aAsqM5A=="
   "resolved" "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-13.1.1.tgz"
   "version" "13.1.1"
@@ -4857,6 +4857,13 @@
   "integrity" "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
+
+"ngx-toastr@^14.2.1":
+  "integrity" "sha512-1Kq//y8tTgglUYKHIziZwpo4R7fe4/neidcxfbAXzXtcViSjT4Z21Vgqn/inoBlwoc7E9qXQDuZoJr2lanCgGA=="
+  "resolved" "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-14.2.1.tgz"
+  "version" "14.2.1"
+  dependencies:
+    "tslib" "^2.3.0"
 
 "nice-napi@^1.0.2":
   "integrity" "sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA=="

@@ -35,6 +35,7 @@
                             "src/assets/tabler.min.css",
                             "src/assets/tabler-vendors.min.css",
                             "src/assets/iconfont/tabler-icons.min.css",
+                            "node_modules/ngx-toastr/toastr.css",
                             "src/styles.css"
                         ],
                         "scripts": [

@@ -5,7 +5,12 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {GlobalComponentsModule} from "./globalcomponents/GlobalComponents.module";
 import {HomeModule} from "./home/Home.module";
-import {EditorModule, TINYMCE_SCRIPT_SRC} from '@tinymce/tinymce-angular';
+import {UsersModule} from "./modules/users/users.module";
+import {Backend} from "./services/Backend.service";
+import {HttpClientModule} from "@angular/common/http";
+import {Session} from "./services/Session.service";
+import {Broadcast} from "./services/Broadcast.service";
+import {Utils} from "./services/Utils.service";
 
 
 @NgModule({
@@ -13,15 +18,20 @@ import {EditorModule, TINYMCE_SCRIPT_SRC} from '@tinymce/tinymce-angular';
         AppComponent,
     ],
     imports: [
+        HttpClientModule,
         BrowserModule.withServerTransition({appId: 'serverApp'}),
         AppRoutingModule,
         GlobalComponentsModule,
-        HomeModule,
-        EditorModule
+        UsersModule,
+        HomeModule
     ],
     providers: [
-        Title, Meta,
-        {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
+        Title,
+        Meta,
+        Backend,
+        Session,
+        Broadcast,
+        Utils
     ],
     bootstrap: [AppComponent]
 })
