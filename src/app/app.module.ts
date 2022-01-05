@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {Session} from "./services/Session.service";
 import {Broadcast} from "./services/Broadcast.service";
 import {Utils} from "./services/Utils.service";
+import {Metadata} from "./services/Metadata.service";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {Utils} from "./services/Utils.service";
         Backend,
         Session,
         Broadcast,
-        Utils
+        Utils,
+        Metadata
     ],
     bootstrap: [AppComponent]
 })

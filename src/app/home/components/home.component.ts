@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.backend.getRequest('module/Contacts', {
-            limit: 50,
+            limit: 20,
             searchterm: '',
             offset: 0
         }, true).subscribe(res => console.log(res));

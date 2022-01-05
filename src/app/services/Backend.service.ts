@@ -42,10 +42,10 @@ export class Backend {
         return output;
     }
 
-    public getRequest(route: string = "", params: any = {}, publicApi: boolean=false): Observable<any> {
+    getRequest(route: string = "", params: any = {}, publicApi: boolean = false): Observable<any> {
         let responseSubject = new Subject<any>();
         let headers = this.getHeaders();
-        if (publicApi) headers = headers.set('PublicAPI', '1');
+        if (publicApi) headers = headers.set('apikey', environment.apiKey);
         this.http.get(environment.apiUrl + "/" + encodeURI(route),
             {headers: headers, observe: "response", params: this.prepareParams(params)}
         ).subscribe({
@@ -79,7 +79,7 @@ export class Backend {
         return subject.asObservable();
     }
 
-    public postRequest(route: string = "", params: any = {}, body: any = {}, publicApi: boolean=false): Observable<any> {
+    public postRequest(route: string = "", params: any = {}, body: any = {}, publicApi: boolean = false): Observable<any> {
         let responseSubject = new Subject<any>();
 
         let headers = this.getHeaders();
@@ -88,7 +88,7 @@ export class Backend {
         } else {
             headers = headers.set("Content-Type", "application/x-www-form-urlencoded");
         }
-        if (publicApi) headers = headers.set('PublicAPI', '1');
+        if (publicApi) headers = headers.set('apikey', environment.apiKey);
         this.http.post(environment.apiUrl + "/" + encodeURI(route), body,
             {headers: headers, observe: "response", params: this.prepareParams(params)}
         ).subscribe({
@@ -104,10 +104,10 @@ export class Backend {
         return responseSubject.asObservable();
     }
 
-    public putRequest(route: string = "", params: any = {}, body: any = {}, publicApi: boolean=false): Observable<any> {
+    public putRequest(route: string = "", params: any = {}, body: any = {}, publicApi: boolean = false): Observable<any> {
         let responseSubject = new Subject<any>();
         let headers = this.getHeaders();
-        if (publicApi) headers = headers.set('PublicAPI', '1');
+        if (publicApi) headers = headers.set('apikey', environment.apiKey);
         this.http.put(
             environment.apiUrl + "/" + route,
             body,
@@ -125,10 +125,10 @@ export class Backend {
         return responseSubject.asObservable();
     }
 
-    public deleteRequest(route: string = "", params: any = {}, publicApi: boolean=false): Observable<any> {
+    public deleteRequest(route: string = "", params: any = {}, publicApi: boolean = false): Observable<any> {
         let responseSubject = new Subject<any>();
         let headers = this.getHeaders();
-        if (publicApi) headers = headers.set('PublicAPI', '1');
+        if (publicApi) headers = headers.set('apikey', environment.apiKey);
         this.http.delete(
             environment.apiUrl + "/" + route,
             {headers: headers, params: this.prepareParams(params)}
