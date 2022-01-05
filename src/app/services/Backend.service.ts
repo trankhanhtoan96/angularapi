@@ -42,10 +42,28 @@ export class Backend {
         return output;
     }
 
-    getRequest(route: string = "", params: any = {}, publicApi: boolean = false): Observable<any> {
+    getRequestNoAuth(route: string = "", params: any = {}): Observable<any> {
         let responseSubject = new Subject<any>();
         let headers = this.getHeaders();
-        if (publicApi) headers = headers.set('apikey', environment.apiKey);
+        headers = headers.set('apikey', environment.apiKey);
+        this.http.get(environment.apiUrl + "/" + encodeURI(route),
+            {headers: headers, observe: "response", params: this.prepareParams(params)}
+        ).subscribe({
+            next: (res) => {
+                responseSubject.next(res.body);
+                responseSubject.complete();
+            },
+            error: err => {
+                this.handleError(err, route, 'GET', {getParams: params});
+                responseSubject.error(err);
+            }
+        });
+        return responseSubject.asObservable();
+    }
+
+    getRequest(route: string = "", params: any = {}): Observable<any> {
+        let responseSubject = new Subject<any>();
+        let headers = this.getHeaders();
         this.http.get(environment.apiUrl + "/" + encodeURI(route),
             {headers: headers, observe: "response", params: this.prepareParams(params)}
         ).subscribe({
@@ -79,7 +97,7 @@ export class Backend {
         return subject.asObservable();
     }
 
-    public postRequest(route: string = "", params: any = {}, body: any = {}, publicApi: boolean = false): Observable<any> {
+    postRequestNoAuth(route: string = "", params: any = {}, body: any = {}): Observable<any> {
         let responseSubject = new Subject<any>();
 
         let headers = this.getHeaders();
@@ -88,7 +106,7 @@ export class Backend {
         } else {
             headers = headers.set("Content-Type", "application/x-www-form-urlencoded");
         }
-        if (publicApi) headers = headers.set('apikey', environment.apiKey);
+        headers = headers.set('apikey', environment.apiKey);
         this.http.post(environment.apiUrl + "/" + encodeURI(route), body,
             {headers: headers, observe: "response", params: this.prepareParams(params)}
         ).subscribe({
@@ -104,10 +122,34 @@ export class Backend {
         return responseSubject.asObservable();
     }
 
-    public putRequest(route: string = "", params: any = {}, body: any = {}, publicApi: boolean = false): Observable<any> {
+    postRequest(route: string = "", params: any = {}, body: any = {}): Observable<any> {
+        let responseSubject = new Subject<any>();
+
+        let headers = this.getHeaders();
+        if (body) {
+            headers = headers.set("Content-Type", "application/json");
+        } else {
+            headers = headers.set("Content-Type", "application/x-www-form-urlencoded");
+        }
+        this.http.post(environment.apiUrl + "/" + encodeURI(route), body,
+            {headers: headers, observe: "response", params: this.prepareParams(params)}
+        ).subscribe({
+            next: (res) => {
+                responseSubject.next(res.body);
+                responseSubject.complete();
+            },
+            error: err => {
+                this.handleError(err, route, 'POST', {getParams: params, body: body});
+                responseSubject.error(err);
+            }
+        });
+        return responseSubject.asObservable();
+    }
+
+    putRequestNoAuth(route: string = "", params: any = {}, body: any = {}): Observable<any> {
         let responseSubject = new Subject<any>();
         let headers = this.getHeaders();
-        if (publicApi) headers = headers.set('apikey', environment.apiKey);
+        headers = headers.set('apikey', environment.apiKey);
         this.http.put(
             environment.apiUrl + "/" + route,
             body,
@@ -125,10 +167,49 @@ export class Backend {
         return responseSubject.asObservable();
     }
 
-    public deleteRequest(route: string = "", params: any = {}, publicApi: boolean = false): Observable<any> {
+    putRequest(route: string = "", params: any = {}, body: any = {}): Observable<any> {
         let responseSubject = new Subject<any>();
         let headers = this.getHeaders();
-        if (publicApi) headers = headers.set('apikey', environment.apiKey);
+        this.http.put(
+            environment.apiUrl + "/" + route,
+            body,
+            {headers: headers, observe: "response", params: this.prepareParams(params)}
+        ).subscribe({
+            next: (res) => {
+                responseSubject.next(res.body);
+                responseSubject.complete();
+            },
+            error: (err) => {
+                this.handleError(err, route, 'PUT', {getParams: params, body: body});
+                responseSubject.error(err);
+            }
+        });
+        return responseSubject.asObservable();
+    }
+
+    deleteRequestNoAuth(route: string = "", params: any = {}): Observable<any> {
+        let responseSubject = new Subject<any>();
+        let headers = this.getHeaders();
+        headers = headers.set('apikey', environment.apiKey);
+        this.http.delete(
+            environment.apiUrl + "/" + route,
+            {headers: headers, params: this.prepareParams(params)}
+        ).subscribe({
+            next: (res) => {
+                responseSubject.next(res ? res : true);
+                responseSubject.complete();
+            },
+            error: (err) => {
+                this.handleError(err, route, 'DELETE', {getParams: params});
+                responseSubject.error(err);
+            }
+        });
+        return responseSubject.asObservable();
+    }
+
+    deleteRequest(route: string = "", params: any = {}): Observable<any> {
+        let responseSubject = new Subject<any>();
+        let headers = this.getHeaders();
         this.http.delete(
             environment.apiUrl + "/" + route,
             {headers: headers, params: this.prepareParams(params)}

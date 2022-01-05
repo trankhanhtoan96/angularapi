@@ -13,11 +13,11 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.backend.getRequest('module/Contacts', {
+        this.backend.getRequestNoAuth('module/Contacts', {
             limit: 20,
             searchterm: '',
             offset: 0
-        }, true).subscribe(res => console.log(res));
+        }).subscribe(res => console.log(res));
     }
 
     showContent($event: EventObj<any>) {
