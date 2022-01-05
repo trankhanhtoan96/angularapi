@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost/api.khanhtoan.name.vn'
+    apiUrl: 'http://localhost/angular/api',
+    apiKey: 'angular'
 };
