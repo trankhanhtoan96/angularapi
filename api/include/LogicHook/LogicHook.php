@@ -98,11 +98,9 @@ class LogicHook
                 $spiceHooks = $_SESSION['SpiceCRM']['hooks'][$moduleDir];
             } else {
                 $hooksCodeBase = $this->getHooksCodeBase($moduleDir);
-//                $hooksCore = $this->getSpiceHooks('syshooks', $moduleDir);
-//                $hooksCustom = $this->getSpiceHooks('syscustomhooks', $moduleDir);
-//                $hooks = array_merge($hooksCodeBase, $hooksCore, $hooksCustom);
-                print_r($hooksCodeBase);
-                die();
+                $hooksCore = $this->getSpiceHooks('syshooks', $moduleDir);
+                $hooksCustom = $this->getSpiceHooks('syscustomhooks', $moduleDir);
+                $hooks = array_merge($hooksCodeBase, $hooksCore, $hooksCustom);
                 if (is_array($hooks)) {
                     foreach ($hooks as $hookHash => $hook) {
                         if ($hook['hook_active'] > 0) {

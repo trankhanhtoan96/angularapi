@@ -20,10 +20,6 @@ require_once('sugar_version.php');
 global $overCLI;
 $overCLI = true;
 
-if (!SpiceConfig::getInstance()->configExists()) {
-    sugar_die("No system config found.");
-}
-
 date_default_timezone_set('UTC');
 
 /**
