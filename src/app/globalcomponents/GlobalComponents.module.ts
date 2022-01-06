@@ -6,6 +6,7 @@ import {FormFieldEditorComponent} from "./components/FormFieldEditor.component";
 import {EditorModule, TINYMCE_SCRIPT_SRC} from '@tinymce/tinymce-angular';
 import {ToastComponent} from "./components/toast.component";
 import {ToastContainerModule, ToastNoAnimationModule} from "ngx-toastr";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {ToastContainerModule, ToastNoAnimationModule} from "ngx-toastr";
             timeOut: 10000,
             positionClass: 'toast-top-right'
         }),
+        FormsModule,
     ],
     providers: [
         {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}

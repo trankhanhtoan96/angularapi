@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {Backend} from "../../services/Backend.service";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
 
 @Component({
     selector: 'FormFieldEditorComponent',
     template: `
-        <editor [init]="config"></editor>
+        <editor (ngModelChange)="onData.emit(content)" [(ngModel)]="content" [init]="config"></editor>
     `
 })
 export class FormFieldEditorComponent implements OnInit {
     public config: any;
+    public content: any;
+    @Output() onData = new EventEmitter();
 
-    constructor(private backend: Backend) {
+    constructor() {
         this.config = {
             base_url: '/tinymce',
             suffix: '.min',
