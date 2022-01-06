@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
+import {Session} from "../../services/Session.service";
 
 @Component({
     selector: 'HeaderComponent',
-    templateUrl: '../templates/header.html'
+    templateUrl: '../templates/Header.html'
 })
 export class HeaderComponent implements OnInit {
 
-    constructor() {
+    constructor(public session: Session) {
     }
 
     ngOnInit(): void {

@@ -1,9 +1,36 @@
-import {Injectable} from '@angular/core';
+import {ComponentFactoryResolver, Injectable, Injector} from '@angular/core';
+import {FooterService} from "./Footer.service";
+import {SpinnerCircularFixedComponent} from "spinners-angular/spinner-circular-fixed";
+import {BackdropSmallComponent} from "../globalcomponents/components/BackdropSmall.component";
 
 @Injectable()
 export class Metadata {
-    private menu
-    constructor() {
+    constructor(
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private footer: FooterService
+    ) {
     }
 
+    loadComponent(conponent: any, viewChid: any, injector?: Injector): Promise<any> {
+        return new Promise<any>(resolve => {
+            let factory = this.componentFactoryResolver.resolveComponentFactory(conponent);
+            let componentRef = viewChid.createComponent(factory, undefined, injector);
+            componentRef.instance.self = componentRef;
+            resolve(componentRef);
+        });
+    }
+
+    spinnerLoading(): Promise<any> {
+        return new Promise<any>((resolve => {
+            this.loadComponent(BackdropSmallComponent, this.footer.footercontainer)
+                .then(wrapperComponent => {
+                    this.loadComponent(SpinnerCircularFixedComponent, wrapperComponent.instance.target)
+                        .then(component => {
+                            component.instance.self = wrapperComponent;
+                            wrapperComponent.instance.childComponent = component;
+                            resolve(component);
+                        });
+                });
+        }));
+    }
 }

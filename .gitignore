@@ -54,3 +54,4 @@ Thumbs.db
 /api/spicecrm.log
 package-lock.json
 /yarn.lock
+/.env

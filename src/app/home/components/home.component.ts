@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {EventObj} from "@tinymce/tinymce-angular/editor/Events";
 import {Session} from "../../services/Session.service";
 import {Backend} from "../../services/Backend.service";
+import {ToastComponent} from "../../globalcomponents/components/toast.component";
 
 @Component({
     selector: 'HomeComponent',
@@ -9,7 +9,11 @@ import {Backend} from "../../services/Backend.service";
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private session: Session, private backend: Backend) {
+    constructor(
+        private session: Session,
+        private backend: Backend,
+        private toast: ToastComponent
+    ) {
     }
 
     ngOnInit(): void {
@@ -20,7 +24,10 @@ export class HomeComponent implements OnInit {
         }).subscribe(res => console.log(res));
     }
 
-    showContent($event: EventObj<any>) {
-        console.log($event);
+    showAlert() {
+        this.toast.success('okokok');
+        this.toast.error('okokok');
+        this.toast.warning('okokok');
+        this.toast.info('okokok');
     }
 }

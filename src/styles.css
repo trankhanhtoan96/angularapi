@@ -1164,3 +1164,9 @@ a {
 .bg-primary{
     background-color: #0d0f39 !important;
 }
+sa-spinner-circular-fixed > svg > circle:first-child{
+    stroke: #e6e8e9;
+}
+sa-spinner-circular-fixed > svg > circle:last-child{
+    stroke: #2fb344;
+}

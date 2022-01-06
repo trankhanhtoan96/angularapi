@@ -27,7 +27,7 @@ export class Session {
     };
 
     getSessionHeader(): HttpHeaders {
-        if(!this.authData.id) this.getSessionData();
+        if (!this.authData.id) this.getSessionData();
         let headers = new HttpHeaders();
         headers = headers.set('OAuth-Token', this.authData.id);
         return headers;
@@ -68,5 +68,10 @@ export class Session {
 
     isAdmin(): boolean {
         return this.authData.admin;
+    }
+
+    isLogined(): boolean {
+        this.getSessionData();
+        return !!this.authData.id;
     }
 }

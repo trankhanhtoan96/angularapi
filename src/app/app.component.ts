@@ -1,27 +1,39 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Router} from "@angular/router";
+import {FooterService} from "./services/Footer.service";
 
 @Component({
     selector: 'app-root',
     template: `
         <div class="wrapper">
             <ng-container *ngIf="showHeaderFooter">
-                <AdsTopComponent></AdsTopComponent>
-                <HeaderComponent></HeaderComponent>
+                <AdsTopComponent *ngIf="!showAdminMenu"></AdsTopComponent>
+                <HeaderComponent *ngIf="!showAdminMenu"></HeaderComponent>
+                <AdminMenuComponent *ngIf="showAdminMenu"></AdminMenuComponent>
             </ng-container>
             <router-outlet></router-outlet>
+            <FooterComponent></FooterComponent>
         </div>
+        <ToastComponent></ToastComponent>
+        <ng-container #footercontainer></ng-container>
     `
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
     public showHeaderFooter: boolean = false;
+    public showAdminMenu: boolean = false;
+    @ViewChild('footercontainer', {read: ViewContainerRef, static: true}) private footercontainer: ViewContainerRef;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, public footer: FooterService) {
+    }
+
+    public ngAfterViewInit() {
+        this.footer.footercontainer = this.footercontainer;
     }
 
     ngOnInit() {
-        this.router.events.subscribe((val) => {
+        this.router.events.subscribe(val => {
             this.showHeaderFooter = !/^\/login$/.test(this.router.url);
+            this.showAdminMenu = /^\/admin/.test(this.router.url);
         });
     }
 }

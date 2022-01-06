@@ -12,6 +12,9 @@ import {Session} from "./services/Session.service";
 import {Broadcast} from "./services/Broadcast.service";
 import {Utils} from "./services/Utils.service";
 import {Metadata} from "./services/Metadata.service";
+import {FooterService} from "./services/Footer.service";
+import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
+import {AdministrationModule} from "./modules/administration/Administration.module";
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import {Metadata} from "./services/Metadata.service";
         AppRoutingModule,
         GlobalComponentsModule,
         UsersModule,
-        HomeModule
+        HomeModule,
+        AdministrationModule,
+        SpinnerDottedModule
     ],
     providers: [
         Title,
@@ -33,7 +38,8 @@ import {Metadata} from "./services/Metadata.service";
         Session,
         Broadcast,
         Utils,
-        Metadata
+        Metadata,
+        FooterService
     ],
     bootstrap: [AppComponent]
 })

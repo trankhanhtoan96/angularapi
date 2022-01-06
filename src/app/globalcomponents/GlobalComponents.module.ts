@@ -7,6 +7,13 @@ import {EditorModule, TINYMCE_SCRIPT_SRC} from '@tinymce/tinymce-angular';
 import {ToastComponent} from "./components/toast.component";
 import {ToastContainerModule, ToastNoAnimationModule} from "ngx-toastr";
 import {FormsModule} from "@angular/forms";
+import {AdminMenuComponent} from "./components/AdminMenu.component";
+import {RouterModule} from "@angular/router";
+import {FooterComponent} from "./components/Footer.component";
+import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
+import {BackdropSmallComponent} from "./components/BackdropSmall.component";
+import {BackdropLargeComponent} from "./components/BackdropLarge.component";
+import {BackdropComponent} from "./components/Backdrop.component";
 
 
 @NgModule({
@@ -14,25 +21,39 @@ import {FormsModule} from "@angular/forms";
         HeaderComponent,
         AdsTopComponent,
         FormFieldEditorComponent,
-        ToastComponent
+        ToastComponent,
+        AdminMenuComponent,
+        FooterComponent,
+        BackdropSmallComponent,
+        BackdropLargeComponent,
+        BackdropComponent
     ],
     exports: [
         HeaderComponent,
         AdsTopComponent,
-        FormFieldEditorComponent
+        FormFieldEditorComponent,
+        ToastComponent,
+        AdminMenuComponent,
+        FooterComponent,
+        BackdropSmallComponent,
+        BackdropLargeComponent,
+        BackdropComponent
     ],
     imports: [
         CommonModule,
         EditorModule,
         ToastContainerModule,
         ToastNoAnimationModule.forRoot({
-            timeOut: 10000,
+            timeOut: 5000,
             positionClass: 'toast-top-right'
         }),
         FormsModule,
+        RouterModule,
+        SpinnerDottedModule,
     ],
     providers: [
-        {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
+        {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'},
+        ToastComponent
     ]
 })
 export class GlobalComponentsModule {
