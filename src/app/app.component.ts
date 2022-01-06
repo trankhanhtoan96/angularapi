@@ -12,7 +12,7 @@ import {FooterService} from "./services/Footer.service";
                 <AdminMenuComponent *ngIf="showAdminMenu"></AdminMenuComponent>
             </ng-container>
             <router-outlet></router-outlet>
-            <FooterComponent></FooterComponent>
+            <FooterComponent *ngIf="showHeaderFooter && !showAdminMenu"></FooterComponent>
         </div>
         <ToastComponent></ToastComponent>
         <ng-container #footercontainer></ng-container>
