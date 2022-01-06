@@ -1,32 +1,4 @@
 <?php
-/*********************************************************************************
-* This file is part of SpiceCRM. SpiceCRM is an enhancement of SugarCRM Community Edition
-* and is developed by aac services k.s.. All rights are (c) 2016 by aac services k.s.
-* You can contact us at info@spicecrm.io
-* 
-* SpiceCRM is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version
-* 
-* The interactive user interfaces in modified source and object code versions
-* of this program must display Appropriate Legal Notices, as required under
-* Section 5 of the GNU Affero General Public License version 3.
-* 
-* In accordance with Section 7(b) of the GNU Affero General Public License version 3,
-* these Appropriate Legal Notices must retain the display of the "Powered by
-* SugarCRM" logo. If the display of the logo is not reasonably feasible for
-* technical reasons, the Appropriate Legal Notices must display the words
-* "Powered by SugarCRM".
-* 
-* SpiceCRM is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-********************************************************************************/
-
 namespace SpiceCRM\KREST\controllers;
 
 use SpiceCRM\data\BeanFactory;
@@ -41,7 +13,22 @@ use SpiceCRM\includes\SpiceSlim\SpiceResponse as Response;
 
 class ModuleController
 {
-    public function uploadFile(Request $req, Response $res, array $args): Response
+    public function getUploadFile(Request $req, Response $res, array $args): Response
+    {
+        $download_location = "upload://" . $args['id'];
+        while (ob_get_level() && @ob_end_clean());
+
+        header("Pragma: public");
+        header("Cache-Control: maxage=1, post-check=0, pre-check=0");
+        header('Content-type: application/octet-stream');
+        header("Content-Disposition: attachment; filename=\"" . $args['id'] . "\";");
+        header("X-Content-Type-Options: nosniff");
+        header("Content-Length: " . filesize($download_location));
+        header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
+        readfile($download_location);
+    }
+
+    function uploadFile(Request $req, Response $res, array $args): Response
     {
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
         $params = $req->getParsedBody();
@@ -126,11 +113,11 @@ class ModuleController
                 case 'DELETE':
                     $seed = BeanFactory::getBean($args['beanName'], $id);
 
-                    if(!$seed){
+                    if (!$seed) {
                         throw new NotFoundException("bean with id $id not found");
                     }
 
-                    if(!$seed->ACLAccess('delete')){
+                    if (!$seed->ACLAccess('delete')) {
                         throw new ForbiddenException("no rights to delete Bean $id");
                     }
 
@@ -274,7 +261,8 @@ class ModuleController
         return $res->withJson($moduleHandler->set_related($args['beanName'], $args['beanId'], $args['linkName'], $postBody));
     }
 
-    public function setRelatedBeans(Request $req, Response $res, array $args): Response {
+    public function setRelatedBeans(Request $req, Response $res, array $args): Response
+    {
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
         $postBody = $req->getParsedBody();
         $resArray = [];

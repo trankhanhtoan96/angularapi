@@ -31,7 +31,8 @@ use SpiceCRM\includes\SpiceSlim\SpiceResponse as Response;
 
 class AdminController
 {
-    public function systemstats(Request $req, Response $res, array $args): Response {
+    public function systemstats(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         $db = DBManagerFactory::getInstance();
 
@@ -98,7 +99,8 @@ class AdminController
      * @return Response
      * @throws ForbiddenException
      */
-    public function getGeneralSettings(Request $req, Response $res, array $args): Response {
+    public function getGeneralSettings(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         $db = DBManagerFactory::getInstance();
 
@@ -135,7 +137,8 @@ class AdminController
      * @return Response
      * @throws ForbiddenException
      */
-    public function writeGeneralSettings(Request $req, Response $res, array $args): Response {
+    public function writeGeneralSettings(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         $db = DBManagerFactory::getInstance();
 
@@ -240,7 +243,8 @@ class AdminController
      * @return Response
      * @throws \Exception
      */
-    public function buildSQLArray(Request $req, Response $res, array $args): Response {
+    public function buildSQLArray(Request $req, Response $res, array $args): Response
+    {
         global $dictionary;
         $db = DBManagerFactory::getInstance();
         $execute = false;
@@ -292,9 +296,14 @@ class AdminController
         // rebuild relationships
         $this->rebuildRelationships();
 
-        // send an empty string for sql if $sqlArray is null
-        return $res->withJson(["sql" => (empty($sqlArray) ? "" : $sqlArray), "wholeSQL" => $sql]);
-
+        if (!empty($sqlArray['statement'])) {
+            if ($GLOBALS['db']->query($sqlArray['statement'])) {
+                return $res->withJson(['success' => 1, 'execute' => 1]);
+            } else {
+                return $res->withJson(['success' => 0]);
+            }
+        }
+        return $res->withJson(['success' => 1]);
     }
 
     /**
@@ -306,7 +315,8 @@ class AdminController
      * @return Response
      * @throws \Exception
      */
-    public function repairAndRebuild(Request $req, Response $res, array $args): Response {
+    public function repairAndRebuild(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         $db = DBManagerFactory::getInstance();
         $errors = [];
@@ -384,9 +394,9 @@ class AdminController
         }
 
         return json_encode(['response' => $response,
-                'synced' => $synced,
-                'sql' => $sql,
-                'error' => $errors]);
+            'synced' => $synced,
+            'sql' => $sql,
+            'error' => $errors]);
 
     }
 
@@ -459,13 +469,14 @@ class AdminController
      * @param array $args
      * @return Response
      */
-    public function repairLanguage(Request $req, Response $res, array $args): Response {
+    public function repairLanguage(Request $req, Response $res, array $args): Response
+    {
         $appListStrings = [];
         $appLang = [];
         $langs = LanguageManager::getLanguages();
 
         foreach ($langs['available'] as $lang) {
-            if($lang['system_language']){
+            if ($lang['system_language']) {
                 $language = $lang['language_code'];
                 $this->merge_files('Ext/Language/', $language . '.lang.ext.php', $language);
                 $appListStrings[$language][] = return_app_list_strings_language($language);
@@ -600,7 +611,8 @@ class AdminController
      * @param array $args
      * @return false|Response|string
      */
-    public function repairACLRoles(Request $req, Response $res, array $args) {
+    public function repairACLRoles(Request $req, Response $res, array $args)
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         $repairedACLs = [];
         $ACLActions = ACLAction::getDefaultActions();
@@ -679,7 +691,8 @@ class AdminController
      * @param array $args
      * @return Response
      */
-    public function repairCache(Request $req, Response $res, array $args): Response {
+    public function repairCache(Request $req, Response $res, array $args): Response
+    {
 
         return $this->repairCacheFromDb($req, $res, $args);
 
@@ -698,7 +711,8 @@ class AdminController
      * @param array $args
      * @return Response
      */
-    private function repairCacheFromDb(Request $req, Response $res, array $args): Response {
+    private function repairCacheFromDb(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         if (SpiceUtils::isAdmin($current_user)) {
 //            \SpiceCRM\includes\SugarObjects\VardefManager::clearVardef();
@@ -717,7 +731,8 @@ class AdminController
      * @param array $args
      * @return Response
      */
-    private function repairCacheFromFiles(Request $req, Response $res, array $args): Response {
+    private function repairCacheFromFiles(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         if (SpiceUtils::isAdmin($current_user)) {
             VardefManager::clearVardef();
@@ -738,7 +753,8 @@ class AdminController
      * @param array $args
      * @return Response
      */
-    public function getDBColumns(Request $req, Response $res, array $args): Response {
+    public function getDBColumns(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         if (SpiceUtils::isAdmin($current_user)) {
             $db = DBManagerFactory::getInstance();
@@ -757,7 +773,8 @@ class AdminController
      * @return Response
      * @throws \Exception
      */
-    public function repairDBColumns(Request $req, Response $res, array $args): Response {
+    public function repairDBColumns(Request $req, Response $res, array $args): Response
+    {
         $current_user = AuthenticationController::getInstance()->getCurrentUser();
         if (SpiceUtils::isAdmin($current_user)) {
 
@@ -835,7 +852,8 @@ class AdminController
      * @return Response
      * @throws Exception
      */
-    public function convertDatabase(Request $req, Response $res, array $args): Response {
+    public function convertDatabase(Request $req, Response $res, array $args): Response
+    {
         $db = DBManagerFactory::getInstance();
         $body = $req->getParsedBody();
         $result = $db->convertDBCharset($body['charset'], $this->getCollation($body['charset']));
@@ -852,7 +870,8 @@ class AdminController
      * @return Response
      * @throws Exception
      */
-    public function convertTables(Request $req, Response $res, array $args): Response {
+    public function convertTables(Request $req, Response $res, array $args): Response
+    {
         $body = $req->getParsedBody();
         $db = DBManagerFactory::getInstance();
 
@@ -872,14 +891,16 @@ class AdminController
      * @return Response
      * @throws Exception
      */
-    public function getDatabaseCharsetInfo(Request $req, Response $res, array $args): Response {
+    public function getDatabaseCharsetInfo(Request $req, Response $res, array $args): Response
+    {
         $db = DBManagerFactory::getInstance();
         $result = $db->getDatabaseCharsetInfo();
 
         return $res->withJson($result);
     }
 
-    private function getCollation(string $charset): string {
+    private function getCollation(string $charset): string
+    {
         switch ($charset) {
             case 'utf8mb4':
                 return 'utf8mb4_general_ci';
