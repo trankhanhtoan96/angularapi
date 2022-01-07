@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Router} from "@angular/router";
 import {FooterService} from "./services/Footer.service";
+import {Session} from "./services/Session.service";
 
 @Component({
     selector: 'app-root',
@@ -9,7 +10,7 @@ import {FooterService} from "./services/Footer.service";
             <ng-container *ngIf="showHeaderFooter">
                 <AdsTopComponent *ngIf="!showAdminMenu"></AdsTopComponent>
                 <HeaderComponent *ngIf="!showAdminMenu"></HeaderComponent>
-                <AdminMenuComponent *ngIf="showAdminMenu"></AdminMenuComponent>
+                <AdminMenuComponent *ngIf="showAdminMenu && session.isLogined()"></AdminMenuComponent>
             </ng-container>
             <router-outlet></router-outlet>
             <FooterComponent *ngIf="showHeaderFooter && !showAdminMenu"></FooterComponent>
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public showAdminMenu: boolean = false;
     @ViewChild('footercontainer', {read: ViewContainerRef, static: true}) private footercontainer: ViewContainerRef;
 
-    constructor(private router: Router, public footer: FooterService) {
+    constructor(private router: Router, public footer: FooterService, public session: Session) {
     }
 
     public ngAfterViewInit() {

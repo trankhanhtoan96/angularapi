@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {CanActivate, Router} from "@angular/router";
 
 interface IFAuthData {
     id: string;
@@ -73,5 +74,22 @@ export class Session {
     isLogined(): boolean {
         this.getSessionData();
         return !!this.authData.id;
+    }
+}
+
+@Injectable()
+export class LoginCheck implements CanActivate {
+    constructor(private session: Session, private router: Router) {
+    }
+
+    public canActivate(route, state) {
+        if (!this.session.isLogined()) {
+            if (state.url != '/login') {
+                this.router.navigate(['/login']);
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 }

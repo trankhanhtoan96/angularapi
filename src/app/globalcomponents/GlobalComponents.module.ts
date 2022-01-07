@@ -14,6 +14,9 @@ import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
 import {BackdropSmallComponent} from "./components/BackdropSmall.component";
 import {BackdropLargeComponent} from "./components/BackdropLarge.component";
 import {BackdropComponent} from "./components/Backdrop.component";
+import {NotFoundComponent} from "./components/NotFound.component";
+import {FormFieldTextComponent} from "./components/FormFieldText.component";
+import {FormFormComponent} from "./components/FormForm.component";
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import {BackdropComponent} from "./components/Backdrop.component";
         FooterComponent,
         BackdropSmallComponent,
         BackdropLargeComponent,
-        BackdropComponent
+        BackdropComponent,
+        NotFoundComponent,
+        FormFieldTextComponent,
+        FormFormComponent
     ],
     exports: [
         HeaderComponent,
@@ -37,7 +43,10 @@ import {BackdropComponent} from "./components/Backdrop.component";
         FooterComponent,
         BackdropSmallComponent,
         BackdropLargeComponent,
-        BackdropComponent
+        BackdropComponent,
+        NotFoundComponent,
+        FormFieldTextComponent,
+        FormFormComponent
     ],
     imports: [
         CommonModule,
