@@ -4,15 +4,18 @@ import {AppRoutingModule} from "../../app-routing.module";
 import {FormsModule} from "@angular/forms";
 import {UserEditComponent} from "./components/UserEdit.component";
 import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.module";
+import {UserListComponent} from "./components/UserList.component";
 
 @NgModule({
     declarations: [
         LoginComponent,
-        UserEditComponent
+        UserEditComponent,
+        UserListComponent
     ],
     exports: [
         LoginComponent,
-        UserEditComponent
+        UserEditComponent,
+        UserListComponent
     ],
     imports: [
         AppRoutingModule,

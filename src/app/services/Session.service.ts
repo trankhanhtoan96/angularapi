@@ -16,6 +16,9 @@ interface IFAuthData {
 
 @Injectable()
 export class Session {
+    fields: any;
+    lang: any;
+    enum: any;
     public authData: IFAuthData = {
         admin: false,
         email: "",

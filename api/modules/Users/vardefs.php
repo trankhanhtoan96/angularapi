@@ -78,7 +78,8 @@ $dictionary['User'] = [
         'user_image' => [
             'name' => 'user_image',
             'vname' => 'LBL_USER_IMAGE',
-            'type' => 'longtext'
+            'dbType' => 'longtext',
+            'type' => 'image'
         ],
         'system_generated_password' => [
             'name' => 'system_generated_password',
@@ -277,7 +278,8 @@ $dictionary['User'] = [
         'description' => [
             'name' => 'description',
             'vname' => 'LBL_DESCRIPTION',
-            'type' => 'text',
+            'type' => 'html',
+            'dbType' => 'text'
         ],
         'date_entered' => [
             'name' => 'date_entered',

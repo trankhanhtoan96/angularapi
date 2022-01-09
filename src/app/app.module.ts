@@ -14,6 +14,8 @@ import {Metadata} from "./services/Metadata.service";
 import {FooterService} from "./services/Footer.service";
 import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
 import {AdministrationModule} from "./modules/administration/Administration.module";
+import {Model} from "./services/Model.service";
+import {NgSelect2Module} from "ng-select2";
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import {AdministrationModule} from "./modules/administration/Administration.modu
         GlobalComponentsModule,
         UsersModule,
         AdministrationModule,
-        SpinnerDottedModule
+        SpinnerDottedModule,
+        NgSelect2Module
     ],
     providers: [
         Title,
@@ -38,7 +41,8 @@ import {AdministrationModule} from "./modules/administration/Administration.modu
         Utils,
         Metadata,
         FooterService,
-        LoginCheck
+        LoginCheck,
+        Model
     ],
     bootstrap: [AppComponent]
 })

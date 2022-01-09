@@ -1084,6 +1084,15 @@ $routes = [
 
         ],
     ],
+    [
+        'method' => 'get',
+        'route' => '/systeminfo',
+        'class' => ModuleController::class,
+        'function' => 'getSystemInfo',
+        'description' => 'getSystemInfo',
+        'options' => ['noAuth' => true, 'adminOnly' => false, 'moduleRoute' => true],
+        'parameters' => [],
+    ],
 ];
 
 /**

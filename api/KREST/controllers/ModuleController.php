@@ -1,4 +1,5 @@
 <?php
+
 namespace SpiceCRM\KREST\controllers;
 
 use SpiceCRM\data\BeanFactory;
@@ -6,6 +7,7 @@ use SpiceCRM\includes\ErrorHandlers\BadRequestException;
 use SpiceCRM\includes\ErrorHandlers\ForbiddenException;
 use SpiceCRM\includes\ErrorHandlers\NotFoundException;
 use SpiceCRM\includes\RESTManager;
+use SpiceCRM\includes\SugarObjects\SpiceConfig;
 use SpiceCRM\KREST\handlers\ModuleHandler;
 use SpiceCRM\modules\SpiceACL\SpiceACL;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -13,10 +15,25 @@ use SpiceCRM\includes\SpiceSlim\SpiceResponse as Response;
 
 class ModuleController
 {
+    public function getSystemInfo(Request $req, Response $res, array $args): Response
+    {
+        global $dictionary;
+        if (empty($_GET['lang'])) {
+            $language = SpiceConfig::getInstance()->config['default_language'];
+        } else {
+            $language = $_GET['lang'];
+        }
+        return $res->withJson([
+            'fields' => $dictionary,
+            'lang' => return_application_language($language),
+            'enum' => return_app_list_strings_language($language)
+        ]);
+    }
+
     public function getUploadFile(Request $req, Response $res, array $args): Response
     {
         $download_location = "upload://" . $args['id'];
-        while (ob_get_level() && @ob_end_clean());
+        while (ob_get_level() && @ob_end_clean()) ;
 
         header("Pragma: public");
         header("Cache-Control: maxage=1, post-check=0, pre-check=0");

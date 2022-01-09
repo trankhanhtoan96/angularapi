@@ -36,12 +36,15 @@
                             "src/assets/tabler-vendors.min.css",
                             "src/assets/iconfont/tabler-icons.min.css",
                             "node_modules/ngx-toastr/toastr.css",
+                            "node_modules/select2/dist/css/select2.min.css",
                             "src/styles.css"
                         ],
                         "scripts": [
                             "src/assets/tabler.min.js",
                             "src/assets/apexcharts.min.js",
-                            "node_modules/tinymce/tinymce.min.js"
+                            "node_modules/tinymce/tinymce.min.js",
+                            "node_modules/jquery/dist/jquery.js",
+                            "node_modules/select2/dist/js/select2.min.js"
                         ]
                     },
                     "configurations": {

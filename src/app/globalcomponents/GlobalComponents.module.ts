@@ -17,6 +17,8 @@ import {BackdropComponent} from "./components/Backdrop.component";
 import {NotFoundComponent} from "./components/NotFound.component";
 import {FormFieldTextComponent} from "./components/FormFieldText.component";
 import {FormFormComponent} from "./components/FormForm.component";
+import {NgSelect2Module} from "ng-select2";
+import {FormFieldImageComponent} from "./components/FormFieldImage.component";
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {FormFormComponent} from "./components/FormForm.component";
         BackdropComponent,
         NotFoundComponent,
         FormFieldTextComponent,
-        FormFormComponent
+        FormFormComponent,
+        FormFieldImageComponent
     ],
     exports: [
         HeaderComponent,
@@ -46,7 +49,8 @@ import {FormFormComponent} from "./components/FormForm.component";
         BackdropComponent,
         NotFoundComponent,
         FormFieldTextComponent,
-        FormFormComponent
+        FormFormComponent,
+        FormFieldImageComponent
     ],
     imports: [
         CommonModule,
@@ -59,6 +63,7 @@ import {FormFormComponent} from "./components/FormForm.component";
         FormsModule,
         RouterModule,
         SpinnerDottedModule,
+        NgSelect2Module,
     ],
     providers: [
         {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'},

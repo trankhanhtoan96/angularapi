@@ -1,15 +1,15 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
 
 @Component({
     selector: 'FormFieldEditorComponent',
     template: `
-        <editor (ngModelChange)="onData.emit(content)" [(ngModel)]="content" [init]="config"></editor>
+        <editor  (onChange)="onData.emit(content)" [(ngModel)]="content" [init]="config"></editor>
     `
 })
 export class FormFieldEditorComponent implements OnInit {
     public config: any;
-    public content: any;
+    @Input() content: any;
     @Output() onData = new EventEmitter();
 
     constructor() {
