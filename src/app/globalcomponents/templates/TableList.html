@@ -25,18 +25,22 @@
             <th class="align-middle text-center">
                 <input class="form-check-input" type="checkbox" [checked]="isChecked(bean.id)" (change)="changeChecked(bean.id)">
             </th>
-            <td *ngFor="let field of config" class="align-middle cursor-pointer">
+            <td *ngFor="let field of config" class="align-middle">
                 <a *ngIf="field.link;else nolinktemplate" [routerLink]="'/admin/'+routerModule+'/'+bean.id">
                     <span *ngIf="getFieldType(field)=='image'" class="avatar" [style]="{'background-image': 'url('+bean[field.name]+')'}"></span>
                     <span *ngIf="getFieldType(field)=='varchar'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='enum'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='relate'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='text'">{{bean[field.name]}}</span>
                 </a>
                 <ng-template #nolinktemplate>
                     <span *ngIf="getFieldType(field)=='image'" class="avatar" [style]="{'background-image': 'url('+bean[field.name]+')'}"></span>
                     <span *ngIf="getFieldType(field)=='varchar'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='enum'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='relate'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='text'">{{bean[field.name]}}</span>
                 </ng-template>
             </td>
         </tr>

@@ -22,7 +22,9 @@ export class TableListComponent implements OnInit {
         'enum',
         'html',
         'image',
-        'datetime'
+        'datetime',
+        'text',
+        'relate'
     ];
     checked: string[] = [];
 

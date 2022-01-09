@@ -19,7 +19,8 @@ export class FormFormComponent implements OnInit {
         'html',
         'image',
         'id',
-        'relate'
+        'relate',
+        'text',
     ];
     optionsOfField = {};
     beingOptionsOfField = [];

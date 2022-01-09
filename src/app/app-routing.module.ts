@@ -8,6 +8,8 @@ import {LoginCheck} from "./services/Session.service";
 import {UserListComponent} from "./modules/users/components/UserList.component";
 import {BlogCategoryListComponent} from "./modules/blogcategory/components/BlogCategoryList.component";
 import {BlogCategoryEditComponent} from "./modules/blogcategory/components/BlogCategoryEdit.component";
+import {BlogListComponent} from "./modules/blog/components/BlogList.component";
+import {BlogEditComponent} from "./modules/blog/components/BlogEdit.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -19,6 +21,9 @@ const routes: Routes = [
 
     {path: 'admin/blogcategory', component: BlogCategoryListComponent, canActivate: [LoginCheck]},
     {path: 'admin/blogcategory/:id', component: BlogCategoryEditComponent, canActivate: [LoginCheck]},
+
+    {path: 'admin/blog', component: BlogListComponent, canActivate: [LoginCheck]},
+    {path: 'admin/blog/:id', component: BlogEditComponent, canActivate: [LoginCheck]},
 
     {path: '', component: NotFoundComponent},
     {path: "**", component: NotFoundComponent}

@@ -2071,3 +2071,14 @@ $app_list_strings['bonuscard_extension_status_enum'] = [
     'initial' => 'initial',
     'sent' => 'sent'
 ];
+$app_list_strings['blog_status_options'] = [
+    'Draf' => 'Draf',
+    'Hidden' => 'Hidden',
+    'Publish' => 'Publish',
+    'Schedule' => 'Schedule',
+    'Wait Approve' => 'Wait Approve',
+];
+$app_list_strings['blog_allow_comment_options'] = [
+    'Yes' => 'Yes',
+    'No' => 'No',
+];

@@ -18,6 +18,7 @@ import {Model} from "./services/Model.service";
 import {NgSelect2Module} from "ng-select2";
 import {BlogCategoryModule} from "./modules/blogcategory/BlogCategory.module";
 import {SystemModule} from "./system/System.module";
+import {BlogModule} from "./modules/blog/Blog.module";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {SystemModule} from "./system/System.module";
         SpinnerDottedModule,
         NgSelect2Module,
         BlogCategoryModule,
-        SystemModule
+        SystemModule,
+        BlogModule
     ],
     providers: [
         Title,
