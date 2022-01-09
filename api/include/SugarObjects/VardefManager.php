@@ -23,7 +23,6 @@ class VardefManager{
      */
     static function createVardef($module, $object, $templates = ['default'], $object_name = false)
     {
-        global $dictionary;
 
         // BEGIN CR1000108: check system usage and overwrite vardefs
         if(isset(SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) && SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) {
@@ -439,7 +438,6 @@ class VardefManager{
         }
 
         // Some of the vardefs do not correctly define dictionary as global.  Declare it first.
-        global $dictionary;
         if(empty($GLOBALS['dictionary'][$object]) || $refresh){
 
             //if the consumer has demanded a refresh or the cache/modules... file

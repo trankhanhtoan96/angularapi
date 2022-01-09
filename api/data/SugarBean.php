@@ -309,7 +309,6 @@ class SugarBean
     public function initialize_bean()
     {
         global $dictionary;
-        $current_user = AuthenticationController::getInstance()->getCurrentUser();
         static $loaded_defs = [];
         $this->db = DBManagerFactory::getInstance();
         if (empty($this->module_name))

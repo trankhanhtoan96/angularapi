@@ -7,16 +7,6 @@ namespace SpiceCRM\data;
 use SpiceCRM\includes\Logger\LoggerManager;
 use SpiceCRM\includes\SugarObjects\SpiceConfig;
 use SpiceCRM\includes\SugarObjects\SpiceModules;
-use SpiceCRM\modules\Administration\Administration;
-use SpiceCRM\modules\Currencies\Currency;
-use SpiceCRM\modules\EmailAddresses\EmailAddress;
-use SpiceCRM\modules\SchedulerJobs\SchedulerJob;
-use SpiceCRM\modules\SpiceACLObjects\SpiceACLObject;
-use SpiceCRM\modules\SystemTenants\SystemTenant;
-use SpiceCRM\modules\Trackers\Tracker;
-use SpiceCRM\modules\UserAbsences\UserAbsence;
-use SpiceCRM\modules\UserAccessLogs\UserAccessLog;
-use SpiceCRM\modules\Users\User;
 
 /**
  * Factory to create SugarBeans

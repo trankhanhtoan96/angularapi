@@ -147,7 +147,7 @@ class SpiceFTSCreator {
             'Products', 'ProductGroups', 'ProductAttributes', 'ProductVariants',
             'ProjectWBSs', 'ProjectMilestones', 'ProjectPlannedActivities',
             'Questionnaires', 'QuestionSets', 'QuestionOptionCategories', 'QuestionnaireInterpretations',
-            'SalesDocs'
+            'SalesDocs','BlogCategory'
         ];
 
         //check if modules are available (CE/PRO)

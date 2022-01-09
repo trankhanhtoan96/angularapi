@@ -247,7 +247,7 @@ class AdminController
     {
         global $dictionary;
         $db = DBManagerFactory::getInstance();
-        $execute = false;
+        $execute = true;
         VardefManager::clearVardef();
         if (isset(SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) && SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) {
             SpiceDictionaryVardefs::loadDictionaries();
@@ -296,13 +296,13 @@ class AdminController
         // rebuild relationships
         $this->rebuildRelationships();
 
-        if (!empty($sqlArray['statement'])) {
-            if ($GLOBALS['db']->query($sqlArray['statement'])) {
-                return $res->withJson(['success' => 1, 'execute' => 1]);
-            } else {
-                return $res->withJson(['success' => 0]);
-            }
-        }
+//        if (!empty($sqlArray['statement'])) {
+//            if ($GLOBALS['db']->query($sqlArray['statement'])) {
+//                return $res->withJson(['success' => 1, 'execute' => 1, 'statement' => $sqlArray['statement']]);
+//            } else {
+//                return $res->withJson(['success' => 0]);
+//            }
+//        }
         return $res->withJson(['success' => 1]);
     }
 

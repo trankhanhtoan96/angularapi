@@ -14,7 +14,6 @@ class SpiceDictionaryHandler
      */
     public static function loadMetaDataFiles() {
         $metaDataDirectories = ['metadata', 'extensions/metadata', 'custom/metadata'];
-        global $dictionary;
         foreach ($metaDataDirectories as $metaDataDirectory) {
             self::loadMetaDataFilesFromDir($metaDataDirectory);
         }
@@ -30,7 +29,6 @@ class SpiceDictionaryHandler
      * @param string $directory
      */
     private static function loadMetaDataFilesFromDir(string $directory): void {
-        global $dictionary;
         if ($metaDataHandle = @opendir('./' . $directory)) {
             while (false !== ($metaDataFile = readdir($metaDataHandle))) {
                 if (preg_match('/\.php$/', $metaDataFile)) {

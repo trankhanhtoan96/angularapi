@@ -90,8 +90,6 @@ class SpiceUIConfLoader
      */
     public function __construct($endpoint = null)
     {
-        global $dictionary;
-        $current_user = AuthenticationController::getInstance()->getCurrentUser();
         $this->loader = new SpiceUILoader($endpoint);
 
         // module dictionaries are unknown at that time
@@ -208,7 +206,6 @@ class SpiceUIConfLoader
      */
     public function loadDefaultConf($routeparams, $params, $checkopen = true)
     {
-        global $dictionary;
         $db = DBManagerFactory::getInstance();
         $tables = [];
         $inserts = [];
