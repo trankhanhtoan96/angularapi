@@ -19,6 +19,7 @@ import {NgSelect2Module} from "ng-select2";
 import {BlogCategoryModule} from "./modules/blogcategory/BlogCategory.module";
 import {SystemModule} from "./system/System.module";
 import {BlogModule} from "./modules/blog/Blog.module";
+import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {BlogModule} from "./modules/blog/Blog.module";
         NgSelect2Module,
         BlogCategoryModule,
         SystemModule,
-        BlogModule
+        BlogModule,
+        BlogPageModule
     ],
     providers: [
         Title,

@@ -10,6 +10,8 @@ import {BlogCategoryListComponent} from "./modules/blogcategory/components/BlogC
 import {BlogCategoryEditComponent} from "./modules/blogcategory/components/BlogCategoryEdit.component";
 import {BlogListComponent} from "./modules/blog/components/BlogList.component";
 import {BlogEditComponent} from "./modules/blog/components/BlogEdit.component";
+import {BlogPageListComponent} from "./modules/blogpage/components/BlogPageList.component";
+import {BlogPageEditComponent} from "./modules/blogpage/components/BlogPageEdit.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -21,6 +23,9 @@ const routes: Routes = [
 
     {path: 'admin/blogcategory', component: BlogCategoryListComponent, canActivate: [LoginCheck]},
     {path: 'admin/blogcategory/:id', component: BlogCategoryEditComponent, canActivate: [LoginCheck]},
+
+    {path: 'admin/blogpage', component: BlogPageListComponent, canActivate: [LoginCheck]},
+    {path: 'admin/blogpage/:id', component: BlogPageEditComponent, canActivate: [LoginCheck]},
 
     {path: 'admin/blog', component: BlogListComponent, canActivate: [LoginCheck]},
     {path: 'admin/blog/:id', component: BlogEditComponent, canActivate: [LoginCheck]},
