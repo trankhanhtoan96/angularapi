@@ -4,13 +4,15 @@ import {Subject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {Session} from "./Session.service";
 import {environment} from "../../environments/environment";
+import {Metadata} from "./Metadata.service";
 
 @Injectable()
 export class Backend {
     constructor(
         private http: HttpClient,
         private session: Session,
-        private router: Router
+        private router: Router,
+        private metadata: Metadata
     ) {
     }
 
@@ -236,5 +238,16 @@ export class Backend {
                 console.log(err, route, method, data);
                 break;
         }
+    }
+
+    repair() {
+        this.metadata.spinnerLoading().then(ref => {
+            this.getRequest('admin/repair/sql').subscribe(res => {
+                this.getRequest('admin/repair/cache').subscribe(res => {
+                    ref.instance.self.destroy();
+                    window.location.reload();
+                });
+            });
+        });
     }
 }

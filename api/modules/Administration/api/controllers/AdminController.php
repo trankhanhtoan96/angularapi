@@ -274,8 +274,7 @@ class AdminController
         }
 
         foreach ($dictionary as $meta) {
-            if (!isset($meta['table']) || isset($repairedTables[$meta['table']]))
-                continue;
+            if (!isset($meta['table']) || isset($repairedTables[$meta['table']])) continue;
             $tablename = $meta['table'];
             $fielddefs = $meta['fields'];
             $indices = $meta['indices'];
@@ -291,7 +290,6 @@ class AdminController
             if (strpos($line, ';')) {
                 $sqlArray[] = ["comment" => $comment, "statement" => $line, "md5" => md5($line), "selected" => false];
             }
-
         }
         // rebuild relationships
         $this->rebuildRelationships();

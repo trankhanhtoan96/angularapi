@@ -1,0 +1,41 @@
+<div class="page-wrapper">
+    <div class="page-header d-print-none">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col">
+                    <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs" style="font-weight: 700;">
+                        <li class="breadcrumb-item"><a href="#">
+                            <i class="ti ti-home"></i>
+                        </a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a [routerLink]="'/admin/'+routerModule">{{moduleName}}</a>
+                        </li>
+                    </ol>
+                    <span data-bs-toggle="dropdown">
+                        Bộ lọc: Tất cả <i class="ti ti-chevron-down"></i>
+                    </span>
+                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
+                        <a href="#" class="dropdown-item">Tất cả</a>
+                    </div>
+                    <div class="text-muted mt-1">{{beanList.length}}/{{totalCount}}</div>
+                </div>
+                <div class="col-auto ms-auto d-print-none">
+                    <div class="d-flex">
+                        <div class="input-group">
+                            <button [routerLink]="'/admin/'+routerModule+'/create'" class="btn btn-primary order-last">Tạo mới</button>
+                            <button class="btn btn-sm order-last" data-bs-toggle="dropdown" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;" aria-expanded="false">
+                                <i class="ti ti-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Action</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <TableListComponent (refreshBeanList)="refreshBeanList()" (loadMore)="loadMore()" [beanName]="beanName" [beanList]="beanList" [config]="config" [moduleName]="moduleName"></TableListComponent>
+    </div>
+</div>

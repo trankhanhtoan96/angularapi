@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Session} from "../../services/Session.service";
+import {Backend} from "../../services/Backend.service";
 
 @Component({
     selector: 'AdminMenuComponent',
@@ -7,7 +8,7 @@ import {Session} from "../../services/Session.service";
 })
 export class AdminMenuComponent implements OnInit {
 
-    constructor(public session: Session) {
+    constructor(public session: Session, public backend: Backend) {
     }
 
     ngOnInit(): void {
