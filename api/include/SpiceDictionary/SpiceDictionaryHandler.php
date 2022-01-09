@@ -1,4 +1,5 @@
 <?php
+
 namespace SpiceCRM\includes\SpiceDictionary;
 
 use Exception;
@@ -12,23 +13,30 @@ class SpiceDictionaryHandler
     /**
      * loads the metadata files
      */
-    public static function loadMetaDataFiles() {
-        $metaDataDirectories = ['metadata', 'extensions/metadata', 'custom/metadata'];
+    public static function loadMetaDataFiles()
+    {
+        $metaDataDirectories = ['metadata'];
         foreach ($metaDataDirectories as $metaDataDirectory) {
             self::loadMetaDataFilesFromDir($metaDataDirectory);
         }
+        self::loadVardefDataFilesFromDir('./modules');
+    }
 
-        if(file_exists('custom/application/Ext/TableDictionary/tabledictionary.ext.php')){
-            include('custom/application/Ext/TableDictionary/tabledictionary.ext.php');
+    private static function loadVardefDataFilesFromDir($dir): void
+    {
+        if ($metaDataHandle = @opendir($dir)) {
+            while (false !== ($metaDataFile = readdir($metaDataHandle))) {
+                if (preg_match('/vardefs\.php$/', $metaDataFile)) {
+                    include($dir . '/' . $metaDataFile);
+                } elseif ($metaDataFile != '.' && $metaDataFile != '..' && is_dir($dir . '/' . $metaDataFile)) {
+                    self::loadVardefDataFilesFromDir($dir . '/' . $metaDataFile);
+                }
+            }
         }
     }
 
-    /**
-     * Loads the metadata files from a particular directory.
-     *
-     * @param string $directory
-     */
-    private static function loadMetaDataFilesFromDir(string $directory): void {
+    private static function loadMetaDataFilesFromDir(string $directory): void
+    {
         if ($metaDataHandle = @opendir('./' . $directory)) {
             while (false !== ($metaDataFile = readdir($metaDataHandle))) {
                 if (preg_match('/\.php$/', $metaDataFile)) {
@@ -41,9 +49,10 @@ class SpiceDictionaryHandler
     /**
      * loads the dictionary Definitions of type metadata from the database
      */
-    static function loadMetaDataDefinitions(){
+    static function loadMetaDataDefinitions()
+    {
         global $dictionary;
-        if(isset(SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) && SpiceConfig::getInstance()->config['systemvardefs']['dictionary']){
+        if (isset(SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) && SpiceConfig::getInstance()->config['systemvardefs']['dictionary']) {
             SpiceDictionaryVardefs::loadDictionaries($dictionary, 'metadata');
         }
     }
@@ -53,16 +62,17 @@ class SpiceDictionaryHandler
      *
      * @return array
      */
-    public function getDictionaryDefinitions(){
+    public function getDictionaryDefinitions()
+    {
         $db = DBManagerFactory::getInstance();
         $defArray = [];
         $dictionarydefinitions = $db->query("SELECT * FROM sysdictionarydefinitions WHERE deleted = 0");
-        while($dictionarydefinition = $db->fetchByAssoc($dictionarydefinitions)){
+        while ($dictionarydefinition = $db->fetchByAssoc($dictionarydefinitions)) {
             $dictionarydefinition['deleted'] = intval($dictionarydefinition['deleted']);
             $defArray[] = array_merge($dictionarydefinition, ['scope' => 'g']);
         }
         $dictionarydefinitions = $db->query("SELECT * FROM syscustomdictionarydefinitions WHERE deleted = 0");
-        while($dictionarydefinition = $db->fetchByAssoc($dictionarydefinitions)){
+        while ($dictionarydefinition = $db->fetchByAssoc($dictionarydefinitions)) {
             $dictionarydefinition['deleted'] = intval($dictionarydefinition['deleted']);
             $defArray[] = array_merge($dictionarydefinition, ['scope' => 'c']);;
         }
@@ -76,15 +86,16 @@ class SpiceDictionaryHandler
      * @param $definitions
      * @throws Exception
      */
-    public function setDictionaryDefinitions($definitions){
+    public function setDictionaryDefinitions($definitions)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($definitions as $definition){
-            switch($definition['scope']){
+        foreach ($definitions as $definition) {
+            switch ($definition['scope']) {
                 case 'c':
                     unset($definition['scope']);
                     $db->upsertQuery('syscustomdictionarydefinitions', ['id' => $definition['id']], $definition);
@@ -105,17 +116,18 @@ class SpiceDictionaryHandler
      *
      * @return array
      */
-    public function getDictionaryItems(){
+    public function getDictionaryItems()
+    {
         $db = DBManagerFactory::getInstance();
         $itemArray = [];
         $dictionaryitems = $db->query("SELECT * FROM sysdictionaryitems WHERE deleted = 0");
-        while($dictionaryitem = $db->fetchByAssoc($dictionaryitems)){
+        while ($dictionaryitem = $db->fetchByAssoc($dictionaryitems)) {
             $dictionaryitem['sequence'] = intval($dictionaryitem['sequence']);
             $dictionaryitem['deleted'] = intval($dictionaryitem['deleted']);
             $itemArray[] = array_merge($dictionaryitem, ['scope' => 'g']);
         }
         $dictionaryitems = $db->query("SELECT * FROM syscustomdictionaryitems WHERE deleted = 0");
-        while($dictionaryitem = $db->fetchByAssoc($dictionaryitems)){
+        while ($dictionaryitem = $db->fetchByAssoc($dictionaryitems)) {
             $dictionaryitem['sequence'] = intval($dictionaryitem['sequence']);
             $dictionaryitem['deleted'] = intval($dictionaryitem['deleted']);
             $itemArray[] = array_merge($dictionaryitem, ['scope' => 'c']);;
@@ -130,15 +142,16 @@ class SpiceDictionaryHandler
      * @param $definitions
      * @throws Exception
      */
-    public function setDictionaryItems($items){
+    public function setDictionaryItems($items)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($items as $item){
-            switch($item['scope']){
+        foreach ($items as $item) {
+            switch ($item['scope']) {
                 case 'c':
                     unset($item['scope']);
                     $db->upsertQuery('syscustomdictionaryitems', ['id' => $item['id']], $item);
@@ -159,16 +172,17 @@ class SpiceDictionaryHandler
      *
      * @return array
      */
-    public function getDictionaryRelationships(){
+    public function getDictionaryRelationships()
+    {
         $db = DBManagerFactory::getInstance();
         $relArray = [];
         $dictionaryrelationships = $db->query("SELECT * FROM sysdictionaryrelationships WHERE deleted = 0");
-        while($dictionaryrelationship = $db->fetchByAssoc($dictionaryrelationships)){
+        while ($dictionaryrelationship = $db->fetchByAssoc($dictionaryrelationships)) {
             $dictionaryrelationship['deleted'] = intval($dictionaryrelationship['deleted']);
             $relArray[] = array_merge($dictionaryrelationship, ['scope' => 'g']);
         }
         $dictionaryrelationships = $db->query("SELECT * FROM syscustomdictionaryrelationships WHERE deleted = 0");
-        while($dictionaryrelationship = $db->fetchByAssoc($dictionaryrelationships)){
+        while ($dictionaryrelationship = $db->fetchByAssoc($dictionaryrelationships)) {
             $dictionaryrelationship['deleted'] = intval($dictionaryrelationship['deleted']);
             $relArray[] = array_merge($dictionaryrelationship, ['scope' => 'c']);;
         }
@@ -181,15 +195,16 @@ class SpiceDictionaryHandler
      *
      * @param $relationships
      */
-    public function setDictionaryRelationships($relationships){
+    public function setDictionaryRelationships($relationships)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($relationships as $relationship){
-            switch($relationship['scope']){
+        foreach ($relationships as $relationship) {
+            switch ($relationship['scope']) {
                 case 'c':
                     unset($relationship['scope']);
                     $db->upsertQuery('syscustomdictionaryrelationships', ['id' => $relationship['id']], $relationship);
@@ -209,16 +224,17 @@ class SpiceDictionaryHandler
      *
      * @return array
      */
-    public function getDictionaryRelationshipFields(){
+    public function getDictionaryRelationshipFields()
+    {
         $db = DBManagerFactory::getInstance();
         $relFieldArray = [];
         $dictionaryrelationshipields = $db->query("SELECT * FROM sysdictionaryrelationshipfields WHERE deleted = 0");
-        while($dictionaryrelationshipield = $db->fetchByAssoc($dictionaryrelationshipields)){
+        while ($dictionaryrelationshipield = $db->fetchByAssoc($dictionaryrelationshipields)) {
             $dictionaryrelationshipield['deleted'] = intval($dictionaryrelationshipield['deleted']);
             $relFieldArray[] = array_merge($dictionaryrelationshipield, ['scope' => 'g']);
         }
         $dictionaryrelationshipields = $db->query("SELECT * FROM syscustomdictionaryrelationshipfields WHERE deleted = 0");
-        while($dictionaryrelationshipield = $db->fetchByAssoc($dictionaryrelationshipields)){
+        while ($dictionaryrelationshipield = $db->fetchByAssoc($dictionaryrelationshipields)) {
             $dictionaryrelationshipield['deleted'] = intval($dictionaryrelationshipield['deleted']);
             $relFieldArray[] = array_merge($dictionaryrelationshipield, ['scope' => 'c']);;
         }
@@ -231,15 +247,16 @@ class SpiceDictionaryHandler
      *
      * @param $relationships
      */
-    public function setDictionaryRelationshipFields($relationshiprelationshipfields){
+    public function setDictionaryRelationshipFields($relationshiprelationshipfields)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($relationshiprelationshipfields as $relationshiprelationshipfield){
-            switch($relationshiprelationshipfield['scope']){
+        foreach ($relationshiprelationshipfields as $relationshiprelationshipfield) {
+            switch ($relationshiprelationshipfield['scope']) {
                 case 'c':
                     unset($relationshiprelationshipfield['scope']);
                     $db->upsertQuery('syscustomdictionaryrelationshipfields', ['id' => $relationshiprelationshipfield['id']], $relationshiprelationshipfield);
@@ -255,21 +272,22 @@ class SpiceDictionaryHandler
     }
 
     /**
-    /**
+     * /**
      * retrieves the dictionary relatioonshipd relate fields
      *
      * @return array
      */
-    public function getDictionaryRelateFields(){
+    public function getDictionaryRelateFields()
+    {
         $db = DBManagerFactory::getInstance();
         $relFieldArray = [];
         $dictionaryrelatefields = $db->query("SELECT * FROM sysdictionaryrelationshiprelatefields WHERE deleted = 0");
-        while($dictionaryrelatefield = $db->fetchByAssoc($dictionaryrelatefields)){
+        while ($dictionaryrelatefield = $db->fetchByAssoc($dictionaryrelatefields)) {
             $dictionaryrelatefield['deleted'] = intval($dictionaryrelatefield['deleted']);
             $relFieldArray[] = array_merge($dictionaryrelatefield, ['scope' => 'g']);
         }
         $dictionaryrelatefields = $db->query("SELECT * FROM syscustomdictionaryrelationshiprelatefields WHERE deleted = 0");
-        while($dictionaryrelatefield = $db->fetchByAssoc($dictionaryrelatefields)){
+        while ($dictionaryrelatefield = $db->fetchByAssoc($dictionaryrelatefields)) {
             $dictionaryrelatefield['deleted'] = intval($dictionaryrelatefield['deleted']);
             $relFieldArray[] = array_merge($dictionaryrelatefield, ['scope' => 'c']);;
         }
@@ -282,15 +300,16 @@ class SpiceDictionaryHandler
      *
      * @param $relationships
      */
-    public function setDictionaryRelateFields($relationshiprelatefields){
+    public function setDictionaryRelateFields($relationshiprelatefields)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($relationshiprelatefields as $relationshiprelatefield){
-            switch($relationshiprelatefield['scope']){
+        foreach ($relationshiprelatefields as $relationshiprelatefield) {
+            switch ($relationshiprelatefield['scope']) {
                 case 'c':
                     unset($relationshiprelatefield['scope']);
                     $db->upsertQuery('syscustomdictionaryrelationshiprelatefields', ['id' => $relationshiprelatefield['id']], $relationshiprelatefield);
@@ -310,16 +329,17 @@ class SpiceDictionaryHandler
      *
      * @return array
      */
-    public function getDictionaryIndexes(){
+    public function getDictionaryIndexes()
+    {
         $db = DBManagerFactory::getInstance();
         $indexArray = [];
         $dictionaryindexes = $db->query("SELECT * FROM sysdictionaryindexes WHERE deleted = 0");
-        while($dictionaryindex = $db->fetchByAssoc($dictionaryindexes)){
+        while ($dictionaryindex = $db->fetchByAssoc($dictionaryindexes)) {
             $dictionaryindex['deleted'] = intval($dictionaryindex['deleted']);
             $indexArray[] = array_merge($dictionaryindex, ['scope' => 'g']);
         }
         $dictionaryindexes = $db->query("SELECT * FROM syscustomdictionaryindexes WHERE deleted = 0");
-        while($dictionaryindex = $db->fetchByAssoc($dictionaryindexes)){
+        while ($dictionaryindex = $db->fetchByAssoc($dictionaryindexes)) {
             $dictionaryindex['deleted'] = intval($dictionaryindex['deleted']);
             $indexArray[] = array_merge($dictionaryindex, ['scope' => 'c']);;
         }
@@ -333,15 +353,16 @@ class SpiceDictionaryHandler
      *
      * @param $relationships
      */
-    public function setDictionaryIndexes($indexes){
+    public function setDictionaryIndexes($indexes)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($indexes as $index){
-            switch($index['scope']){
+        foreach ($indexes as $index) {
+            switch ($index['scope']) {
                 case 'c':
                     unset($index['scope']);
                     $db->upsertQuery('syscustomdictionaryindexes', ['id' => $index['id']], $index);
@@ -361,17 +382,18 @@ class SpiceDictionaryHandler
      *
      * @return array
      */
-    public function getDictionaryIndexItems(){
+    public function getDictionaryIndexItems()
+    {
         $db = DBManagerFactory::getInstance();
         $indexItemsArray = [];
         $dictionaryindexitems = $db->query("SELECT * FROM sysdictionaryindexitems WHERE deleted = 0");
-        while($dictionaryindexitem = $db->fetchByAssoc($dictionaryindexitems)){
+        while ($dictionaryindexitem = $db->fetchByAssoc($dictionaryindexitems)) {
             $dictionaryindexitem['deleted'] = intval($dictionaryindexitem['deleted']);
             $dictionaryindexitem['sequence'] = intval($dictionaryindexitem['sequence']);
             $indexItemsArray[] = array_merge($dictionaryindexitem, ['scope' => 'g']);
         }
         $dictionaryindexitems = $db->query("SELECT * FROM syscustomdictionaryindexitems WHERE deleted = 0");
-        while($dictionaryindexitem = $db->fetchByAssoc($dictionaryindexitems)){
+        while ($dictionaryindexitem = $db->fetchByAssoc($dictionaryindexitems)) {
             $dictionaryindexitem['sequence'] = intval($dictionaryindexitem['sequence']);
             $dictionaryindexitem['deleted'] = intval($dictionaryindexitem['deleted']);
             $indexItemsArray[] = array_merge($dictionaryindexitem, ['scope' => 'c']);;
@@ -385,15 +407,16 @@ class SpiceDictionaryHandler
      *
      * @param $relationships
      */
-    public function setDictionaryIndexItems($indexitems){
+    public function setDictionaryIndexItems($indexitems)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($indexitems as $indexitem){
-            switch($indexitem['scope']){
+        foreach ($indexitems as $indexitem) {
+            switch ($indexitem['scope']) {
                 case 'c':
                     unset($indexitem['scope']);
                     $db->upsertQuery('syscustomdictionaryindexitems', ['id' => $indexitem['id']], $indexitem);
@@ -408,35 +431,39 @@ class SpiceDictionaryHandler
         }
     }
 
-    public function postLanguageLabels($labels, $translations){
+    public function postLanguageLabels($labels, $translations)
+    {
         $db = DBManagerFactory::getInstance();
-        foreach($labels as $label){
+        foreach ($labels as $label) {
             $db->upsertQuery('syslanguagelabels', ['id' => $label['id']], $label);
         }
-        foreach($translations as $translation){
+        foreach ($translations as $translation) {
             $db->upsertQuery('syslanguagetranslations', ['id' => $translation['id']], $translation);
         }
     }
-    public function postLanguageCustomLabels($labels, $translations){
+
+    public function postLanguageCustomLabels($labels, $translations)
+    {
         $db = DBManagerFactory::getInstance();
-        foreach($labels as $label){
+        foreach ($labels as $label) {
             $db->upsertQuery('syslanguagecustomlabels', ['id' => $label['id']], $label);
         }
-        foreach($translations as $translation){
+        foreach ($translations as $translation) {
             $db->upsertQuery('syslanguagecustomtranslations', ['id' => $translation['id']], $translation);
         }
     }
 
-    public function getDomainDefinitions(){
+    public function getDomainDefinitions()
+    {
         $db = DBManagerFactory::getInstance();
         $defArray = [];
         $domaindefinitions = $db->query("SELECT * FROM sysdomaindefinitions WHERE deleted = 0");
-        while($domaindefinition = $db->fetchByAssoc($domaindefinitions)){
+        while ($domaindefinition = $db->fetchByAssoc($domaindefinitions)) {
             $domaindefinition['deleted'] = intval($domaindefinition['deleted']);
             $defArray[] = array_merge($domaindefinition, ['scope' => 'g']);
         }
         $domaindefinitions = $db->query("SELECT * FROM syscustomdomaindefinitions WHERE deleted = 0");
-        while($domaindefinition = $db->fetchByAssoc($domaindefinitions)){
+        while ($domaindefinition = $db->fetchByAssoc($domaindefinitions)) {
             $domaindefinition['deleted'] = intval($domaindefinition['deleted']);
             $defArray[] = array_merge($domaindefinition, ['scope' => 'c']);;
         }
@@ -444,15 +471,16 @@ class SpiceDictionaryHandler
         return $defArray;
     }
 
-    public function setDomainDefinitions($definitions){
+    public function setDomainDefinitions($definitions)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($definitions as $definition){
-            switch($definition['scope']){
+        foreach ($definitions as $definition) {
+            switch ($definition['scope']) {
                 case 'c':
                     unset($definition['scope']);
                     $db->upsertQuery('syscustomdomaindefinitions', ['id' => $definition['id']], $definition);
@@ -467,17 +495,18 @@ class SpiceDictionaryHandler
         }
     }
 
-    public function getDomainFields(){
+    public function getDomainFields()
+    {
         $db = DBManagerFactory::getInstance();
         $fieldsArray = [];
         $domainfields = $db->query("SELECT * FROM sysdomainfields WHERE deleted = 0");
-        while($domainfield = $db->fetchByAssoc($domainfields)){
+        while ($domainfield = $db->fetchByAssoc($domainfields)) {
             $domainfield['deleted'] = intval($domainfield['deleted']);
             $domainfield['sequence'] = intval($domainfield['sequence']);
             $fieldsArray[] = array_merge($domainfield, ['scope' => 'g']);
         }
         $domainfields = $db->query("SELECT * FROM syscustomdomainfields WHERE deleted = 0");
-        while($domainfield = $db->fetchByAssoc($domainfields)){
+        while ($domainfield = $db->fetchByAssoc($domainfields)) {
             $domainfield['deleted'] = intval($domainfield['deleted']);
             $domainfield['sequence'] = intval($domainfield['sequence']);
             $fieldsArray[] = array_merge($domainfield, ['scope' => 'c']);
@@ -487,15 +516,16 @@ class SpiceDictionaryHandler
     }
 
 
-    public function setDomainFields($domainfields){
+    public function setDomainFields($domainfields)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($domainfields as $domainfield){
-            switch($domainfield['scope']){
+        foreach ($domainfields as $domainfield) {
+            switch ($domainfield['scope']) {
                 case 'c':
                     unset($domainfield['scope']);
                     $db->upsertQuery('syscustomdomainfields', ['id' => $domainfield['id']], $domainfield);
@@ -510,15 +540,16 @@ class SpiceDictionaryHandler
         }
     }
 
-    public function getDomainFieldValidations(){
+    public function getDomainFieldValidations()
+    {
         $db = DBManagerFactory::getInstance();
         $validationsArray = [];
         $domainfields = $db->query("SELECT * FROM sysdomainfieldvalidations WHERE deleted = 0");
-        while($domainfield = $db->fetchByAssoc($domainfields)){
+        while ($domainfield = $db->fetchByAssoc($domainfields)) {
             $validationsArray[] = array_merge($domainfield, ['scope' => 'g']);
         }
         $domainfields = $db->query("SELECT * FROM syscustomdomainfieldvalidations WHERE deleted = 0");
-        while($domainfield = $db->fetchByAssoc($domainfields)){
+        while ($domainfield = $db->fetchByAssoc($domainfields)) {
             $validationsArray[] = array_merge($domainfield, ['scope' => 'c']);
         }
 
@@ -526,15 +557,16 @@ class SpiceDictionaryHandler
     }
 
 
-    public function setDomainFieldValidations($domainfieldvalidations){
+    public function setDomainFieldValidations($domainfieldvalidations)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
         if ($_SESSION['SystemDeploymentCRsActiveCR'])
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
 
-        foreach($domainfieldvalidations as $domainfieldvalidation){
-            switch($domainfieldvalidation['scope']){
+        foreach ($domainfieldvalidations as $domainfieldvalidation) {
+            switch ($domainfieldvalidation['scope']) {
                 case 'c':
                     unset($domainfieldvalidation['scope']);
                     $db->upsertQuery('syscustomdomainfieldvalidations', ['id' => $domainfieldvalidation['id']], $domainfieldvalidation);
@@ -549,22 +581,24 @@ class SpiceDictionaryHandler
         }
     }
 
-    public function getDomainFieldValidationValues(){
+    public function getDomainFieldValidationValues()
+    {
         $db = DBManagerFactory::getInstance();
         $validationvaluesArray = [];
         $domainfieldvalidations = $db->query("SELECT * FROM sysdomainfieldvalidationvalues WHERE deleted = 0");
-        while($domainfieldvalidation = $db->fetchByAssoc($domainfieldvalidations)){
+        while ($domainfieldvalidation = $db->fetchByAssoc($domainfieldvalidations)) {
             $validationvaluesArray[] = array_merge($domainfieldvalidation, ['scope' => 'g']);
         }
         $domainfieldvalidations = $db->query("SELECT * FROM syscustomdomainfieldvalidationvalues WHERE deleted = 0");
-        while($domainfieldvalidation = $db->fetchByAssoc($domainfieldvalidations)){
+        while ($domainfieldvalidation = $db->fetchByAssoc($domainfieldvalidations)) {
             $validationvaluesArray[] = array_merge($domainfieldvalidation, ['scope' => 'c']);
         }
 
         return $validationvaluesArray;
     }
 
-    public function setDomainFieldValidationValues($domainfieldvalidationvalues){
+    public function setDomainFieldValidationValues($domainfieldvalidationvalues)
+    {
         $db = DBManagerFactory::getInstance();
 
         // check if we have a CR set
@@ -572,8 +606,8 @@ class SpiceDictionaryHandler
             $cr = BeanFactory::getBean('SystemDeploymentCRs', $_SESSION['SystemDeploymentCRsActiveCR']);
         }
 
-        foreach($domainfieldvalidationvalues as $domainfieldvalidationvalue){
-            switch($domainfieldvalidationvalue['scope']){
+        foreach ($domainfieldvalidationvalues as $domainfieldvalidationvalue) {
+            switch ($domainfieldvalidationvalue['scope']) {
                 case 'c':
                     unset($domainfieldvalidationvalue['scope']);
                     $db->upsertQuery('syscustomdomainfieldvalidationvalues', ['id' => $domainfieldvalidationvalue['id']], $domainfieldvalidationvalue);

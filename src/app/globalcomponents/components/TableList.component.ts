@@ -13,6 +13,7 @@ export class TableListComponent implements OnInit {
     @Input() moduleName: string;
     @Input() config: any;
     @Input() beanList: any = [];
+    @Input() totalCount: number = 0;
     @Output() refreshBeanList = new EventEmitter();
     @Output() loadMore = new EventEmitter();
     loadedSystemInfo = false;

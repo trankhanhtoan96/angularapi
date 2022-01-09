@@ -28,20 +28,30 @@ export class Model {
     get(module: string, id: string): Observable<any> {
         let subject = new Subject();
         this.backend.getRequest('module/' + module + '/' + id)
-            .subscribe(res => {
-                subject.next(res);
-                subject.complete();
-            });
+        .subscribe(res => {
+            subject.next(res);
+            subject.complete();
+        });
         return subject.asObservable();
     }
 
     list(module: string, limit: number, offset: number): Observable<any> {
         let subject = new Subject();
-        this.backend.getRequest('module/' + module)
-            .subscribe(res => {
-                subject.next(res);
-                subject.complete();
-            });
+        this.backend.getRequest('module/' + module, {limit: limit, offset: offset})
+        .subscribe(res => {
+            subject.next(res);
+            subject.complete();
+        });
+        return subject.asObservable();
+    }
+
+    search(module: string, searchterm: string, limit: number, offset: number): Observable<any> {
+        let subject = new Subject();
+        this.backend.getRequest('module/' + module, {limit: limit, offset: offset, searchterm: searchterm})
+        .subscribe(res => {
+            subject.next(res);
+            subject.complete();
+        });
         return subject.asObservable();
     }
 

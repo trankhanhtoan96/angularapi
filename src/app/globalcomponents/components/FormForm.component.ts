@@ -17,8 +17,12 @@ export class FormFormComponent implements OnInit {
         'varchar',
         'enum',
         'html',
-        'image'
-    ]
+        'image',
+        'id',
+        'relate'
+    ];
+    optionsOfField = {};
+    beingOptionsOfField = [];
 
     constructor(
         public session: Session,
@@ -27,7 +31,9 @@ export class FormFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.model.$loadedSystemInfo.subscribe(res => {
-            if (res) this.loadedSystemInfo = true;
+            if (res) {
+                this.loadedSystemInfo = true;
+            }
         });
     }
 
@@ -95,5 +101,35 @@ export class FormFormComponent implements OnInit {
             result.push({id: key, text: options[key]});
         }
         return result;
+    }
+
+    getFieldRelateOptions(field: any): Select2OptionData[] {
+        let fieldName = this.getFieldName(field);
+        if (this.optionsOfField.hasOwnProperty(fieldName)) return this.optionsOfField[fieldName];
+        if (this.beingOptionsOfField.indexOf(fieldName) >= 0) return [];
+        this.beingOptionsOfField.push(fieldName);
+        for (let _field in this.fieldsDef) {
+            // @ts-ignore
+            if (this.getFieldType(_field) == 'relate' && this.fieldsDef[_field].id_name == fieldName) {
+                // @ts-ignore
+                this.model.list(this.fieldsDef[_field].module, 1000, 0).subscribe(res => {
+                    console.log(res);
+                    let result = [];
+                    for (let bean of res.list) {
+                        result.push({id: bean.id, text: bean.name});
+                    }
+                    this.optionsOfField[this.getFieldName(field)] = result;
+                    this.beingOptionsOfField.splice(this.beingOptionsOfField.indexOf(fieldName), 1);
+                });
+            }
+        }
+        return [];
+    }
+
+    enableFieldRelate(field: any): boolean {
+        let fieldName = this.getFieldName(field);
+        if (this.optionsOfField.hasOwnProperty(fieldName)) return true;
+        this.getFieldRelateOptions(field);
+        return false;
     }
 }

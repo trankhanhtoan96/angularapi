@@ -16,6 +16,8 @@ import {SpinnerDottedModule} from "spinners-angular/spinner-dotted";
 import {AdministrationModule} from "./modules/administration/Administration.module";
 import {Model} from "./services/Model.service";
 import {NgSelect2Module} from "ng-select2";
+import {BlogCategoryModule} from "./modules/blogcategory/BlogCategory.module";
+import {SystemModule} from "./system/System.module";
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {NgSelect2Module} from "ng-select2";
         UsersModule,
         AdministrationModule,
         SpinnerDottedModule,
-        NgSelect2Module
+        NgSelect2Module,
+        BlogCategoryModule,
+        SystemModule
     ],
     providers: [
         Title,

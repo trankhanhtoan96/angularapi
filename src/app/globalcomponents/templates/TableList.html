@@ -42,7 +42,7 @@
         </tr>
         </tbody>
         <tfoot>
-        <tr>
+        <tr *ngIf="beanList.length<totalCount">
             <th (click)="loadMore.emit(true)" [colSpan]="config.length+1" class="text-center cursor-pointer align-middle">
                 Tải thêm
                 <i class="ti ti-arrow-down"></i>

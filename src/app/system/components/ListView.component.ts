@@ -1,40 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {Model} from "../../../services/Model.service";
-import {Metadata} from "../../../services/Metadata.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Model} from "../../services/Model.service";
+import {Metadata} from "../../services/Metadata.service";
 
 @Component({
-    selector: 'UserListComponent',
-    templateUrl: '../templates/list.html'
+    selector: 'ListViewComponent',
+    templateUrl: '../templates/ListView.html'
 })
-export class UserListComponent implements OnInit {
-    beanName: string = 'User';
-    moduleName: string = 'Users';
-    beanList: any = [];
-    totalCount: number = 0;
-    config = [
-        {
-            name: 'user_image'
-        },
-        {
-            name: 'user_name',
-            link: true
-        },
-        {
-            name: 'last_name'
-        },
-        {
-            name: 'first_name'
-        },
-        {
-            name: 'email1'
-        },
-        {
-            name: 'status'
-        },
-        {
-            name: 'date_entered'
-        }
-    ];
+export class ListViewComponent implements OnInit {
+    @Input() beanName: string = '';
+    @Input() moduleName: string = '';
+    @Input() beanList: any = [];
+    @Input() totalCount: number = 0;
+    @Input() config = [];
 
 
     constructor(
@@ -57,7 +34,6 @@ export class UserListComponent implements OnInit {
             this.model.list(this.moduleName, 20, 0).subscribe(res => {
                 this.beanList = res.list;
                 this.totalCount = res.totalcount;
-                console.log(res);
                 ref.instance.self.destroy();
             });
         });
@@ -67,7 +43,6 @@ export class UserListComponent implements OnInit {
         this.metadata.spinnerLoading().then(ref => {
             this.model.list(this.moduleName, 20, this.beanList.length).subscribe(res => {
                 this.beanList = this.beanList.contat(res.list);
-                console.log(res);
                 ref.instance.self.destroy();
             });
         });

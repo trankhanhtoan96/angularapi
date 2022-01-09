@@ -13,16 +13,23 @@ $dictionary['BlogCategory'] = [
     'fields' => [
         'parent_id' => array(
             'name' => 'parent_id',
-            'type' => 'id'
+            'type' => 'id',
+            'vname'=>'LBL_PARENT'
         ),
         'parent_name' => array(
-            'id_name' => 'parent_name',
-            'vname'=>'LBL_PARENT_NAME',
-            'name' => 'referal_student_name',
+            'id_name' => 'parent_id',
+            'vname'=>'LBL_PARENT',
+            'name' => 'parent_name',
             'type' => 'relate',
             'source' => 'non-db',
             'module' => 'BlogCategory',
         ),
+        'description' => [
+            'name' => 'description',
+            'vname' => 'LBL_DESCRIPTION',
+            'type' => 'html',
+            'dbType' => 'text'
+        ],
     ],
     'indices' => [],
     'relationships' => []

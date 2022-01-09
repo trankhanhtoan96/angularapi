@@ -36,14 +36,19 @@ class SpiceModules
 
     private $beanFiles = [];
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
-    private function __clone() {}
+    private function __clone()
+    {
+    }
 
     /**
      * @return SpiceModules
      */
-    public static function getInstance(): SpiceModules {
+    public static function getInstance(): SpiceModules
+    {
         if (self::$instance === null) {
             //set instance
             self::$instance = new self;
@@ -55,10 +60,11 @@ class SpiceModules
      * @param false $forceReload necessary in repair database logic
      * @throws \Exception
      */
-    public function loadModules($forceReload = false): void {
+    public function loadModules($forceReload = false): void
+    {
         if (!isset($_SESSION['modules']) || $forceReload) {
             $this->modules = [];
-            $modules = DBManagerFactory::getInstance()->query("SELECT module, bean, beanfile, visible, tagging FROM sysmodules UNION SELECT module, bean, beanfile, visible, tagging FROM syscustommodules");
+            $modules = DBManagerFactory::getInstance()->query("SELECT module, bean, beanfile, visible, tagging FROM sysmodules");
             while ($module = DBManagerFactory::getInstance()->fetchByAssoc($modules)) {
                 $this->moduleList[$module['module']] = $module['module'];
 
@@ -68,14 +74,7 @@ class SpiceModules
                 // if we have a bean try to load the beanfile, build it from the name or use the generic sugarbean
                 if ($module['bean']) {
                     $this->beanList[$module['module']] = $module['bean'];
-
-                    if (file_exists("custom/modules/{$module['module']}/{$module['bean']}.php")) {
-                        $this->beanFiles[$module['bean']] = "custom/modules/{$module['module']}/{$module['bean']}.php";
-                        $this->beanClasses[$module['module']] = '\\SpiceCRM\\custom\\modules\\' . $module['module'] . '\\' . $module['bean'];
-                    } else if (file_exists("extensions/modules/{$module['module']}/{$module['bean']}.php")) {
-                        $this->beanFiles[$module['bean']] = "extensions/modules/{$module['module']}/{$module['bean']}.php";
-                        $this->beanClasses[$module['module']] = '\\SpiceCRM\\extensions\\modules\\' . $module['module'] . '\\' . $module['bean'];
-                    } else if (file_exists("modules/{$module['module']}/{$module['bean']}.php")) {
+                    if (file_exists("modules/{$module['module']}/{$module['bean']}.php")) {
                         $this->beanFiles[$module['bean']] = "modules/{$module['module']}/{$module['bean']}.php";
                         $this->beanClasses[$module['module']] = '\\SpiceCRM\\modules\\' . $module['module'] . '\\' . $module['bean'];
                     } else {
@@ -85,10 +84,10 @@ class SpiceModules
             }
             $_SESSION['modules'] = [
                 'moduleDetails' => $this->modules,
-                'moduleList'    => $this->moduleList,
-                'beanList'      => $this->beanList,
-                'beanFiles'     => $this->beanFiles,
-                'beanClasses'   => $this->beanClasses
+                'moduleList' => $this->moduleList,
+                'beanList' => $this->beanList,
+                'beanFiles' => $this->beanFiles,
+                'beanClasses' => $this->beanClasses
             ];
         } elseif (isset($_SESSION['modules'])) {
             $this->setLocalsFromSession();
@@ -103,7 +102,8 @@ class SpiceModules
      * @return array
      * @throws \Exception
      */
-    public function getModuleList(): array {
+    public function getModuleList(): array
+    {
         if (empty($this->moduleList)) {
             $this->loadModules();
         }
@@ -117,7 +117,8 @@ class SpiceModules
      * @param string $beanName
      * @return string|null
      */
-    public function getModuleName(string $beanName): ?string {
+    public function getModuleName(string $beanName): ?string
+    {
         $moduleNamesArray = array_flip($this->beanList);
 
         return $moduleNamesArray[$beanName] ?? null;
@@ -129,7 +130,8 @@ class SpiceModules
      * @return array
      * @throws \Exception
      */
-    public function getBeanList(): array {
+    public function getBeanList(): array
+    {
         if (empty($this->beanList)) {
             $this->loadModules();
         }
@@ -143,7 +145,8 @@ class SpiceModules
      * @param string $moduleName
      * @return string|null
      */
-    public function getBeanName(?string $moduleName): ?string {
+    public function getBeanName(?string $moduleName): ?string
+    {
         return $this->beanList[$moduleName] ?? null;
     }
 
@@ -152,7 +155,8 @@ class SpiceModules
      *
      * @param array $beanList
      */
-    public function setBeanList(array $beanList): void {
+    public function setBeanList(array $beanList): void
+    {
         $this->beanList = $beanList;
     }
 
@@ -163,7 +167,8 @@ class SpiceModules
      * @throws \Exception
      * @deprecated should be completely removed later
      */
-    public function getBeanFiles(): array {
+    public function getBeanFiles(): array
+    {
         if (empty($this->beanFiles)) {
             $this->loadModules();
         }
@@ -177,7 +182,8 @@ class SpiceModules
      * @return array
      * @throws \Exception
      */
-    public function getBeanClasses(): array {
+    public function getBeanClasses(): array
+    {
         if (empty($this->beanClasses)) {
             $this->loadModules();
         }
@@ -191,7 +197,8 @@ class SpiceModules
      * @param string $beanModule
      * @return string|null
      */
-    public function getBeanClassForModule(?string $beanModule): ?string {
+    public function getBeanClassForModule(?string $beanModule): ?string
+    {
         return $this->beanClasses[$beanModule] ?? null;
     }
 
@@ -201,7 +208,8 @@ class SpiceModules
      * @param string $beanName
      * @return string|null
      */
-    public function getBeanClassForBeanName(string $beanName): ?string {
+    public function getBeanClassForBeanName(string $beanName): ?string
+    {
         return $this->getBeanClassForModule($this->getModuleName($beanName));
     }
 
@@ -211,7 +219,8 @@ class SpiceModules
      * @param string $module
      * @param string $value
      */
-    public function setBeanClass(string $module, string $value): void {
+    public function setBeanClass(string $module, string $value): void
+    {
         $this->beanClasses[$module] = $value;
     }
 
@@ -231,7 +240,8 @@ class SpiceModules
      *
      * @param string $module
      */
-    public function unsetModule(string $module): void {
+    public function unsetModule(string $module): void
+    {
         unset($this->moduleList[$module]);
     }
 
@@ -239,23 +249,25 @@ class SpiceModules
      * Sets the values for the global variables.
      * Left for backwards compatibility.
      */
-    private function setGlobals(): void {
+    private function setGlobals(): void
+    {
         global $moduleList, $beanList, $beanClasses, $beanFiles;
 
-        $moduleList  = $_SESSION['modules']['moduleList'];
-        $beanList    = $_SESSION['modules']['beanList'];
+        $moduleList = $_SESSION['modules']['moduleList'];
+        $beanList = $_SESSION['modules']['beanList'];
         $beanClasses = $_SESSION['modules']['beanClasses'];
-        $beanFiles   = $_SESSION['modules']['beanFiles'];
+        $beanFiles = $_SESSION['modules']['beanFiles'];
     }
 
     /**
      * Sets the local attributes if the modules were already loaded in the session.
      */
-    private function setLocalsFromSession(): void {
-        $this->modules     = $_SESSION['modules']['moduleDetails'];
-        $this->moduleList  = $_SESSION['modules']['moduleList'];
-        $this->beanList    = $_SESSION['modules']['beanList'];
+    private function setLocalsFromSession(): void
+    {
+        $this->modules = $_SESSION['modules']['moduleDetails'];
+        $this->moduleList = $_SESSION['modules']['moduleList'];
+        $this->beanList = $_SESSION['modules']['beanList'];
         $this->beanClasses = $_SESSION['modules']['beanClasses'];
-        $this->beanFiles   = $_SESSION['modules']['beanFiles'];
+        $this->beanFiles = $_SESSION['modules']['beanFiles'];
     }
 }
