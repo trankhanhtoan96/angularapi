@@ -5,6 +5,8 @@ import {FormsModule} from "@angular/forms";
 import {UserEditComponent} from "./components/UserEdit.component";
 import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.module";
 import {UserListComponent} from "./components/UserList.component";
+import {SystemModule} from "../../system/System.module";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import {UserListComponent} from "./components/UserList.component";
     imports: [
         AppRoutingModule,
         FormsModule,
-        GlobalComponentsModule
+        GlobalComponentsModule,
+        SystemModule,
+        CommonModule
     ],
     providers: [
     ]

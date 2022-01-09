@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Model} from "../../../services/Model.service";
-import {ToastComponent} from "../../../globalcomponents/components/toast.component";
-import {Metadata} from "../../../services/Metadata.service";
+import {Component} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'UserEditComponent',
-    templateUrl: '../templates/edit.html'
+    template: `
+        <EditViewComponent *ngIf="bean.id" [bean]="bean" [beanName]="beanName" [config]="config" [moduleName]="moduleName"></EditViewComponent>
+    `
 })
-export class UserEditComponent implements OnInit {
+export class UserEditComponent {
     beanName: string = 'User';
     moduleName: string = 'Users';
     bean: any = {
@@ -34,40 +33,9 @@ export class UserEditComponent implements OnInit {
         ]
     ];
 
-
-    constructor(
-        private router: ActivatedRoute,
-        private model: Model,
-        private toast: ToastComponent,
-        private route: Router,
-        private metadata: Metadata
-    ) {
+    constructor(private router: ActivatedRoute) {
         this.router.params.subscribe(params => {
             this.bean.id = params.id;
-        });
-    }
-
-    ngOnInit(): void {
-        if (this.bean.id != 'create') {
-            this.model.get(this.moduleName, this.bean.id).subscribe(res => {
-                this.bean = res;
-            });
-        }
-    }
-
-    get routerModule():string{
-        return String(this.moduleName).toLowerCase();
-    }
-
-    saveData() {
-        this.metadata.spinnerLoading().then(ref => {
-            this.model.save(this.moduleName, this.bean).subscribe(res => {
-                this.toast.success('Đã lưu thành công!');
-                ref.instance.self.destroy();
-                this.route.navigate(['/admin/' + this.routerModule]);
-
-                console.log(res);
-            });
         });
     }
 }

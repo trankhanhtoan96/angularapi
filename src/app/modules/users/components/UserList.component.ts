@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Model} from "../../../services/Model.service";
-import {Metadata} from "../../../services/Metadata.service";
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'UserListComponent',
-    templateUrl: '../templates/list.html'
+    template: `
+        <ListViewComponent [beanList]="beanList" [beanName]="beanName" [config]="config" [moduleName]="moduleName" [totalCount]="totalCount"></ListViewComponent>
+    `
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
     beanName: string = 'User';
     moduleName: string = 'Users';
     beanList: any = [];
@@ -35,41 +35,4 @@ export class UserListComponent implements OnInit {
             name: 'date_entered'
         }
     ];
-
-
-    constructor(
-        private model: Model,
-        private metadata: Metadata
-    ) {
-
-    }
-
-    ngOnInit(): void {
-        this.refreshBeanList();
-    }
-
-    get routerModule(): string {
-        return String(this.moduleName).toLowerCase();
-    }
-
-    refreshBeanList() {
-        this.metadata.spinnerLoading().then(ref => {
-            this.model.list(this.moduleName, 20, 0).subscribe(res => {
-                this.beanList = res.list;
-                this.totalCount = res.totalcount;
-                console.log(res);
-                ref.instance.self.destroy();
-            });
-        });
-    }
-
-    loadMore() {
-        this.metadata.spinnerLoading().then(ref => {
-            this.model.list(this.moduleName, 20, this.beanList.length).subscribe(res => {
-                this.beanList = this.beanList.contat(res.list);
-                console.log(res);
-                ref.instance.self.destroy();
-            });
-        });
-    }
 }
