@@ -35,10 +35,29 @@ export class Model {
         return subject.asObservable();
     }
 
+    list(module: string, limit: number, offset: number): Observable<any> {
+        let subject = new Subject();
+        this.backend.getRequest('module/' + module)
+            .subscribe(res => {
+                subject.next(res);
+                subject.complete();
+            });
+        return subject.asObservable();
+    }
+
     save(beanName: string, bean: any): Observable<any> {
         let subject = new Subject();
         if (!bean.id || bean.id == 'create') bean.id = this.utils.generateGuid();
         this.backend.postRequest('module/' + beanName + '/' + bean.id, {}, bean).subscribe(res => {
+            subject.next(res);
+            subject.complete();
+        });
+        return subject.asObservable();
+    }
+
+    deletes(beanName: string, ids: string[]): Observable<any> {
+        let subject = new Subject();
+        this.backend.postRequest('deletemultirecord', {}, {ids: ids, bean: beanName}).subscribe(res => {
             subject.next(res);
             subject.complete();
         });

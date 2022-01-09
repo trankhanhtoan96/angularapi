@@ -8,7 +8,7 @@
                             <i class="ti ti-home"></i>
                         </a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="#">{{moduleName}}</a>
+                            <a [routerLink]="'/admin/'+routerModule">{{moduleName}}</a>
                         </li>
                     </ol>
                     <span data-bs-toggle="dropdown">
@@ -17,18 +17,17 @@
                     <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                         <a href="#" class="dropdown-item">Tất cả</a>
                     </div>
-                    <div class="text-muted mt-1">20/226</div>
+                    <div class="text-muted mt-1">{{beanList.length}}/{{totalCount}}</div>
                 </div>
                 <div class="col-auto ms-auto d-print-none">
                     <div class="d-flex">
                         <div class="input-group">
-                            <button class="btn btn-primary order-last">Tạo mới</button>
+                            <button [routerLink]="'/admin/'+routerModule+'/create'" class="btn btn-primary order-last">Tạo mới</button>
                             <button class="btn btn-sm order-last" data-bs-toggle="dropdown" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;" aria-expanded="false">
                                 <i class="ti ti-chevron-down"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
                             </div>
                         </div>
                     </div>
@@ -37,44 +36,6 @@
         </div>
     </div>
     <div class="page-body">
-        <table class="table table-responsive table-bordered table-light">
-            <thead>
-            <tr>
-                <th style="width: 85px;">
-                    <div class="input-group"><span class="input-group-text" style="padding: 0.25rem;"><input class="form-check-input" type="checkbox"></span>
-                        <button class="btn btn-sm" data-bs-toggle="dropdown" type="button" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;">
-                            <i class="ti ti-settings"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-left"><a class="dropdown-item cursor-pointer" style="font-size: 11px; text-transform: initial; font-weight: 500;">Xóa</a><a class="dropdown-item cursor-pointer" style="font-size: 11px; text-transform: initial; font-weight: 500;">Tải tất cả</a></div>
-                    </div>
-                </th>
-                <th class="text-nowrap align-middle">Ảnh</th>
-                <th class="text-nowrap align-middle">Tiêu đề</th>
-                <th class="text-nowrap align-middle">Trạng thái</th>
-                <th class="text-nowrap align-middle">tác giả</th>
-                <th class="text-nowrap align-middle">Ngày sửa</th>
-                <th class="text-nowrap align-middle">lượt xem</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th class="align-middle text-center"><input class="form-check-input" type="checkbox" value="4276"></th>
-                <td class="align-middle"><span class="avatar" style="background-image: url('https://nextjsweb.s3.ap-southeast-1.amazonaws.com/next-s3-uploads/80ea7cd0-a3cc-4cf9-9794-62bc8f023c5f/Asset-1logo-xanh.png')"></span></td>
-                <td class="align-middle"><a href="/admin/module/posts/4276">Bạn cần biết những gì về Meta – Cái tên mới của Facebook?</a></td>
-                <td class="align-middle"><span class="badge bg-cyan">Công khai</span></td>
-                <td class="align-middle"><a href="/admin/module/users/6">Thành Vương Tiến </a></td>
-                <td class="align-middle">23:45 08/12/2021</td>
-                <td class="align-middle">43</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th colspan="7" class="text-center cursor-pointer align-middle">
-                    Tải thêm
-                    <i class="ti ti-arrow-down"></i>
-                </th>
-            </tr>
-            </tfoot>
-        </table>
+        <TableListComponent (refreshBeanList)="refreshBeanList()" (loadMore)="loadMore()" [beanName]="beanName" [beanList]="beanList" [config]="config" [moduleName]="moduleName"></TableListComponent>
     </div>
 </div>

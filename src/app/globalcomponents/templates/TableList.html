@@ -1,0 +1,53 @@
+<ng-container *ngIf="loadedSystemInfo">
+    <table class="table table-responsive table-bordered table-light">
+        <thead>
+        <tr>
+            <th style="width: 85px;">
+                <div class="input-group">
+                    <span class="input-group-text" style="padding: 0.25rem;">
+                        <input class="form-check-input" type="checkbox" (change)="checkall($event)">
+                    </span>
+                    <button class="btn btn-sm" data-bs-toggle="dropdown" type="button" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;">
+                        <i class="ti ti-settings"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <a (click)="deleteBeansSelected()" class="dropdown-item cursor-pointer" style="font-size: 11px; text-transform: initial; font-weight: 500;">
+                            Xóa
+                        </a>
+                    </div>
+                </div>
+            </th>
+            <th *ngFor="let field of config" class="text-nowrap align-middle">{{getLabel(field)}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let bean of beanList">
+            <th class="align-middle text-center">
+                <input class="form-check-input" type="checkbox" [checked]="isChecked(bean.id)" (change)="changeChecked(bean.id)">
+            </th>
+            <td *ngFor="let field of config" class="align-middle cursor-pointer">
+                <a *ngIf="field.link;else nolinktemplate" [routerLink]="'/admin/'+routerModule+'/'+bean.id">
+                    <span *ngIf="getFieldType(field)=='image'" class="avatar" [style]="{'background-image': 'url('+bean[field.name]+')'}"></span>
+                    <span *ngIf="getFieldType(field)=='varchar'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='enum'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
+                </a>
+                <ng-template #nolinktemplate>
+                    <span *ngIf="getFieldType(field)=='image'" class="avatar" [style]="{'background-image': 'url('+bean[field.name]+')'}"></span>
+                    <span *ngIf="getFieldType(field)=='varchar'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='enum'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
+                </ng-template>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th (click)="loadMore.emit(true)" [colSpan]="config.length+1" class="text-center cursor-pointer align-middle">
+                Tải thêm
+                <i class="ti ti-arrow-down"></i>
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+</ng-container>

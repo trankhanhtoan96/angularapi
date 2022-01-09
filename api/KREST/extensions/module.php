@@ -1093,6 +1093,26 @@ $routes = [
         'options' => ['noAuth' => true, 'adminOnly' => false, 'moduleRoute' => true],
         'parameters' => [],
     ],
+    [
+        'method' => 'post',
+        'route' => '/deletemultirecord',
+        'class' => ModuleController::class,
+        'function' => 'deleteMultiRecord',
+        'description' => 'deleteMultiRecord',
+        'options' => ['noAuth' => false],
+        'parameters' => [
+            'ids' => [
+                'in' => 'body',
+                'type' => ValidationMiddleware::TYPE_ARRAY,
+                'required' => true
+            ],
+            'bean' => [
+                'in' => 'body',
+                'type' => ValidationMiddleware::TYPE_STRING,
+                'required' => true
+            ],
+        ],
+    ],
 ];
 
 /**

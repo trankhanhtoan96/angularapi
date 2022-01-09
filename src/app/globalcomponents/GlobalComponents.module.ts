@@ -19,6 +19,7 @@ import {FormFieldTextComponent} from "./components/FormFieldText.component";
 import {FormFormComponent} from "./components/FormForm.component";
 import {NgSelect2Module} from "ng-select2";
 import {FormFieldImageComponent} from "./components/FormFieldImage.component";
+import {TableListComponent} from "./components/TableList.component";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {FormFieldImageComponent} from "./components/FormFieldImage.component";
         NotFoundComponent,
         FormFieldTextComponent,
         FormFormComponent,
-        FormFieldImageComponent
+        FormFieldImageComponent,
+        TableListComponent
     ],
     exports: [
         HeaderComponent,
@@ -50,7 +52,8 @@ import {FormFieldImageComponent} from "./components/FormFieldImage.component";
         NotFoundComponent,
         FormFieldTextComponent,
         FormFormComponent,
-        FormFieldImageComponent
+        FormFieldImageComponent,
+        TableListComponent
     ],
     imports: [
         CommonModule,

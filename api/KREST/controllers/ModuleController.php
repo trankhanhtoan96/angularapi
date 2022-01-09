@@ -15,6 +15,16 @@ use SpiceCRM\includes\SpiceSlim\SpiceResponse as Response;
 
 class ModuleController
 {
+    public function deleteMultiRecord(Request $req, Response $res, array $args): Response
+    {
+        $params = $req->getParsedBody();
+        $bean = BeanFactory::newBean($params['bean']);
+        foreach ($params['ids'] as $id) {
+            $bean->mark_deleted($id);
+        }
+        return $res->withJson(['success' => 1,'params'=>$params]);
+    }
+
     public function getSystemInfo(Request $req, Response $res, array $args): Response
     {
         global $dictionary;
