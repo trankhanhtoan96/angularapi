@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Meta, Title} from "@angular/platform-browser";
 import {Session} from "../../services/Session.service";
 import {Model} from "../../services/Model.service";
+import {Backend} from "../../services/Backend.service";
 
 @Component({
     selector: 'FEHome',
@@ -11,29 +12,16 @@ import {Model} from "../../services/Model.service";
                 <div class="container-sm">
                     <div class="row">
                         <div class="col-md-8">
-                            <FEB3></FEB3>
+                            <FEB3 [bean]="data.recent[0]"></FEB3>
                         </div>
                         <div class="col-md-4">
-                            <div class="row row-0 align-items-center m-1">
-                                <div class="col">
-                                    <FEB2></FEB2>
+                            <ng-container *ngFor="let bean of recent4">
+                                <div  class="row row-0 align-items-center m-1">
+                                    <div class="col">
+                                        <FEB2 [bean]="bean"></FEB2>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row row-0 align-items-center m-1">
-                                <div class="col">
-                                    <FEB2></FEB2>
-                                </div>
-                            </div>
-                            <div class="row row-0 align-items-center m-1">
-                                <div class="col">
-                                    <FEB2></FEB2>
-                                </div>
-                            </div>
-                            <div class="row row-0 align-items-center m-1">
-                                <div class="col">
-                                    <FEB2></FEB2>
-                                </div>
-                            </div>
+                            </ng-container>
                         </div>
                     </div>
                 </div>
@@ -42,7 +30,14 @@ import {Model} from "../../services/Model.service";
     `
 })
 export class FEHome implements OnInit {
-    constructor(public title: Title, public meta: Meta, public session: Session, public model: Model) {
+    public data: any = {
+        recent: [],
+        editorPick: [],
+        topViews: []
+    };
+    public recent4:any=[];
+
+    constructor(public title: Title, public meta: Meta, public session: Session, public model: Model, public backend: Backend) {
     }
 
     ngOnInit() {
@@ -52,6 +47,14 @@ export class FEHome implements OnInit {
                 this.meta.addTags([
                     {name: 'description', content: this.session.setting.system_info}
                 ]);
+            }
+        });
+        this.backend.getRequest('frontend/home').subscribe(res => {
+            console.log(res);
+            this.data = res;
+            this.recent4=[];
+            for (let i = 1; i < this.data.recent.length && i <= 4; i++) {
+                this.recent4.push(this.data.recent[i]);
             }
         });
     }
