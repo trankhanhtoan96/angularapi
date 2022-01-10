@@ -5,7 +5,7 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3" style="padding-top:2px;padding-bottom:0">
             <a routerLink="/">
-                <img src="https://nextjsweb.s3.ap-southeast-1.amazonaws.com/next-s3-uploads/80ea7cd0-a3cc-4cf9-9794-62bc8f023c5f/Asset-1logo-xanh.png" alt="Simply Invest - Kênh thông tin kinh tế cho giới trẻ" class="navbar-brand-image">
+                <img [src]="session.setting.system_image" [alt]="session.setting.system_name" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">

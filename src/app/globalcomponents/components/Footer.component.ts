@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Session} from "../../services/Session.service";
 
 @Component({
     selector: 'FooterComponent',
@@ -6,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-    constructor() {
+    constructor(public session: Session) {
     }
 
     ngOnInit(): void {

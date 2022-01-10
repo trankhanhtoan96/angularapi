@@ -19,7 +19,22 @@ export class Session {
     fields: any;
     lang: any;
     enum: any;
-    setting:any;
+    setting:any={
+        ads_auto: "",
+        ads_midimage: "",
+        ads_midtime: "",
+        ads_sideimage: "",
+        ads_sidetime: "",
+        ads_topimage: "",
+        ads_toptime: "",
+        system_favicon: '',
+        system_image: '',
+        system_info: '',
+        system_name: '',
+        ads_topgg:'',
+        ads_midgg:'',
+        ads_sidegg:''
+    };
     public authData: IFAuthData = {
         admin: false,
         email: "",
