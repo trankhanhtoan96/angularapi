@@ -21,7 +21,7 @@ class BlogController
             $bean->tags = $item['Tags'];
             $bean->content = $item['Content'];
             $bean->view_count = $item['post_views_count'];
-            $bean->image = $item['Image URL'];
+            $bean->image = explode('|',$item['Image URL'])[0];
             $bean->slug = $item['Slug'];
             $bean->status = $item['Status'];
             $bean->category_id = DBManagerFactory::getInstance()->getOne("select id from blogcategory where name='{$item['Categories']}'");

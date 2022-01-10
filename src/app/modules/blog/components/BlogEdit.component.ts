@@ -45,14 +45,17 @@ export class BlogEditComponent {
                 name: 'allow_comment'
             },
             {
-                name: 'image'
+                name: 'category_id'
             }
         ],
         [
             {
                 name: 'content',
-                span: 12
+                span: 8
             },
+            {
+                name: 'image'
+            }
         ],
     ];
 

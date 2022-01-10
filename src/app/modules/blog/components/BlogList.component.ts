@@ -20,6 +20,9 @@ export class BlogListComponent {
             link: true
         },
         {
+            name: 'category_name'
+        },
+        {
             name: 'description'
         },
         {

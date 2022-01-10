@@ -363,7 +363,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
