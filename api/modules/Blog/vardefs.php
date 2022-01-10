@@ -58,6 +58,19 @@ $dictionary['Blog'] = [
             'type' => 'enum',
             'options'=>'blog_status_options'
         ],
+        'category_id' => array(
+            'name' => 'category_id',
+            'type' => 'id',
+            'vname'=>'LBL_CATEGORY'
+        ),
+        'category_name' => array(
+            'id_name' => 'category_id',
+            'vname'=>'LBL_CATEGORY',
+            'name' => 'category_name',
+            'type' => 'relate',
+            'source' => 'non-db',
+            'module' => 'BlogCategory',
+        ),
     ],
     'indices' => [],
     'relationships' => []

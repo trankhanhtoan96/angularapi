@@ -33,6 +33,7 @@
                     <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='relate'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='text'">{{bean[field.name]}}</span>
+                    <div *ngIf="getFieldType(field)=='html'" [innerHTML]="bean[field.name]"></div>
                 </a>
                 <ng-template #nolinktemplate>
                     <span *ngIf="getFieldType(field)=='image'" class="avatar" [style]="{'background-image': 'url('+bean[field.name]+')'}"></span>
@@ -41,6 +42,7 @@
                     <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='relate'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='text'">{{bean[field.name]}}</span>
+                    <div *ngIf="getFieldType(field)=='html'" [innerHTML]="bean[field.name]"></div>
                 </ng-template>
             </td>
         </tr>

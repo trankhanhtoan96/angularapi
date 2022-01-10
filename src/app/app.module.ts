@@ -20,6 +20,7 @@ import {BlogCategoryModule} from "./modules/blogcategory/BlogCategory.module";
 import {SystemModule} from "./system/System.module";
 import {BlogModule} from "./modules/blog/Blog.module";
 import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
+import {BlogComment} from "./modules/blogcomment/BlogComment.module";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
         BlogCategoryModule,
         SystemModule,
         BlogModule,
-        BlogPageModule
+        BlogPageModule,
+        BlogComment
     ],
     providers: [
         Title,

@@ -12,6 +12,8 @@ import {BlogListComponent} from "./modules/blog/components/BlogList.component";
 import {BlogEditComponent} from "./modules/blog/components/BlogEdit.component";
 import {BlogPageListComponent} from "./modules/blogpage/components/BlogPageList.component";
 import {BlogPageEditComponent} from "./modules/blogpage/components/BlogPageEdit.component";
+import {BlogCommentListComponent} from "./modules/blogcomment/components/BlogCommentList.component";
+import {BlogCommentEditComponent} from "./modules/blogcomment/components/BlogCommentEdit.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -29,6 +31,9 @@ const routes: Routes = [
 
     {path: 'admin/blog', component: BlogListComponent, canActivate: [LoginCheck]},
     {path: 'admin/blog/:id', component: BlogEditComponent, canActivate: [LoginCheck]},
+
+    {path: 'admin/blogcomment', component: BlogCommentListComponent, canActivate: [LoginCheck]},
+    {path: 'admin/blogcomment/:id', component: BlogCommentEditComponent, canActivate: [LoginCheck]},
 
     {path: '', component: NotFoundComponent},
     {path: "**", component: NotFoundComponent}

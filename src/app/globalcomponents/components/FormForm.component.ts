@@ -94,7 +94,7 @@ export class FormFormComponent implements OnInit {
     }
 
     getFieldOptions(field: any): Select2OptionData[] {
-        let result = [];
+        let result = [{id: '', text: ''}];
         let _field = this.fieldsDef[this.getFieldName(field)];
         let options = [];
         if (this.session.enum.hasOwnProperty(_field.options)) options = this.session.enum[_field.options];
@@ -115,7 +115,7 @@ export class FormFormComponent implements OnInit {
                 // @ts-ignore
                 this.model.list(this.fieldsDef[_field].module, 1000, 0).subscribe(res => {
                     console.log(res);
-                    let result = [];
+                    let result = [{id: '', text: ''}];
                     for (let bean of res.list) {
                         result.push({id: bean.id, text: bean.name});
                     }
@@ -124,7 +124,7 @@ export class FormFormComponent implements OnInit {
                 });
             }
         }
-        return [];
+        return [{id: '', text: ''}];
     }
 
     enableFieldRelate(field: any): boolean {
