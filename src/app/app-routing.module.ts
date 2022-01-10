@@ -14,11 +14,13 @@ import {BlogPageListComponent} from "./modules/blogpage/components/BlogPageList.
 import {BlogPageEditComponent} from "./modules/blogpage/components/BlogPageEdit.component";
 import {BlogCommentListComponent} from "./modules/blogcomment/components/BlogCommentList.component";
 import {BlogCommentEditComponent} from "./modules/blogcomment/components/BlogCommentEdit.component";
+import {AdministrationSettingComponent} from "./modules/administration/components/AdministrationSetting.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
 
     {path: 'admin', component: AdministrationComponent, canActivate: [LoginCheck]},
+    {path: 'adminsetting', component: AdministrationSettingComponent, canActivate: [LoginCheck]},
 
     {path: 'admin/users', component: UserListComponent, canActivate: [LoginCheck]},
     {path: 'admin/users/:id', component: UserEditComponent, canActivate: [LoginCheck]},
