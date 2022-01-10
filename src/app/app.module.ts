@@ -21,7 +21,6 @@ import {SystemModule} from "./system/System.module";
 import {BlogModule} from "./modules/blog/Blog.module";
 import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
 import { BlogCommentModule} from "./modules/blogcomment/BlogComment.module";
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {FrontEndModule} from "./modules/frontend/FrontEnd.module";
 
 
@@ -43,9 +42,7 @@ import {FrontEndModule} from "./modules/frontend/FrontEnd.module";
         BlogModule,
         BlogPageModule,
         BlogCommentModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
-        FrontEndModule
+        FrontEndModule,
     ],
     providers: [
         Title,

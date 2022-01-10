@@ -1,24 +1,16 @@
 import {NgModule} from '@angular/core';
-import {AppRoutingModule} from "../../app-routing.module";
-import {FormsModule} from "@angular/forms";
+import {FEHome} from "./FEHome";
 import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.module";
-import {SystemModule} from "../../system/System.module";
-import {CommonModule} from "@angular/common";
 
 @NgModule({
     declarations: [
+        FEHome
     ],
-    exports: [
-    ],
+    exports: [],
     imports: [
-        AppRoutingModule,
-        FormsModule,
-        GlobalComponentsModule,
-        SystemModule,
-        CommonModule
+        GlobalComponentsModule
     ],
-    providers: [
-    ]
+    providers: []
 })
 export class FrontEndModule {
 }

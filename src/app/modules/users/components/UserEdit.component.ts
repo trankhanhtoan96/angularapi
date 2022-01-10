@@ -21,7 +21,7 @@ export class UserEditComponent {
             'first_name'
         ],
         [
-            'email1',
+            't_email',
             'user_image',
             'status'
         ],

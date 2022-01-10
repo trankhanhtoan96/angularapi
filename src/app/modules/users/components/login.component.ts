@@ -23,10 +23,6 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.title.setTitle('Đăng nhập');
-        this.meta.addTags([
-            {name: 'keyword', content: 'Đăng nhập'},
-            {name: 'description', content: 'Đăng nhập'}
-        ]);
     }
 
     login() {

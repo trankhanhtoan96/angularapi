@@ -26,7 +26,7 @@ export class UserListComponent {
             name: 'first_name'
         },
         {
-            name: 'email1'
+            name: 't_email'
         },
         {
             name: 'status'

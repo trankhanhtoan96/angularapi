@@ -628,6 +628,12 @@ $dictionary['User'] = [
             'merge_filter' => 'enabled',
             'required' => true,
         ],
+        't_email' => [
+            'name' => 't_email',
+            'vname' => 'LBL_EMAIL',
+            'type' => 'varchar',
+            'len'=>255
+        ],
         'primary_address' => [
             'name' => 'primary_address',
             'type' => 'bool',

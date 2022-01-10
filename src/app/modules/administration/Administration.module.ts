@@ -6,7 +6,6 @@ import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.mo
 import {RouterModule} from "@angular/router";
 import {NgSelect2Module} from "ng-select2";
 import {CommonModule} from "@angular/common";
-import {OwlDateTimeModule} from "ng-pick-datetime";
 
 @NgModule({
     declarations: [
@@ -23,7 +22,6 @@ import {OwlDateTimeModule} from "ng-pick-datetime";
         RouterModule,
         NgSelect2Module,
         CommonModule,
-        OwlDateTimeModule
     ],
     providers: [
     ]
