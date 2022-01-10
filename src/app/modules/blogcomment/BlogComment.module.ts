@@ -26,5 +26,5 @@ import {BlogCommentListComponent} from "./components/BlogCommentList.component";
     providers: [
     ]
 })
-export class BlogComment {
+export class BlogCommentModule {
 }

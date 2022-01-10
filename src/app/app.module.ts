@@ -20,7 +20,8 @@ import {BlogCategoryModule} from "./modules/blogcategory/BlogCategory.module";
 import {SystemModule} from "./system/System.module";
 import {BlogModule} from "./modules/blog/Blog.module";
 import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
-import {BlogComment} from "./modules/blogcomment/BlogComment.module";
+import { BlogCommentModule} from "./modules/blogcomment/BlogComment.module";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import {BlogComment} from "./modules/blogcomment/BlogComment.module";
         SystemModule,
         BlogModule,
         BlogPageModule,
-        BlogComment
+        BlogCommentModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule
     ],
     providers: [
         Title,

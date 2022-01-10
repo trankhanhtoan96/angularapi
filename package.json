@@ -27,6 +27,7 @@
     "@tinymce/tinymce-angular": "^4.2.4",
     "express": "^4.15.2",
     "jquery": "^3.6.0",
+    "ng-pick-datetime": "^7.0.0",
     "ng-select2": "^1.4.1",
     "ngx-toastr": "^14.2.1",
     "rxjs": "~7.4.0",

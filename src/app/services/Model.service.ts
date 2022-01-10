@@ -18,6 +18,7 @@ export class Model {
                 this.session.fields = res.fields;
                 this.session.lang = res.lang;
                 this.session.enum = res.enum;
+                this.session.setting = res.setting;
                 console.log(res);
 
                 this.$loadedSystemInfo.next(true);
@@ -28,30 +29,30 @@ export class Model {
     get(module: string, id: string): Observable<any> {
         let subject = new Subject();
         this.backend.getRequest('module/' + module + '/' + id)
-        .subscribe(res => {
-            subject.next(res);
-            subject.complete();
-        });
+            .subscribe(res => {
+                subject.next(res);
+                subject.complete();
+            });
         return subject.asObservable();
     }
 
     list(module: string, limit: number, offset: number): Observable<any> {
         let subject = new Subject();
         this.backend.getRequest('module/' + module, {limit: limit, offset: offset})
-        .subscribe(res => {
-            subject.next(res);
-            subject.complete();
-        });
+            .subscribe(res => {
+                subject.next(res);
+                subject.complete();
+            });
         return subject.asObservable();
     }
 
     search(module: string, searchterm: string, limit: number, offset: number): Observable<any> {
         let subject = new Subject();
         this.backend.getRequest('module/' + module, {limit: limit, offset: offset, searchterm: searchterm})
-        .subscribe(res => {
-            subject.next(res);
-            subject.complete();
-        });
+            .subscribe(res => {
+                subject.next(res);
+                subject.complete();
+            });
         return subject.asObservable();
     }
 
@@ -68,6 +69,15 @@ export class Model {
     deletes(beanName: string, ids: string[]): Observable<any> {
         let subject = new Subject();
         this.backend.postRequest('deletemultirecord', {}, {ids: ids, bean: beanName}).subscribe(res => {
+            subject.next(res);
+            subject.complete();
+        });
+        return subject.asObservable();
+    }
+
+    saveAdminSetting(beanData: any): Observable<any> {
+        let subject = new Subject();
+        this.backend.postRequest('admin/saveadminsetting', {}, {data: beanData}).subscribe(res => {
             subject.next(res);
             subject.complete();
         });

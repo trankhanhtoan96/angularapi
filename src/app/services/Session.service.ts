@@ -19,6 +19,7 @@ export class Session {
     fields: any;
     lang: any;
     enum: any;
+    setting:any;
     public authData: IFAuthData = {
         admin: false,
         email: "",

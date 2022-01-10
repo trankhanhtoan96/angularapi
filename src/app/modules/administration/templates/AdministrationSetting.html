@@ -1,19 +1,49 @@
-<h1 class="text-center">Adminnitration</h1>
-<div class="row">
-    <div class="form-group mb-3 col-md-4">
-        <label  class="form-label">AAA</label>
-        <FormFieldEditorComponent></FormFieldEditorComponent>
+<div class="page-wrapper">
+    <div class="page-header d-print-none">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col">
+                    <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs" style="font-weight:700">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/admin">
+                                <i class="ti ti-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a>Admin Setting</a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-auto ms-auto d-print-none">
+                    <div class="d-flex">
+                        <div class="input-group">
+                            <button (click)="saveData()" class="btn btn-primary order-last">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="form-group mb-3 col-md-4">
-        <label  class="form-label">AAA</label>
-        <FormFieldImageComponent ></FormFieldImageComponent>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group mb-3 col-md-4">
-        <label  class="form-label">AAA</label>
-        <input type="text" class="form-control">
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="card">
+                <div *ngIf="loadedSystemInfo" class="card-body">
+                    <div *ngFor="let row of config" class="row">
+                        <ng-container *ngFor="let field of row">
+                            <div [class]="'form-group mb-3 col-md-'+field.span">
+                                <label class="form-label">{{field.label}}</label>
+                                <input *ngIf="field.type=='varchar'" [(ngModel)]="bean[field.name]" type="text" class="form-control">
+                                <FormFieldDateComponent *ngIf="field.type=='datetime'" [data]="bean[field.name]" (onData)="bean[field.name]=$event"></FormFieldDateComponent>
+                                <textarea *ngIf="field.type=='text'" [(ngModel)]="bean[field.name]" class="form-control"></textarea>
+<!--                                <FormFieldEditorComponent *ngIf="field.type=='html'" (onData)="bean[field.name]=$event" [content]="bean[field.name]"></FormFieldEditorComponent>-->
+<!--                                <ng-select2 *ngIf="field.type=='enum'" width="100%" [(ngModel)]="bean[field.name]" [data]="field.options"></ng-select2>-->
+                                <FormFieldImageComponent *ngIf="field.type=='image'" [name]="field.name" [src]="bean[field.name]" (onData)="bean[field.name]=$event"></FormFieldImageComponent>
+<!--                                <ng-select2 *ngIf="field.type=='id'" width="100%" [(ngModel)]="bean[field.name]" [data]="getFieldRelateOptions(field.name)"></ng-select2>-->
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

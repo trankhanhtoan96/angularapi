@@ -1113,6 +1113,21 @@ $routes = [
             ],
         ],
     ],
+    [
+        'method' => 'post',
+        'route' => '/admin/saveadminsetting',
+        'class' => ModuleController::class,
+        'function' => 'saveadminsetting',
+        'description' => 'saveadminsetting',
+        'options' => ['noAuth' => false],
+        'parameters' => [
+            'data' => [
+                'in' => 'body',
+                'type' => ValidationMiddleware::TYPE_ARRAY,
+                'required' => true
+            ],
+        ],
+    ],
 ];
 
 /**

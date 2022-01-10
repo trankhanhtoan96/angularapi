@@ -3,6 +3,10 @@ import {FormsModule} from "@angular/forms";
 import {AdministrationComponent} from "./components/Administration.component";
 import {AdministrationSettingComponent} from "./components/AdministrationSetting.component";
 import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.module";
+import {RouterModule} from "@angular/router";
+import {NgSelect2Module} from "ng-select2";
+import {CommonModule} from "@angular/common";
+import {OwlDateTimeModule} from "ng-pick-datetime";
 
 @NgModule({
     declarations: [
@@ -15,7 +19,11 @@ import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.mo
     ],
     imports: [
         FormsModule,
-        GlobalComponentsModule
+        GlobalComponentsModule,
+        RouterModule,
+        NgSelect2Module,
+        CommonModule,
+        OwlDateTimeModule
     ],
     providers: [
     ]

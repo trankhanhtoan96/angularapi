@@ -9,12 +9,25 @@ use SpiceCRM\includes\ErrorHandlers\NotFoundException;
 use SpiceCRM\includes\RESTManager;
 use SpiceCRM\includes\SugarObjects\SpiceConfig;
 use SpiceCRM\KREST\handlers\ModuleHandler;
+use SpiceCRM\modules\Administration\Administration;
 use SpiceCRM\modules\SpiceACL\SpiceACL;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use SpiceCRM\includes\SpiceSlim\SpiceResponse as Response;
 
 class ModuleController
 {
+    public function saveAdminSetting(Request $req, Response $res, array $args): Response
+    {
+        $params = $req->getParsedBody();
+        $admin = new Administration();
+        $admin->retrieveSettings();
+        foreach ($params['data'] as $key => $data) {
+            $setting = explode('_', $key);
+            $admin->saveSetting($setting[0], $setting[1], $data);
+        }
+        return $res->withJson(['success' => 1]);
+    }
+
     public function deleteMultiRecord(Request $req, Response $res, array $args): Response
     {
         $params = $req->getParsedBody();
@@ -22,7 +35,7 @@ class ModuleController
         foreach ($params['ids'] as $id) {
             $bean->mark_deleted($id);
         }
-        return $res->withJson(['success' => 1,'params'=>$params]);
+        return $res->withJson(['success' => 1, 'params' => $params]);
     }
 
     public function getSystemInfo(Request $req, Response $res, array $args): Response
@@ -33,10 +46,13 @@ class ModuleController
         } else {
             $language = $_GET['lang'];
         }
+        $admin = new Administration();
+        $admin->retrieveSettings();
         return $res->withJson([
             'fields' => $dictionary,
             'lang' => return_application_language($language),
-            'enum' => return_app_list_strings_language($language)
+            'enum' => return_app_list_strings_language($language),
+            'setting' => $admin->settings
         ]);
     }
 

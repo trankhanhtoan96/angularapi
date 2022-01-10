@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef} from '@an
 import {Router} from "@angular/router";
 import {FooterService} from "./services/Footer.service";
 import {Session} from "./services/Session.service";
+import {Model} from "./services/Model.service";
 
 @Component({
     selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     public showAdminMenu: boolean = false;
     @ViewChild('footercontainer', {read: ViewContainerRef, static: true}) private footercontainer: ViewContainerRef;
 
-    constructor(private router: Router, public footer: FooterService, public session: Session) {
+    constructor(private router: Router, public footer: FooterService, public session: Session, public model: Model) {
     }
 
     public ngAfterViewInit() {
