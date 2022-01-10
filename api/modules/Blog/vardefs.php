@@ -71,6 +71,11 @@ $dictionary['Blog'] = [
             'source' => 'non-db',
             'module' => 'BlogCategory',
         ),
+        'view_count' => array(
+            'name' => 'view_count',
+            'vname'=>'LBL_VIEW_COUNT',
+            'type' => 'int'
+        ),
     ],
     'indices' => [],
     'relationships' => []

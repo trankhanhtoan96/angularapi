@@ -30,6 +30,12 @@ $dictionary['BlogCategory'] = [
             'type' => 'html',
             'dbType' => 'text'
         ],
+        'slug' => [
+            'name' => 'slug',
+            'vname' => 'LBL_SLUG',
+            'type' => 'varchar',
+            'len' => 255
+        ],
     ],
     'indices' => [],
     'relationships' => []
