@@ -3,6 +3,7 @@ import {Backend} from "./Backend.service";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {Session} from "./Session.service";
 import {Utils} from "./Utils.service";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class Model {
@@ -13,16 +14,40 @@ export class Model {
         private session: Session,
         private utils: Utils
     ) {
-        if (!this.session.fields) {
-            this.backend.getRequest('systeminfo').subscribe(res => {
-                this.session.fields = res.fields;
-                this.session.lang = res.lang;
-                this.session.enum = res.enum;
-                this.session.setting = res.setting;
-                console.log(res);
+        this.loadSystemInfo();
+    }
 
+    loadSystemInfo() {
+        try {
+            this.session.setting = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'setting'))));
+            this.session.fields = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'fields'))));
+            this.session.lang = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'lang'))));
+            this.session.enum = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'enum'))));
+            if (!this.session.lang) {
+                this.backend.getRequest('systeminfo').subscribe(res => {
+                    this.session.fields = res.fields;
+                    this.session.lang = res.lang;
+                    this.session.enum = res.enum;
+                    this.session.setting = res.setting;
+                    localStorage.setItem(environment.apiKey + 'setting', window.btoa(encodeURIComponent(JSON.stringify(this.session.setting))));
+                    localStorage.setItem(environment.apiKey + 'fields', window.btoa(encodeURIComponent(JSON.stringify(this.session.fields))));
+                    localStorage.setItem(environment.apiKey + 'lang', window.btoa(encodeURIComponent(JSON.stringify(this.session.lang))));
+                    localStorage.setItem(environment.apiKey + 'enum', window.btoa(encodeURIComponent(JSON.stringify(this.session.enum))));
+                    this.$loadedSystemInfo.next(true);
+                });
+            } else {
                 this.$loadedSystemInfo.next(true);
-            });
+            }
+        } catch (e) {
+            if (!this.session.lang) {
+                this.backend.getRequest('systeminfo').subscribe(res => {
+                    this.session.fields = res.fields;
+                    this.session.lang = res.lang;
+                    this.session.enum = res.enum;
+                    this.session.setting = res.setting;
+                    this.$loadedSystemInfo.next(true);
+                });
+            }
         }
     }
 

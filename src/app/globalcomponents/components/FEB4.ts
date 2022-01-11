@@ -41,13 +41,14 @@ import {Backend} from "../../services/Backend.service";
 })
 export class FEB4 {
     @Input() beanList = [];
+    @Input() category;
 
     constructor(public session: Session, public utils: Utils, private metadata: Metadata, private backend: Backend) {
     }
 
     loadMore() {
         this.metadata.spinnerLoading().then(ref => {
-            this.backend.getRequest('frontend/home/loadmore', {offset: this.beanList.length})
+            this.backend.getRequest('frontend/categoryloadmore/'+this.category, {offset: this.beanList.length})
                 .subscribe(res => {
                     ref.instance.self.destroy();
                     this.beanList = this.beanList.concat(res);

@@ -24,7 +24,8 @@ class BlogController
             $bean->image = explode('|',$item['Image URL'])[0];
             $bean->slug = $item['Slug'];
             $bean->status = $item['Status'];
-            $bean->category_id = DBManagerFactory::getInstance()->getOne("select id from blogcategory where name='{$item['Categories']}'");
+            $c=explode(',',$item['Categories'])[0];
+            $bean->category_id = DBManagerFactory::getInstance()->getOne("select id from blogcategory where name='$c'");
             $bean->save();
             DBManagerFactory::getInstance()->query("update blog set created_by='{$item['Author ID']}' where id='$bean->id'");
             $result[] = $bean->id;

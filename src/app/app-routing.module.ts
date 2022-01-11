@@ -16,6 +16,7 @@ import {BlogCommentListComponent} from "./modules/blogcomment/components/BlogCom
 import {BlogCommentEditComponent} from "./modules/blogcomment/components/BlogCommentEdit.component";
 import {AdministrationSettingComponent} from "./modules/administration/components/AdministrationSetting.component";
 import {FEHome} from "./modules/frontend/FEHome";
+import {FECategory} from "./modules/frontend/FECategory";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
     {path: 'admin/blogcomment/:id', component: BlogCommentEditComponent, canActivate: [LoginCheck]},
 
     {path: '', component: FEHome},
+    {path: 'category/:slug', component: FECategory},
     {path: "**", component: NotFoundComponent}
 ];
 
