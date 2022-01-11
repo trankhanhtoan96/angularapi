@@ -21,7 +21,6 @@ import {NgSelect2Module} from "ng-select2";
 import {FormFieldImageComponent} from "./components/FormFieldImage.component";
 import {TableListComponent} from "./components/TableList.component";
 import {FormFieldDateComponent} from "./components/FormFieldDate.component";
-import {FEB1} from "./components/FEB1";
 import {FEB2} from "./components/FEB2";
 import {FEB3} from "./components/FEB3";
 import {FEBVideos} from "./components/FEBVideos";
@@ -46,7 +45,6 @@ import {FEBAdsMidComponent} from "./components/FEBAdsMid.component";
         FormFieldImageComponent,
         TableListComponent,
         FormFieldDateComponent,
-        FEB1,
         FEB2,
         FEB3,
         FEBVideos,
@@ -70,7 +68,6 @@ import {FEBAdsMidComponent} from "./components/FEBAdsMid.component";
         FormFieldImageComponent,
         TableListComponent,
         FormFieldDateComponent,
-        FEB1,
         FEB2,
         FEB3,
         FEBVideos,

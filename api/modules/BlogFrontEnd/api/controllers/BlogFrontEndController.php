@@ -12,6 +12,13 @@ use SpiceCRM\modules\BlogCategory\BlogCategory;
 
 class BlogFrontEndController
 {
+    public function getCategorySlug(Request $req, Response $res, array $args): Response
+    {
+        $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
+        $bean = new BlogCategory();
+        $bean->retrieve($args['id']);
+        return $res->withJson(['slug'=>$bean->slug]);
+    }
     public function getCategory(Request $req, Response $res, array $args): Response
     {
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);

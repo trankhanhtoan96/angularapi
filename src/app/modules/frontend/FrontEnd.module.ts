@@ -4,11 +4,13 @@ import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.mo
 import {CommonModule} from "@angular/common";
 import {AppRoutingModule} from "../../app-routing.module";
 import {FECategory} from "./FECategory";
+import {FECategoryID} from "./FECategoryID";
 
 @NgModule({
     declarations: [
         FEHome,
-        FECategory
+        FECategory,
+        FECategoryID
     ],
     exports: [],
     imports: [

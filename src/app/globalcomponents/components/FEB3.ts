@@ -16,7 +16,7 @@ import {Session} from "../../services/Session.service";
                 <p class="style-description mb-0" style="color: #f1f1f1">{{bean.description}}</p>
                 <p class="style-name-author mt-2" style="font-size: 13px;color:#f1f1f1;font-weight: normal">
                     <i class="ti ti-user-check"></i><a style="color:#f1f1f1" href="/writer/6">{{bean.created_by_name}}</a> · <i class="ti ti-calendar-event"></i> {{bean.date_entered|date:'dd/MM/yyyy'}} · <i class="ti ti-folder"></i>
-                    <a [routerLink]="'/category/'+bean.category_id" [class]="'badge bg-'+utils.getBlogCategoryColor(bean.category_name,session.enum.blogcategory_color_style_options)+'-lt'">{{bean.category_name}}</a>
+                    <a [routerLink]="'/categoryid/'+bean.category_id" [class]="'badge bg-'+utils.getBlogCategoryColor(bean.category_name,session.enum.blogcategory_color_style_options)+'-lt'">{{bean.category_name}}</a>
                 </p>
             </div>
         </div>

@@ -17,6 +17,7 @@ import {BlogCommentEditComponent} from "./modules/blogcomment/components/BlogCom
 import {AdministrationSettingComponent} from "./modules/administration/components/AdministrationSetting.component";
 import {FEHome} from "./modules/frontend/FEHome";
 import {FECategory} from "./modules/frontend/FECategory";
+import {FECategoryID} from "./modules/frontend/FECategoryID";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
 
     {path: '', component: FEHome},
     {path: 'category/:slug', component: FECategory},
+    {path: 'categoryid/:id', component: FECategoryID},
     {path: "**", component: NotFoundComponent}
 ];
 

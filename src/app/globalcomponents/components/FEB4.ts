@@ -25,7 +25,7 @@ import {Backend} from "../../services/Backend.service";
                                 <p class="style-name-author mt-2" style="font-size: 13px;color:#0d0f39;font-weight: normal">
                                     <i class="ti ti-user-check"></i>&nbsp;<a style="color:#0d0f39" [href]="'/profile/'+bean.created_by">{{bean.created_by_name}}</a>
                                     &nbsp;<i class="ti ti-calendar-event"></i>&nbsp;{{bean.date_entered|date:'dd/MM/yyyy'}}
-                                    &nbsp;<i class="ti ti-folder"></i>&nbsp;<a [routerLink]="'/category/'+bean.category_id" [class]="'badge bg-'+utils.getBlogCategoryColor(bean.category_name,session.enum.blogcategory_color_style_options)+'-lt'">{{bean.category_name}}</a>
+                                    &nbsp;<i class="ti ti-folder"></i>&nbsp;<a [routerLink]="'/categoryid/'+bean.category_id" [class]="'badge bg-'+utils.getBlogCategoryColor(bean.category_name,session.enum.blogcategory_color_style_options)+'-lt'">{{bean.category_name}}</a>
                                 </p>
                             </div>
                         </div>

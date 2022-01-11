@@ -21,7 +21,7 @@ import {Session} from "../../services/Session.service";
                     <br/>
                     <a style="color:#000;font-size: 13px" [routerLink]="'/category/'+bean.category_id">
                         <i class="ti ti-folder"></i>
-                        <a [routerLink]="'/category/'+bean.category_id" [class]="'cursor-pointer badge bg-'+utils.getBlogCategoryColor(bean.category_name,session.enum.blogcategory_color_style_options)+'-lt'">{{bean.category_name}}</a>
+                        <a [routerLink]="'/categoryid/'+bean.category_id" [class]="'cursor-pointer badge bg-'+utils.getBlogCategoryColor(bean.category_name,session.enum.blogcategory_color_style_options)+'-lt'">{{bean.category_name}}</a>
                     </a>
                 </td>
             </tr>

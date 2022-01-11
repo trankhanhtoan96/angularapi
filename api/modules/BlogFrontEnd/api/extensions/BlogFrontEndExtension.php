@@ -48,5 +48,14 @@ $routes = [
         'options' => ['noAuth' => true],
         'parameters' => []
     ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/getcategoryslug/{id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getCategorySlug',
+        'description' => 'getcategoryslug',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
 ];
 RESTManager::getInstance()->registerExtension('blogfrontend', '1.0', [], $routes);
