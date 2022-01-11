@@ -57,5 +57,24 @@ $routes = [
         'options' => ['noAuth' => true],
         'parameters' => []
     ],
+    //blog
+    [
+        'method' => 'get',
+        'route' => '/frontend/blog/{slug}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getBlog',
+        'description' => 'getBlog',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/blogdata/{slug}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getBlogData',
+        'description' => 'getBlogData',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
 ];
 RESTManager::getInstance()->registerExtension('blogfrontend', '1.0', [], $routes);

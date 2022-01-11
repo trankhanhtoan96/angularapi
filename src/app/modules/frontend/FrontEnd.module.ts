@@ -5,12 +5,14 @@ import {CommonModule} from "@angular/common";
 import {AppRoutingModule} from "../../app-routing.module";
 import {FECategory} from "./FECategory";
 import {FECategoryID} from "./FECategoryID";
+import {FEBlog} from "./FEBlog";
 
 @NgModule({
     declarations: [
         FEHome,
         FECategory,
-        FECategoryID
+        FECategoryID,
+        FEBlog
     ],
     exports: [],
     imports: [

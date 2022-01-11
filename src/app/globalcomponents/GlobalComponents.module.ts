@@ -27,6 +27,7 @@ import {FEBVideos} from "./components/FEBVideos";
 import {FEB4} from "./components/FEB4";
 import {FEBAdsSideBar} from "./components/FEBAdsSideBar";
 import {FEBAdsMidComponent} from "./components/FEBAdsMid.component";
+import {FEBAuthor} from "./components/FEBAuthor";
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {FEBAdsMidComponent} from "./components/FEBAdsMid.component";
         FEBVideos,
         FEB4,
         FEBAdsSideBar,
-        FEBAdsMidComponent
+        FEBAdsMidComponent,
+        FEBAuthor
     ],
     exports: [
         HeaderComponent,
@@ -73,7 +75,8 @@ import {FEBAdsMidComponent} from "./components/FEBAdsMid.component";
         FEBVideos,
         FEB4,
         FEBAdsSideBar,
-        FEBAdsMidComponent
+        FEBAdsMidComponent,
+        FEBAuthor
     ],
     imports: [
         CommonModule,
