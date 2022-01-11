@@ -56,7 +56,7 @@ $routes = [
             'userid' => [
                 'in' => 'path',
                 'description' => '',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
                 'required' => true
             ],
@@ -95,7 +95,7 @@ $routes = [
             'userid' => [
                 'in' => 'path',
                 'description' => '',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
                 'required' => true
             ],

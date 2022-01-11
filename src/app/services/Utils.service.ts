@@ -18,4 +18,16 @@ export class Utils {
         return (this.S4() + this.S4() + "-" + this.S4() + "-" + this.S4() + "-" + this.S4() + "-" + this.S4() + this.S4() + this.S4());
     }
 
+    getBlogCategoryColor(name: string, options: any): string {
+        let index = name.length % 11;
+        let result;
+        let i = 0;
+        Object.keys(options).map(key => {
+            if (index == i) {
+                result = key;
+            }
+            i++;
+        });
+        return result;
+    }
 }

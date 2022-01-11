@@ -29,7 +29,7 @@ $routes = [
         'parameters' => [
             'userId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the User',
             ],
@@ -63,7 +63,7 @@ $routes = [
             ],
             'userId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the User',
             ],
@@ -91,7 +91,7 @@ $routes = [
             ],
             'userId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the User',
             ],

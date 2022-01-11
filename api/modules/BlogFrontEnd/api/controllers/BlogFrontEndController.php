@@ -31,4 +31,17 @@ class BlogFrontEndController
         }
         return $res->withJson($data);
     }
+
+    public function homeLoadMore(Request $req, Response $res, array $args): Response
+    {
+        $data=[];
+        $db = DBManagerFactory::getInstance();
+        $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
+
+        $result = $db->query("select id from blog where status='publish' order by date_entered desc limit 20 offset {$_GET['offset']}");
+        while ($row = $db->fetchByAssoc($result)) {
+            $data[] = $moduleHandler->mapBeanToArray('Blog', BeanFactory::getBean('Blog', $row['id']));
+        }
+        return $res->withJson($data);
+    }
 }

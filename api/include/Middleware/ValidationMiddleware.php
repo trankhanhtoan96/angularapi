@@ -23,7 +23,7 @@ class ValidationMiddleware
     // todo figure out what to do with multienums
     // todo maybe a phone number type?
     private $allowedTypes = [
-        self::TYPE_STRING, self::TYPE_ENUM, self::TYPE_GUID, self::TYPE_DATETIME, self::TYPE_BOOL,
+        self::TYPE_STRING, self::TYPE_ENUM, self::TYPE_STRING, self::TYPE_DATETIME, self::TYPE_BOOL,
         self::TYPE_NUMERIC, self::TYPE_ALPHANUMERIC, self::TYPE_EMAIL, self::TYPE_JSON, self::TYPE_BASE64,
         self::TYPE_MODULE, self::TYPE_ARRAY, self::TYPE_DATE, self::TYPE_EXTENSION, self::TYPE_OBJECT,
         self::TYPE_COMPLEX,

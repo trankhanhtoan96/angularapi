@@ -17,7 +17,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the Contact.',
             ]
@@ -50,19 +50,19 @@ $routes = [
             ],
             'aclRole'        => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => false,
                 'description' => 'The ACL role of the user to be created.',
             ],
             'aclProfile'        => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => false,
                 'description' => 'The ACL profile of the user to be created.',
             ],
             'portalRole'        => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'The portal role of the user to be created.',
             ],
@@ -80,7 +80,7 @@ $routes = [
             ],
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the Contact.',
             ]
@@ -119,7 +119,7 @@ $routes = [
             ],
             'aclProfile'        => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => false,
                 'description' => 'The ACL profile of the user to be created.',
             ],
@@ -143,7 +143,7 @@ $routes = [
             ],
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the Contact.',
             ]
@@ -166,7 +166,7 @@ $routes = [
             ],
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the Contact.',
             ]

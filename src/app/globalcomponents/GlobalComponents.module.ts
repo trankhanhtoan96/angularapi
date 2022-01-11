@@ -24,7 +24,10 @@ import {FormFieldDateComponent} from "./components/FormFieldDate.component";
 import {FEB1} from "./components/FEB1";
 import {FEB2} from "./components/FEB2";
 import {FEB3} from "./components/FEB3";
-
+import {FEBVideos} from "./components/FEBVideos";
+import {FEB4} from "./components/FEB4";
+import {FEBAdsSideBar} from "./components/FEBAdsSideBar";
+import {FEBAdsMidComponent} from "./components/FEBAdsMid.component";
 
 @NgModule({
     declarations: [
@@ -45,7 +48,11 @@ import {FEB3} from "./components/FEB3";
         FormFieldDateComponent,
         FEB1,
         FEB2,
-        FEB3
+        FEB3,
+        FEBVideos,
+        FEB4,
+        FEBAdsSideBar,
+        FEBAdsMidComponent
     ],
     exports: [
         HeaderComponent,
@@ -65,7 +72,11 @@ import {FEB3} from "./components/FEB3";
         FormFieldDateComponent,
         FEB1,
         FEB2,
-        FEB3
+        FEB3,
+        FEBVideos,
+        FEB4,
+        FEBAdsSideBar,
+        FEBAdsMidComponent
     ],
     imports: [
         CommonModule,

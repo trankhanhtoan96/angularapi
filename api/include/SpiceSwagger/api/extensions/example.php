@@ -60,7 +60,7 @@ $routes = [
             'exampleString'    => [
                 'in'          => 'path', // path, query, body
                 'description' => 'Just an example string',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'example'     => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
         ],
@@ -311,7 +311,7 @@ $routes = [
                 'parameters'  => [
                     'id'           => [
                         'description' => 'ID',
-                        'type'        => ValidationMiddleware::TYPE_GUID,
+                        'type'        => ValidationMiddleware::TYPE_STRING,
                         'required'    => true,
                     ],
                     'name'         => [
@@ -363,7 +363,7 @@ $routes = [
                     'type'       => ValidationMiddleware::TYPE_OBJECT,
                     'parameters' => [
                         'id'     => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => true,
                             'description' => 'GUID of the bean',
                         ],

@@ -33,7 +33,7 @@ $routes = [
             'parentid' => [
                 'in' => 'path',
                 'description' => 'id of the parent bean',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => 'cda04b43-89b8-11eb-9bff-00fffe0c4f07',
                 'required' => true
             ],

@@ -26,7 +26,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'ID of the user',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'example' => '40109eab-ddc0-01fb-3a85-b3f3f87cfa1c'
             ],

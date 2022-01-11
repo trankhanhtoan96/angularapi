@@ -92,7 +92,7 @@ $routes = [
                     'type'       => ValidationMiddleware::TYPE_OBJECT,
                     'parameters' => [
                         'id'     => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => true,
                             'description' => 'GUID of the bean',
                         ],
@@ -189,7 +189,7 @@ $routes = [
                     'type'       => ValidationMiddleware::TYPE_OBJECT,
                     'parameters' => [
                         'id'     => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => true,
                             'description' => 'GUID of the bean',
                         ],
@@ -260,7 +260,7 @@ $routes = [
         'parameters'   => [
             'emailId'            => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the email',
             ],
@@ -336,7 +336,7 @@ $routes = [
         'parameters'   => [
             'email_id'            => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the email',
             ],
@@ -389,7 +389,7 @@ $routes = [
         'parameters'  => [
             'id'     => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'ID of the email',
             ],
@@ -413,7 +413,7 @@ $routes = [
         'parameters'  => [
             'id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'ID of the email',
             ],
@@ -461,7 +461,7 @@ $routes = [
             ],
             'beanId'       => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'The bean ID',
             ],
@@ -478,7 +478,7 @@ $routes = [
         'parameters'  => [
             'attachmentId' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'The attachment ID',
             ],

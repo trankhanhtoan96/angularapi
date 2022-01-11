@@ -29,7 +29,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
@@ -59,7 +59,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
@@ -88,13 +88,13 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
             'attachmentId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of the attachment',
                 'required' => true
             ]
@@ -119,7 +119,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
@@ -159,7 +159,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'body',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => false
             ],
@@ -188,7 +188,7 @@ $routes = [
         'parameters'  => [
             'id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the Attachment',
             ],
@@ -227,7 +227,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
@@ -274,7 +274,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
@@ -287,13 +287,13 @@ $routes = [
             ],
             'fromBeanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean it is cloned from',
                 'required' => true
             ],
             'categoryId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of a category to be cloned',
                 'required' => false
             ]
@@ -317,13 +317,13 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of bean',
                 'required' => true
             ],
             'attachmentId' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of the attachment',
                 'required' => true
             ]

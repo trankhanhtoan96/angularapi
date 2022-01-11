@@ -25,7 +25,7 @@ $routes = [
             ],
             'beanId'          => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean',
             ],
@@ -47,7 +47,7 @@ $routes = [
             ],
             'beanId'   => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean',
             ],
@@ -81,13 +81,13 @@ $routes = [
             ],
             'beanId'   => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean',
             ],
             'noteId'   => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'SpiceNote GUID',
             ],
@@ -122,13 +122,13 @@ $routes = [
             ],
             'beanId'   => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => false,
                 'description' => 'GUID of the bean',
             ],
             'noteId'   => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'SpiceNote GUID',
             ],

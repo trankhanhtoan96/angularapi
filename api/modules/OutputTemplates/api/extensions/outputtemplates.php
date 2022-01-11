@@ -62,7 +62,7 @@ $routes = [
             ],
             'stylesheet_id'       => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the stylesheet',
             ],
@@ -75,7 +75,7 @@ $routes = [
             ],
             'parentid'       => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the parent bean',
             ],
@@ -117,7 +117,7 @@ $routes = [
             ],
             'id'       => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => '',
             ],
@@ -182,7 +182,7 @@ $routes = [
             ],
             'page_orientation'       => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the stylesheet',
             ],
@@ -195,7 +195,7 @@ $routes = [
             ],
             'parentid'       => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the parent bean',
             ],
@@ -212,13 +212,13 @@ $routes = [
         'parameters'  => [
             'id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the OutputTemplate',
             ],
             'bean_id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean to compile',
             ]
@@ -235,13 +235,13 @@ $routes = [
         'parameters'  => [
             'id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the OutputTemplate',
             ],
             'bean_id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean to convert',
             ],
@@ -264,13 +264,13 @@ $routes = [
         'parameters'  => [
             'id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the OutputTemplate',
             ],
             'bean_id'       => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean to compile',
             ],

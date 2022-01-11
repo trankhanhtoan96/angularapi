@@ -194,14 +194,14 @@ $routes = [
             'filter' => [
                 'in' => 'body',
                 'description' => 'id of a kreporter filter to load with the report',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '71bbe40e-8bf7-11eb-917e-42010a84004c',
                 'required' => false
             ],
             'parentbeanId' => [
                 'in' => 'body',
                 'description' => 'id of the parent bean (drilldown capability)',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '6b192296-8bf7-11eb-917e-42010a84004c',
                 'required' => false
             ],
@@ -335,14 +335,14 @@ $routes = [
             'filter' => [
                 'in' => 'body',
                 'description' => 'id of a kreporter filter to load with the report',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '71bbe40e-8bf7-11eb-917e-42010a84004c',
                 'required' => false
             ],
             'parentbeanId' => [
                 'in' => 'body',
                 'description' => 'id of the parent bean (drilldown capability)',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '6b192296-8bf7-11eb-917e-42010a84004c',
                 'required' => false
             ],

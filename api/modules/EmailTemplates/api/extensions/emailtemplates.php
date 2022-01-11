@@ -50,7 +50,7 @@ $routes = [
             ],
             'parentid' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'if of parent bean',
                 'example' => '2816ba5c-97e7-11eb-8c42-00fffe0c4f07',
                 'required' => true
@@ -74,7 +74,7 @@ $routes = [
             ],
             'parentid' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'if of parent bean',
                 'example' => '2816ba5c-97e7-11eb-8c42-00fffe0c4f07',
                 'required' => true

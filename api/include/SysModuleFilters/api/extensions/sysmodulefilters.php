@@ -41,7 +41,7 @@ $routes = [
             'filter' => [
                 'in' => 'path',
                 'description' => 'the name the filter',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '5dc836d2-2f98-7f3c-708e-970c597a19c6',
             ]
         ]
@@ -64,13 +64,13 @@ $routes = [
             'filter' => [
                 'in' => 'path',
                 'description' => 'the id of the filter',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '5dc836d2-2f98-7f3c-708e-970c597a19c6',
             ],
             'id' => [
                 'in' => 'body',
                 'description' => 'the id of the filter',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '5dc836d2-2f98-7f3c-708e-970c597a19c6',
             ],
             'name' => [
@@ -94,7 +94,7 @@ $routes = [
             'created_by_id' => [
                 'in' => 'body',
                 'description' => 'the id of the user who created the filter',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '2dc836d2-2f98-7f3c-708e-970c597a1926',
             ],
             'package' => [
@@ -135,7 +135,7 @@ $routes = [
             'filter' => [
                 'in' => 'path',
                 'description' => 'the name the filter',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '5dc836d2-2f98-7f3c-708e-970c597a19c6',
             ]
         ]

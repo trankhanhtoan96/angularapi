@@ -24,7 +24,7 @@ $routes = [
         'parameters'  => [
             'listid' => [
                 'in' => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of list',
                 'required' => true
             ],
@@ -62,7 +62,7 @@ $routes = [
             ],
             'listid' => [
                 'in' => 'query',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of list'
             ],
             'targetlistname' => [

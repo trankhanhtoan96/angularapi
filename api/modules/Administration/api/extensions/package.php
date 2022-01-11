@@ -33,7 +33,7 @@ $routes = [
             'repository' => [
                 'in' => 'path',
                 'description' => 'the repository id to retrieve the package from',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => false,
                 'example' => 'b5feb33a-8ae4-11eb-b159-00fffe0c4f07'
             ]
@@ -58,7 +58,7 @@ $routes = [
             'repository' => [
                 'in' => 'path',
                 'description' => 'the repository id to retrieve the package from',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => false,
                 'example' => 'b5feb33a-8ae4-11eb-b159-00fffe0c4f07'
             ]
@@ -101,7 +101,7 @@ $routes = [
             'repository' => [
                 'in' => 'path',
                 'description' => 'the repository id to get the package from',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => false,
                 'example' => 'b5feb33a-8ae4-11eb-b159-00fffe0c4f07'
             ]

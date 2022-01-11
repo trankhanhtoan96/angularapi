@@ -34,12 +34,12 @@ $routes = [
             'transactionId' => [
                 'in' => 'query',
                 'description' => 'Transaction ID of the requested error log entries.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
             ],
             'userId' => [
                 'in' => 'query',
                 'description' => 'User ID of the requested error log entries.',
-                'type' => ValidationMiddleware::TYPE_GUID
+                'type' => ValidationMiddleware::TYPE_STRING
             ],
             'text' => [
                 'in' => 'query',
@@ -68,7 +68,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'GUID of the requested error log entry.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ]
         ],
@@ -168,7 +168,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'GUID of the requested REST log entry.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ]
         ]

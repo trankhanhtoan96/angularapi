@@ -30,7 +30,7 @@ $routes = [
         'parameters'  => [
             'dashletId' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => false,
                 'description' => 'GUID of the dashlet',
             ],
@@ -67,7 +67,7 @@ $routes = [
 
             'id'              => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the dashlet',
             ],
@@ -152,7 +152,7 @@ $routes = [
         'parameters'  => [
             'dashletId' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the dashlet',
             ],
@@ -169,7 +169,7 @@ $routes = [
         'parameters'  => [
             'dashboardId'     => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the dashboard',
             ],
@@ -196,17 +196,17 @@ $routes = [
                             'description' => 'Configuration of the dashboard component. Saved as JSON in the DB.',
                         ],
                         'created_by'      => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => false,
                             'description' => 'GUID of the creator user',
                         ],
                         'dashboard_id'    => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => true,
                             'description' => 'GUID of the dashboard',
                         ],
                         'dashlet_id'      => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => false,
                             'description' => 'GUID of the dashlet',
                         ],
@@ -246,7 +246,7 @@ $routes = [
                             'description' => 'icon name',
                         ],
                         'id'              => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => true,
                             'description' => 'GUID of the dashboard component',
                         ],
@@ -256,7 +256,7 @@ $routes = [
                             'description' => 'label name',
                         ],
                         'modified_user_id' => [
-                            'type'        => ValidationMiddleware::TYPE_GUID,
+                            'type'        => ValidationMiddleware::TYPE_STRING,
                             'required'    => false,
                             'description' => 'GUID of the user who modified it',
                         ],

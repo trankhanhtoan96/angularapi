@@ -88,7 +88,7 @@ $routes = [
         'parameters'  => [
             'mailbox_id' => [
                 'in'          => 'body',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'ID of the mailbox',
                 'required'    => true,
             ],

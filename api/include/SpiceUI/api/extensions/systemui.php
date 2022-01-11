@@ -53,7 +53,7 @@ $routes = [
             'loadtaskid' => [
                 'in' => 'path',
                 'description' => 'the id of the loadtask',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ]
         ]
@@ -111,7 +111,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the list',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ],
             'aggregates' => [
@@ -170,7 +170,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the list',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ]
         ]
@@ -197,7 +197,7 @@ $routes = [
             'userid' => [
                 'in' => 'path',
                 'description' => 'the id of the user',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ]
         ]
@@ -214,13 +214,13 @@ $routes = [
             'userid' => [
                 'in' => 'path',
                 'description' => 'the id of the user',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ],
             'roleid' => [
                 'in' => 'path',
                 'description' => 'the id of the role',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ],
             'action' => [
@@ -243,13 +243,13 @@ $routes = [
             'userid' => [
                 'in' => 'path',
                 'description' => 'the id of the user',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ],
             'roleid' => [
                 'in' => 'path',
                 'description' => 'the id of the role',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '24f0fdda-79f0-4054-acb9-c8cce36e5fdc',
             ]
         ]
@@ -278,7 +278,7 @@ $routes = [
             'id' => [
                 'in' => 'query',
                 'description' => 'the id of the component',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
             'role_id' => [
@@ -325,7 +325,7 @@ $routes = [
             'id' => [
                 'in' => 'query',
                 'description' => 'the id of the component',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
             'role_id' => [
@@ -526,7 +526,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the tree',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
         ]
@@ -543,7 +543,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the tree',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
         ]
@@ -577,7 +577,7 @@ $routes = [
             'id' => [
                 'in' => 'body',
                 'description' => 'the id of the tree',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
             'name' => [
@@ -600,7 +600,7 @@ $routes = [
             'id' => [
                 'in' => 'body',
                 'description' => 'the id of the validation rule',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ],
             'actions' => [
@@ -677,7 +677,7 @@ $routes = [
             'id' => [
                 'in' => 'query',
                 'description' => 'the id of the validation rule',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '894562d5-d74b-4587-a10a-fabe7ec2f696',
             ]
         ]

@@ -36,6 +36,12 @@ $dictionary['BlogCategory'] = [
             'type' => 'varchar',
             'len' => 255
         ],
+        'color_style' => [
+            'name' => 'color_style',
+            'vname' => 'LBL_COLOR_STYLE',
+            'type' => 'enum',
+            'options' => 'blogcategory_color_style_options'
+        ],
     ],
     'indices' => [],
     'relationships' => []

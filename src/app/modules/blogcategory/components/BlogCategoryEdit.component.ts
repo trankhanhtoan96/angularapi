@@ -18,11 +18,13 @@ export class BlogCategoryEditComponent {
         [
             {
                 name: 'name',
-                span: 8
             },
             {
                 name: 'parent_id'
             },
+            {
+                name:'color_style'
+            }
         ],
         [
             {

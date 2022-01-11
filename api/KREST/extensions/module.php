@@ -215,7 +215,7 @@ $routes = [
             'ids' => [
                 'in' => 'body',
                 'type' => ValidationMiddleware::TYPE_ARRAY,
-                'subtype' => ValidationMiddleware::TYPE_GUID,
+                'subtype' => ValidationMiddleware::TYPE_STRING,
                 'required' => false,
                 'description' => 'An array of GUIDs',
             ],
@@ -341,7 +341,7 @@ $routes = [
             'ids' => [
                 'in' => 'body',
                 'type' => ValidationMiddleware::TYPE_ARRAY,
-                'subtype' => ValidationMiddleware::TYPE_GUID,
+                'subtype' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'Bean GUIDs'
             ],
@@ -403,7 +403,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -439,7 +439,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -461,7 +461,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -483,7 +483,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -523,7 +523,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'id of the parent bean'
             ],
@@ -592,7 +592,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -614,7 +614,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -636,7 +636,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -676,7 +676,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -710,7 +710,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -744,7 +744,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -756,7 +756,7 @@ $routes = [
             ],
             'modulefilter' => [
                 'in' => 'query',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => false,
                 'description' => 'Module filter GUID',
             ],
@@ -833,7 +833,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -846,7 +846,7 @@ $routes = [
             ValidationMiddleware::ANONYMOUS_ARRAY => [
                 'in' => 'body',
                 'type' => ValidationMiddleware::TYPE_ARRAY,
-                'subtype' => ValidationMiddleware::TYPE_GUID,
+                'subtype' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'An array with GUIDs of related beans',
             ],
@@ -868,7 +868,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -880,7 +880,7 @@ $routes = [
             ],
             'id' => [
                 'in' => 'body',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the related bean',
             ],
@@ -958,7 +958,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -970,7 +970,7 @@ $routes = [
             ],
             'id' => [
                 'in' => 'body',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => false,
                 'description' => 'GUID of the related bean',
             ],
@@ -1029,7 +1029,7 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
@@ -1063,14 +1063,14 @@ $routes = [
             ],
             'beanId' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'GUID of the bean',
             ],
             'duplicates' => [
                 'in' => 'body',
                 'type' => ValidationMiddleware::TYPE_ARRAY,
-                'subtype' => ValidationMiddleware::TYPE_GUID,
+                'subtype' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => '',
             ],

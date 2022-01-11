@@ -21,7 +21,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'description' => 'Mailbox ID',
                 'required'    => true,
             ],

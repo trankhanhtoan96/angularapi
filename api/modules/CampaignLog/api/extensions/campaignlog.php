@@ -27,7 +27,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'id of campaign log entry',
                 'example' => 'c7a88116-97e0-11eb-8c42-00fffe0c4f07',
                 'required' => true
@@ -48,7 +48,7 @@ $routes = [
             ],
             'call_id' => [
                 'in' => 'body',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'id of the call created. ONly needed for called',
                 'example' => '30d70a8f-97e1-11eb-8c42-00fffe0c4f07',
                 'required' => false

@@ -12,5 +12,14 @@ $routes = [
         'options' => ['noAuth' => true],
         'parameters' => []
     ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/home/loadmore',
+        'class' => BlogFrontEndController::class,
+        'function' => 'homeLoadMore',
+        'description' => 'homeLoadMore',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
 ];
 RESTManager::getInstance()->registerExtension('blogfrontend', '1.0', [], $routes);

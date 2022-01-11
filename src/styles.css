@@ -1233,4 +1233,8 @@ sa-spinner-circular-fixed > svg > circle:last-child {
     width: 100%;
     padding: 10px;
 }
+
 /*end post feature*/
+.badge {
+    padding-top: 5px;
+}

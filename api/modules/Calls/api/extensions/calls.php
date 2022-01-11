@@ -26,14 +26,14 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'id of the call',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => 'f946b9d7-500a-5695-af7a-2241db3be2c2',
                 'required' => true
             ],
             'userid' => [
                 'in' => 'path',
                 'description' => 'id of invited user',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => 'f946b9d7-500a-5695-af7a-2241db3be2c2',
                 'required' => true
             ],

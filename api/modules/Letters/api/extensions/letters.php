@@ -26,13 +26,13 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'the id of the letter',
             ],
             'template_id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'description' => 'the id of the template',
             ]

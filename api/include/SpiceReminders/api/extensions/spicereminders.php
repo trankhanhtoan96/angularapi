@@ -38,7 +38,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the reminder',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '5dc836d2-2f98-7f3c-708e-970c597a19c6',
             ],
             'date' => [
@@ -67,7 +67,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the reminder',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'example' => '5dc836d2-2f98-7f3c-708e-970c597a19c6',
             ]
         ]

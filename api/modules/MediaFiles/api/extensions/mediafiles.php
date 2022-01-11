@@ -28,7 +28,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'The ID of the media file.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ]
         ]
@@ -45,7 +45,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'The ID of the media file.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ]
         ]
@@ -62,7 +62,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'The ID of the media file.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ],
             'thumbSize' => [
@@ -85,7 +85,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'The ID of the media file.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ],
             'maxWidth' => [
@@ -108,7 +108,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'The ID of the media file.',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ],
             'maxWidth' => [

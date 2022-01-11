@@ -26,7 +26,7 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of job',
                 'required' => true
             ],
@@ -54,7 +54,7 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of job',
                 'required' => true
             ]

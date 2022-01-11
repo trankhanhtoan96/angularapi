@@ -29,7 +29,7 @@ $routes = [
             'nodeid' => [
                 'in' => 'path',
                 'description' => '',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'example' => '40109eab-ddc0-01fb-3a85-b3f3f87cfa1c'
             ],
@@ -57,7 +57,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'ID of the ProductGroup',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
                 'example' => '40109eab-ddc0-01fb-3a85-b3f3f87cfa1c'
             ],
@@ -88,7 +88,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the ProductGroup',
             ],
@@ -104,7 +104,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the ProductGroup',
             ],
@@ -120,7 +120,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the ProductGroup',
             ],
@@ -131,7 +131,7 @@ $routes = [
                 'description' => 'An array of records',
                 'subtype'     => [
                     'id'           => [
-                        'type'        => ValidationMiddleware::TYPE_GUID,
+                        'type'        => ValidationMiddleware::TYPE_STRING,
                         'required'    => true,
                         'description' => 'GUID of the product attribute',
                     ],
@@ -165,7 +165,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the ProductGroup',
             ],
@@ -181,7 +181,7 @@ $routes = [
         'parameters'  => [
             'id' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the ProductGroup',
             ],
@@ -192,7 +192,7 @@ $routes = [
                 'description' => 'An array of records',
                 'subtype'     => [
                     'id'           => [
-                        'type'        => ValidationMiddleware::TYPE_GUID,
+                        'type'        => ValidationMiddleware::TYPE_STRING,
                         'required'    => true,
                         'description' => 'GUID of the product attribute',
                     ],

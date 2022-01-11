@@ -26,7 +26,7 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of job',
                 'required' => true
             ],
@@ -54,7 +54,7 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of job',
                 'required' => true
             ],
@@ -70,7 +70,7 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of job',
                 'required' => true
             ]
@@ -86,7 +86,7 @@ $routes = [
         'parameters' => [
             'id' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'GUID of job',
                 'required' => true
             ]
@@ -102,14 +102,14 @@ $routes = [
         'parameters'  => [
             'beanId'   => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the bean',
             ],
             ValidationMiddleware::ANONYMOUS_ARRAY => [
                 'in'          => 'body',
                 'type'        => ValidationMiddleware::TYPE_ARRAY,
-                'subtype'     => ValidationMiddleware::TYPE_GUID,
+                'subtype'     => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'An array with GUIDs of related beans',
             ],

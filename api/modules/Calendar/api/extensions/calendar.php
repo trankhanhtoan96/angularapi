@@ -39,7 +39,7 @@ $routes = [
         'parameters'  => [
             'calendarId' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the calendar',
             ],
@@ -68,7 +68,7 @@ $routes = [
         'parameters'  => [
             'userId' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the user',
             ],
@@ -103,7 +103,7 @@ $routes = [
         'parameters'  => [
             'userId' => [
                 'in'          => 'path',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
                 'required'    => true,
                 'description' => 'GUID of the user',
             ],

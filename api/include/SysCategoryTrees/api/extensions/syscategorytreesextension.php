@@ -28,7 +28,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the tree',
-                'type' => ValidationMiddleware::TYPE_GUID
+                'type' => ValidationMiddleware::TYPE_STRING
             ],
             'name' => [
                 'in' => 'body',
@@ -48,7 +48,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the tree',
-                'type' => ValidationMiddleware::TYPE_GUID
+                'type' => ValidationMiddleware::TYPE_STRING
             ]
         ]
     ],
@@ -63,7 +63,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'the id of the tree',
-                'type' => ValidationMiddleware::TYPE_GUID
+                'type' => ValidationMiddleware::TYPE_STRING
             ]
         ]
     ]

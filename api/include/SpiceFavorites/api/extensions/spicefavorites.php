@@ -37,7 +37,7 @@ $routes = [
             ],
             'beanid' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'the bean id to set as favorite',
                 'example' => '91e35ad0-947a-11eb-ac92-00fffe0c4f07',
                 'required' => true,
@@ -62,7 +62,7 @@ $routes = [
             ],
             'beanid' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'description' => 'the bean id to set as favorite',
                 'example' => '91e35ad0-947a-11eb-ac92-00fffe0c4f07',
                 'required' => true,

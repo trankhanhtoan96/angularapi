@@ -41,7 +41,7 @@ $routes = [
             'id' => [
                 'in' => 'query',
                 'description' => '',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true,
             ],
             '$environment' => [

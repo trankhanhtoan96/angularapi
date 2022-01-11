@@ -2082,6 +2082,20 @@ $app_list_strings['blog_allow_comment_options'] = [
     'Yes' => 'Yes',
     'No' => 'No',
 ];
+$app_list_strings['blogcategory_color_style_options'] = [
+    'blue' => 'blue',
+    'azure' => 'azure',
+    'indigo' => 'indigo',
+    'purple' => 'purple',
+    'pink' => 'pink',
+    'red' => 'red',
+    'orange' => 'orange',
+    'yellow' => 'yellow',
+    'lime' => 'lime',
+    'green' => 'green',
+    'teal' => 'teal',
+    'cyan' => 'cyan',
+];
 $app_strings['LBL_NAME']='Tiêu đề';
 $app_strings['LBL_SLUG']='Đường dẫn';
 $app_strings['LBL_STATUS']='Trạng thái';
@@ -2103,3 +2117,4 @@ $app_strings['LBL_USER_NAME']='Tài khoản';
 $app_strings['LBL_LAST_NAME']='Họ';
 $app_strings['LBL_FIRST_NAME']='Tên';
 $app_strings['LBL_EMAIL']='Email';
+$app_strings['LBL_COLOR_STYLE']='Color style';

@@ -72,7 +72,7 @@ $routes = [
             ],
             'parentid' => [
                 'in' => 'path',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ]
         ],

@@ -82,7 +82,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'ID',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ]
         ]
@@ -105,7 +105,7 @@ $routes = [
             'id' => [
                 'in' => 'path',
                 'description' => 'ID',
-                'type' => ValidationMiddleware::TYPE_GUID,
+                'type' => ValidationMiddleware::TYPE_STRING,
                 'required' => true
             ],
             'config' => [

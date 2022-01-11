@@ -52,7 +52,7 @@ $routes = [
             'id'    => [
                 'in'          => 'path',
                 'description' => 'Campaign Task id',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
             ],
         ],
     ],
@@ -67,7 +67,7 @@ $routes = [
             'id'    => [
                 'in'          => 'path',
                 'description' => 'Campaign Task id',
-                'type'        => ValidationMiddleware::TYPE_GUID
+                'type'        => ValidationMiddleware::TYPE_STRING
             ]
         ]
     ],
@@ -82,7 +82,7 @@ $routes = [
             'id'    => [
                 'in'          => 'path',
                 'description' => 'Campaign Task id',
-                'type'        => ValidationMiddleware::TYPE_GUID
+                'type'        => ValidationMiddleware::TYPE_STRING
             ],
             'start'    => [
                 'in'          => 'path',
@@ -108,7 +108,7 @@ $routes = [
             'id'    => [
                 'in'          => 'path',
                 'description' => 'Campaign Task id',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
             ],
         ],
     ],
@@ -124,7 +124,7 @@ $routes = [
             'id'    => [
                 'in'          => 'path',
                 'description' => 'Campaign Task id',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
             ],
         ],
     ],
@@ -140,7 +140,7 @@ $routes = [
             'id'    => [
                 'in'          => 'path',
                 'description' => 'Campaign Task id',
-                'type'        => ValidationMiddleware::TYPE_GUID,
+                'type'        => ValidationMiddleware::TYPE_STRING,
             ],
         ],
     ],
