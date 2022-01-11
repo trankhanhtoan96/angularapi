@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Backend} from "../../../services/Backend.service";
 import {Session} from "../../../services/Session.service";
 import {Router} from "@angular/router";
-import {Meta, Title} from "@angular/platform-browser";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'LoginComponent',
@@ -14,10 +14,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private backend: Backend,
-        private session: Session,
+        public session: Session,
         private router: Router,
-        private title: Title,
-        private meta: Meta
+        private title: Title
     ) {
     }
 

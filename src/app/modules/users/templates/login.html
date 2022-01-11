@@ -1,7 +1,9 @@
 <div class="page page-center">
     <div class="container-tight py-4">
         <div class="text-center mb-4">
-            <a href="/"><img src="/" height="36" width='100%' alt=""/></a>
+            <a routerLink="/">
+                <img [src]="session.setting.system_image" height="100" width='auto' alt=""/>
+            </a>
         </div>
         <div class="card card-md">
             <div class="card-body">
