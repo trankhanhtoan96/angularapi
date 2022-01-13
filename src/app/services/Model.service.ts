@@ -28,7 +28,7 @@ export class Model {
             // @ts-ignore
             this.session.enum = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'enum'))));
             if (!this.session.lang) {
-                this.backend.getRequest('systeminfo').subscribe(res => {
+                this.backend.getRequestNoAuth('systeminfo').subscribe(res => {
                     this.session.fields = res.fields;
                     this.session.lang = res.lang;
                     this.session.enum = res.enum;
@@ -44,7 +44,7 @@ export class Model {
             }
         } catch (e) {
             if (!this.session.lang) {
-                this.backend.getRequest('systeminfo').subscribe(res => {
+                this.backend.getRequestNoAuth('systeminfo').subscribe(res => {
                     this.session.fields = res.fields;
                     this.session.lang = res.lang;
                     this.session.enum = res.enum;
