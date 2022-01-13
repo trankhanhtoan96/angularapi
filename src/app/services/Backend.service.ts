@@ -29,6 +29,7 @@ export class Backend {
         let output = new HttpParams();
         if (params) {
             Object.keys(params).forEach((key: string) => {
+                // @ts-ignore
                 let value = params[key];
                 if (typeof value !== 'undefined' && value !== null) {
                     if (typeof value === 'object') {
@@ -58,6 +59,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: err => {
+                // @ts-ignore
                 this.handleError(err, route, 'GET', {getParams: params});
                 responseSubject.error(err);
             }
@@ -76,6 +78,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: err => {
+                // @ts-ignore
                 this.handleError(err, route, 'GET', {getParams: params});
                 responseSubject.error(err);
             }
@@ -83,7 +86,7 @@ export class Backend {
         return responseSubject.asObservable();
     }
 
-    auth(authType: 'basic' | 'form', route: string, params: { username, password }): Observable<any> {
+    auth(authType: 'basic' | 'form', route: string, params: { username: string, password: string }): Observable<any> {
         let subject = new Subject<any>();
         let theaders = new HttpHeaders();
         theaders = theaders.set('Accept', 'application/json');
@@ -94,6 +97,7 @@ export class Backend {
                 subject.complete();
             },
             error: err => {
+                // @ts-ignore
                 this.handleError(err, route, 'GET', {getParams: params});
                 subject.next(err.status);
                 subject.complete();
@@ -121,6 +125,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: err => {
+                // @ts-ignore
                 this.handleError(err, route, 'POST', {getParams: params, body: body});
                 responseSubject.error(err);
             }
@@ -145,6 +150,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: err => {
+                // @ts-ignore
                 this.handleError(err, route, 'POST', {getParams: params, body: body});
                 responseSubject.error(err);
             }
@@ -166,6 +172,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: (err) => {
+                // @ts-ignore
                 this.handleError(err, route, 'PUT', {getParams: params, body: body});
                 responseSubject.error(err);
             }
@@ -186,6 +193,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: (err) => {
+                // @ts-ignore
                 this.handleError(err, route, 'PUT', {getParams: params, body: body});
                 responseSubject.error(err);
             }
@@ -206,6 +214,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: (err) => {
+                // @ts-ignore
                 this.handleError(err, route, 'DELETE', {getParams: params});
                 responseSubject.error(err);
             }
@@ -225,6 +234,7 @@ export class Backend {
                 responseSubject.complete();
             },
             error: (err) => {
+                // @ts-ignore
                 this.handleError(err, route, 'DELETE', {getParams: params});
                 responseSubject.error(err);
             }
@@ -232,7 +242,7 @@ export class Backend {
         return responseSubject.asObservable();
     }
 
-    private handleError(err, route, method: string, data = null) {
+    private handleError(err: { status: any; }, route: string, method: string, data = null) {
         switch (err.status) {
             case 401:
                 this.session.endSession();

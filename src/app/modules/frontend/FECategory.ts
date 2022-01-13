@@ -82,7 +82,7 @@ export class FECategory implements OnInit {
         this.model.$loadedSystemInfo.subscribe(res => {
             if (res) {
                 this.router.params.subscribe(params => {
-                    this.slug = params.slug;
+                    this.slug = params['slug'];
                     this.backend.getRequestNoAuth('frontend/category/' + this.slug).subscribe(res => {
                         console.log(res);
                         this.bean = res;
@@ -98,7 +98,7 @@ export class FECategory implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref=>{
-                    this.backend.getRequestNoAuth('frontend/categorydata/' + params.slug).subscribe(res => {
+                    this.backend.getRequestNoAuth('frontend/categorydata/' + params['slug']).subscribe(res => {
                         console.log(res);
                         this.data = res;
                         this.recent4 = [];

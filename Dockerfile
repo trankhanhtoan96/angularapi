@@ -1,6 +1,7 @@
-FROM node:16-buster-slim
+FROM node:14
 WORKDIR /app
 COPY . .
+RUN npm cache clean --force
 RUN npm install
 RUN npm run build:ssr
 EXPOSE 4000

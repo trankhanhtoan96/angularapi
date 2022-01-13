@@ -55,16 +55,19 @@ export class FormFormComponent implements OnInit {
     }
 
     getFieldRequired(field: any): string {
+        // @ts-ignore
         let _field = this.fieldsDef[this.getFieldName(field)];
         if (_field.hasOwnProperty('required') && _field.required) return 'required';
         return '';
     }
 
     isFieldNoLabel(field: any): boolean {
+        // @ts-ignore
         return !this.fieldsDef[this.getFieldName(field)].hasOwnProperty('vname');
     }
 
     getLabel(field: any): string {
+        // @ts-ignore
         let _field = this.fieldsDef[this.getFieldName(field)];
         if (this.session.lang.hasOwnProperty(_field.vname)) {
             return this.session.lang[_field.vname];
@@ -73,9 +76,12 @@ export class FormFormComponent implements OnInit {
     }
 
     getFieldType(field: any): string {
+        // @ts-ignore
         let _type = this.fieldsDef[this.getFieldName(field)].type;
         if (this.fieldTypeAllow.indexOf(_type) < 0) {
+            // @ts-ignore
             if (this.fieldsDef[this.getFieldName(field)].hasOwnProperty('dbType')) {
+                // @ts-ignore
                 _type = this.fieldsDef[this.getFieldName(field)].dbType;
                 if (this.fieldTypeAllow.indexOf(_type) < 0) return '';
                 return _type;
@@ -86,6 +92,7 @@ export class FormFormComponent implements OnInit {
     }
 
     getFieldLen(field: any): number {
+        // @ts-ignore
         let _field = this.fieldsDef[this.getFieldName(field)];
         if (_field.hasOwnProperty('len')) {
             return _field.len;
@@ -95,6 +102,7 @@ export class FormFormComponent implements OnInit {
 
     getFieldOptions(field: any): Select2OptionData[] {
         let result = [{id: '', text: ''}];
+        // @ts-ignore
         let _field = this.fieldsDef[this.getFieldName(field)];
         let options = [];
         if (this.session.enum.hasOwnProperty(_field.options)) options = this.session.enum[_field.options];
@@ -106,8 +114,12 @@ export class FormFormComponent implements OnInit {
 
     getFieldRelateOptions(field: any): Select2OptionData[] {
         let fieldName = this.getFieldName(field);
-        if (this.optionsOfField.hasOwnProperty(fieldName)) return this.optionsOfField[fieldName];
+        if (this.optionsOfField.hasOwnProperty(fieldName)) { // @ts-ignore
+            return this.optionsOfField[fieldName];
+        }
+        // @ts-ignore
         if (this.beingOptionsOfField.indexOf(fieldName) >= 0) return [];
+        // @ts-ignore
         this.beingOptionsOfField.push(fieldName);
         for (let _field in this.fieldsDef) {
             // @ts-ignore
@@ -119,7 +131,9 @@ export class FormFormComponent implements OnInit {
                     for (let bean of res.list) {
                         result.push({id: bean.id, text: bean.name});
                     }
+                    // @ts-ignore
                     this.optionsOfField[this.getFieldName(field)] = result;
+                    // @ts-ignore
                     this.beingOptionsOfField.splice(this.beingOptionsOfField.indexOf(fieldName), 1);
                 });
             }

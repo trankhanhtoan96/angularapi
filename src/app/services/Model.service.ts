@@ -19,9 +19,13 @@ export class Model {
 
     loadSystemInfo() {
         try {
+            // @ts-ignore
             this.session.setting = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'setting'))));
+            // @ts-ignore
             this.session.fields = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'fields'))));
+            // @ts-ignore
             this.session.lang = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'lang'))));
+            // @ts-ignore
             this.session.enum = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey + 'enum'))));
             if (!this.session.lang) {
                 this.backend.getRequest('systeminfo').subscribe(res => {

@@ -40,9 +40,9 @@ import {Backend} from "../../services/Backend.service";
     `
 })
 export class FEB4 {
-    @Input() beanList = [];
-    @Input() category;
-    @Input() userid;
+    @Input() beanList:any;
+    @Input() category:any;
+    @Input() userid:any;
 
     constructor(public session: Session, public utils: Utils, private metadata: Metadata, private backend: Backend) {
     }

@@ -65,6 +65,7 @@ export class Session {
     getSessionData(): IFAuthData | false {
         if (this.authData.id) return this.authData;
         try {
+            // @ts-ignore
             this.authData = JSON.parse(decodeURIComponent(window.atob(localStorage.getItem(environment.apiKey))));
             return this.authData;
         } catch (e) {
@@ -101,7 +102,7 @@ export class LoginCheck implements CanActivate {
     constructor(private session: Session, private router: Router) {
     }
 
-    public canActivate(route, state) {
+    public canActivate(route: any, state: { url: string; }) {
         if (!this.session.isLogined()) {
             if (state.url != '/login') {
                 this.router.navigate(['/login']);

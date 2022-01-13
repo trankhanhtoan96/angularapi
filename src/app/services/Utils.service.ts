@@ -18,7 +18,7 @@ export class Utils {
         return (this.S4() + this.S4() + "-" + this.S4() + "-" + this.S4() + "-" + this.S4() + "-" + this.S4() + this.S4() + this.S4());
     }
 
-    getBlogCategoryColor(name: string, options: any): string {
+    getBlogCategoryColor(name: string, options: any) {
         let index = name.length % 11;
         let result;
         let i = 0;

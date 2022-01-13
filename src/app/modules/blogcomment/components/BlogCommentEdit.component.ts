@@ -34,7 +34,7 @@ export class BlogCommentEditComponent {
 
     constructor(private router: ActivatedRoute) {
         this.router.params.subscribe(params => {
-            this.bean.id = params.id;
+            this.bean.id = params['id'];
         });
     }
 }

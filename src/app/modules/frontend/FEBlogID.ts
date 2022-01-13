@@ -18,7 +18,7 @@ export class FEBlogID implements OnInit {
 
     ngOnInit() {
         this.router.params.subscribe(params => {
-            this.id = params.id;
+            this.id = params['id'];
             this.backend.getRequestNoAuth('frontend/getblogslug/' + this.id).subscribe(res => {
                 this.route.navigate(['/blog/'+res.slug]);
             });

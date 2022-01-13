@@ -41,10 +41,10 @@ import {ToastComponent} from "./toast.component";
     `
 })
 export class FEB5 implements OnInit {
-    @Input() blog;
-    comments = [];
-    authorReact = [];
-    content;
+    @Input() blog: { id: string; };
+    comments:any;
+    authorReact:any;
+    content: any;
 
     constructor(
         private backend: Backend,
@@ -58,7 +58,7 @@ export class FEB5 implements OnInit {
     ngOnInit() {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
-                this.backend.getRequestNoAuth('frontend/blogcomment/' + params.slug, {userid: this.session.authData.userid}).subscribe(res => {
+                this.backend.getRequestNoAuth('frontend/blogcomment/' + params['slug'], {userid: this.session.authData.userid}).subscribe(res => {
                     console.log(res);
                     this.comments = res.comments;
                     this.authorReact = res.authorReact;
@@ -76,14 +76,16 @@ export class FEB5 implements OnInit {
     }
 
     typeReact(comment_id: string): 'heartbeat' | 'heart' {
+        // @ts-ignore
         if (this.authorReact.indexOf(comment_id) >= 0) return 'heartbeat';
         return 'heart';
     }
 
-    reactComment(comment) {
+    reactComment(comment: { id: string; }) {
         if (this.typeReact(comment.id) == 'heart' && this.session.authData.userid) {
             this.metadata.spinnerLoading().then(ref => {
                 this.backend.postRequest('frontend/blogcommentreact/' + comment.id, {}, {userid: this.session.authData.userid}).subscribe(res => {
+                    // @ts-ignore
                     this.authorReact.push(comment.id);
                     ref.instance.self.destroy();
                 });

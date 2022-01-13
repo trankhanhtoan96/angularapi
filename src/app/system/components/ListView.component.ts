@@ -11,7 +11,7 @@ export class ListViewComponent implements OnInit {
     @Input() moduleName: string = '';
     @Input() beanList: any = [];
     @Input() totalCount: number = 0;
-    @Input() config = [];
+    @Input() config:any;
 
 
     constructor(

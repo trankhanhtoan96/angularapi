@@ -77,7 +77,7 @@ export class FEProfile implements OnInit {
         this.model.$loadedSystemInfo.subscribe(res => {
             if (res) {
                 this.router.params.subscribe(params => {
-                    this.id = params.id;
+                    this.id = params['id'];
                     this.backend.getRequestNoAuth('frontend/profile/' + this.id).subscribe(res => {
                         console.log(res);
                         this.bean = res;
@@ -93,7 +93,7 @@ export class FEProfile implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref => {
-                    this.backend.getRequestNoAuth('frontend/profiledata/' + params.id).subscribe(res => {
+                    this.backend.getRequestNoAuth('frontend/profiledata/' + params['id']).subscribe(res => {
                         console.log(res);
                         this.data = res;
                         ref.instance.self.destroy();

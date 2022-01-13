@@ -1,16 +1,26 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitOverride": true,
         "noImplicitAny": false,
-        "removeComments": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2017",
+        "module": "es2020",
         "lib": [
-            "es2015",
+            "es2020",
             "dom"
         ]
     },
@@ -19,13 +29,5 @@
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
         "strictTemplates": true
-    },
-    "include": [
-        "src/**/*",
-        "dist/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "vendor"
-    ]
+    }
 }

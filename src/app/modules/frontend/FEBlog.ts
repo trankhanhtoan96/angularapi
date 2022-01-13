@@ -73,7 +73,7 @@ export class FEBlog implements OnInit {
         this.model.$loadedSystemInfo.subscribe(res => {
             if (res) {
                 this.router.params.subscribe(params => {
-                    this.slug = params.slug;
+                    this.slug = params['slug'];
                     this.backend.getRequestNoAuth('frontend/blog/' + this.slug).subscribe(res => {
                         console.log(res);
                         this.bean = res.bean;
@@ -93,7 +93,7 @@ export class FEBlog implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref=>{
-                    this.backend.getRequestNoAuth('frontend/blogdata/' + params.slug).subscribe(res => {
+                    this.backend.getRequestNoAuth('frontend/blogdata/' + params['slug']).subscribe(res => {
                         console.log(res);
                         this.data = res;
                         ref.instance.self.destroy();

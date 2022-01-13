@@ -12,7 +12,7 @@ export class EditViewComponent implements OnInit {
     @Input() beanName: string = '';
     @Input() moduleName: string = '';
     @Input() bean: any;
-    @Input() config = [];
+    @Input() config:any;
     loadedSystemInfo: boolean = false;
 
     constructor(
