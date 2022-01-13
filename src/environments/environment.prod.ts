@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost/angular/api',
+    apiUrl: 'https://api.simplyinvest.vn',
     apiKey: 'oeIh7X0BGu5dTCFxZdV9d1JLhjsx9aqZ'
 };
