@@ -50,6 +50,12 @@ export class BlogEditComponent {
         ],
         [
             {
+                name: 'tags',
+                span: 8
+            }
+        ],
+        [
+            {
                 name: 'content',
                 span: 8
             },

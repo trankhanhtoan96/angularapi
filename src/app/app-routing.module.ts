@@ -21,6 +21,7 @@ import {FECategoryID} from "./modules/frontend/FECategoryID";
 import {FEBlog} from "./modules/frontend/FEBlog";
 import {FEBlogID} from "./modules/frontend/FEBlogID";
 import {FEProfile} from "./modules/frontend/FEProfile";
+import {FEProfileSave} from "./modules/frontend/FEProfileSave";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -49,6 +50,7 @@ const routes: Routes = [
     {path: 'blogid/:id', component: FEBlogID},
     {path: 'categoryid/:id', component: FECategoryID},
     {path: 'profile/:id', component: FEProfile},
+    {path: 'profilesave/:id', component: FEProfileSave},
     {path: "**", component: NotFoundComponent}
 ];
 

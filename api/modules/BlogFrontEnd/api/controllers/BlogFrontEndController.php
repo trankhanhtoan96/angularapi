@@ -16,6 +16,39 @@ use SpiceCRM\modules\Users\User;
 
 class BlogFrontEndController
 {
+    public function blogsaveprofile(Request $req, Response $res, array $args): Response
+    {
+        global $timedate;
+        $db = DBManagerFactory::getInstance();
+        $db->query("delete from blog_user where blog_id='{$args['blog_id']}' and user_id='{$args['user_id']}'");
+        $id = SpiceUtils::createGuid();
+        $now = $timedate->nowDb();
+        $db->query("insert into blog_user(id, user_id, blog_id, date_modified) values('$id','{$args['user_id']}','{$args['blog_id']}','$now')");
+
+        return $res->withJson(['success' => 1]);
+    }
+    public function blogsaved(Request $req, Response $res, array $args): Response
+    {
+        $data = [];
+        $db = DBManagerFactory::getInstance();
+        $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
+
+        $result = $db->query("select blog_id from blog_user where user_id='{$args['id']}'");
+        while ($row = $db->fetchByAssoc($result)) {
+            $data[] = $moduleHandler->mapBeanToArray('Blog', BeanFactory::getBean('Blog', $row['blog_id']));
+        }
+        return $res->withJson($data);
+    }
+    public function changePass(Request $req, Response $res, array $args): Response
+    {
+        $body = $req->getParsedBody();
+        $bean = new User();
+        $bean->retrieve($body['u']);
+        $bean->setNewPassword($body['p']);
+        $bean->save();
+        return $res->withJson(['success' => 1]);
+    }
+
     public function getProfile(Request $req, Response $res, array $args): Response
     {
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
@@ -97,6 +130,7 @@ class BlogFrontEndController
         $db = DBManagerFactory::getInstance();
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
         $cid = $db->getOne("select blogcategory.id  from blog inner join blogcategory on blog.category_id=blogcategory.id where blog.slug='{$args['slug']}'");
+        $db->query("update blog set view_count=view_count+1 where blog.slug='{$args['slug']}'");
 
         $result = $db->query("select id from blog where status='publish' and category_id='$cid' order by date_entered desc limit 5");
         while ($row = $db->fetchByAssoc($result)) {
@@ -222,6 +256,7 @@ class BlogFrontEndController
         }
         return $res->withJson($data);
     }
+
     public function getProfileLoadMore(Request $req, Response $res, array $args): Response
     {
         $data = [];

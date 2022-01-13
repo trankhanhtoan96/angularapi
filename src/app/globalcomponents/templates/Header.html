@@ -30,6 +30,14 @@
                             <i class="ti ti-user"></i>
                             Trang cá nhân
                         </a>
+                        <a [routerLink]="'/profilesave/'+session.authData.userid" class="dropdown-item">
+                            <i class="ti ti-bookmark"></i>
+                            Bài viết đã lưu
+                        </a>
+                        <a (click)="changePass()" href="#" class="dropdown-item">
+                            <i class="ti ti-lock"></i>
+                            Đổi mật khẩu
+                        </a>
                         <a class="dropdown-item" routerLink="/admin">
                             <i class="ti ti-settings"></i>
                             Quản trị

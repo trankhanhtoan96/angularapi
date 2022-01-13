@@ -5,6 +5,7 @@ import {Model} from "../../services/Model.service";
 import {Backend} from "../../services/Backend.service";
 import {ActivatedRoute} from "@angular/router";
 import {Metadata} from "../../services/Metadata.service";
+import {FEB6} from "../../globalcomponents/components/FEB6";
 
 @Component({
     selector: 'FEProfile',
@@ -16,7 +17,7 @@ import {Metadata} from "../../services/Metadata.service";
                         <div class="card-body p-4 text-center"><span class="avatar avatar-2xl mb-3 avatar-rounded" style="background-image: url({{bean.user_image}});"></span>
                             <h3 class="m-0 mb-1">
                                 {{bean.name}}
-                                <i *ngIf="session.authData.userid==id" class="ti ti-edit" style="font-size: 20px" (click)="editProfile()"></i>
+                                <i *ngIf="session.authData.userid==id" class="ti ti-edit cursor-pointer" style="font-size: 20px" (click)="editProfile()"></i>
                             </h3>
                             <div class="text-muted">{{bean.t_email}}</div>
                             <div class="mt-3">
@@ -91,7 +92,7 @@ export class FEProfile implements OnInit {
         //no load on server
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
-                this.metadata.spinnerLoading().then(ref=>{
+                this.metadata.spinnerLoading().then(ref => {
                     this.backend.getRequestNoAuth('frontend/profiledata/' + params.id).subscribe(res => {
                         console.log(res);
                         this.data = res;
@@ -103,6 +104,6 @@ export class FEProfile implements OnInit {
     }
 
     editProfile() {
-
+        this.metadata.modal(FEB6, 'large');
     }
 }

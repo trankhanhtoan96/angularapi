@@ -140,5 +140,32 @@ $routes = [
         'options' => ['noAuth' => true],
         'parameters' => []
     ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/blogsaved/{id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'blogsaved',
+        'description' => 'blogsaved',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'post',
+        'route' => '/frontend/changepass',
+        'class' => BlogFrontEndController::class,
+        'function' => 'changePass',
+        'description' => 'changePass',
+        'options' => ['noAuth' => false],
+        'parameters' => []
+    ],
+    [
+        'method' => 'post',
+        'route' => '/frontend/blogsaveprofile/{blog_id}/{user_id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'blogsaveprofile',
+        'description' => 'blogsaveprofile',
+        'options' => ['noAuth' => false],
+        'parameters' => []
+    ],
 ];
 RESTManager::getInstance()->registerExtension('blogfrontend', '1.0', [], $routes);

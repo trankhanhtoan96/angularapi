@@ -1,4 +1,8 @@
 import {Component, Input} from '@angular/core';
+import {Session} from "../../services/Session.service";
+import {ToastComponent} from "./toast.component";
+import {Metadata} from "../../services/Metadata.service";
+import {Backend} from "../../services/Backend.service";
 
 @Component({
     selector: 'FEBAuthor',
@@ -24,15 +28,26 @@ import {Component, Input} from '@angular/core';
                     </div>
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-primary"><i class="ti ti-clock"></i> Lưu</button>
+                    <button *ngIf="session.authData.id" (click)="save()" class="btn btn-primary btn-sm"><i class="ti ti-clock"></i> Lưu</button>
                 </div>
             </div>
         </div>
     `
 })
 export class FEBAuthor {
-    @Input() bean:any;
-    @Input() blog:any;
-    constructor() {
+    @Input() bean: any;
+    @Input() blog: any;
+
+    constructor(public session: Session, private toast: ToastComponent, private metadata: Metadata, private backend: Backend) {
+    }
+
+    save() {
+        this.metadata.spinnerLoading().then(ref => {
+            this.backend.postRequest('frontend/blogsaveprofile/' + this.blog.id + '/' + this.session.authData.userid).subscribe(res => {
+                console.log(res);
+                this.toast.success('Đã lưu');
+                ref.instance.self.destroy();
+            });
+        });
     }
 }

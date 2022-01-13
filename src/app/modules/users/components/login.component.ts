@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
             this.backend.auth('basic', 'authentication/login', {username: this.username, password: this.password})
                 .subscribe(res => {
                     if (res.id) {
-                        console.log(res);
                         this.session.setSessionData({
                             admin: res.admin,
                             email: res.email,

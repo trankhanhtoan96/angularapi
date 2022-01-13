@@ -18,6 +18,7 @@ import {Metadata} from "../../services/Metadata.service";
                             <p>{{bean.description}}</p>
                             <FEBAuthor [bean]="author" [blog]="bean"></FEBAuthor>
                             <div class="style-articleDetail p-3" [innerHTML]="bean.content"></div>
+                            <h3>Tags: {{bean.tags}}</h3>
                             <FEBAdsMidComponent></FEBAdsMidComponent>
                             <h1 class="my-large-title">THẢO LUẬN </h1>
                             <FEB5 [blog]="bean"></FEB5>
@@ -79,7 +80,10 @@ export class FEBlog implements OnInit {
                         this.author = res.author;
                         this.title.setTitle(this.bean.seo_title?this.bean.seo_title:this.bean.name);
                         this.meta.addTags([
-                            {name: 'description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description}
+                            {name:'og:title', content:this.bean.seo_title?this.bean.seo_title:this.bean.name},
+                            {name: 'og:description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description},
+                            {name: 'description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description},
+                            {name: 'og:image', content: this.bean.image}
                         ]);
                     });
                 });

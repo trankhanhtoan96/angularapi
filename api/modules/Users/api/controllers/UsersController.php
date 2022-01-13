@@ -28,25 +28,7 @@ class UsersController
      * @throws \SpiceCRM\includes\ErrorHandlers\Exception
      */
     public function saveUser(Request $req, Response $res, array $args): Response {
-        $db = DBManagerFactory::getInstance();
         $params = $req->getParsedBody();
-
-        $email1 = $params['email1'];
-        if (!empty($email1)) {
-            $q = "select id from users where id in ( SELECT  er.bean_id AS id FROM email_addr_bean_rel er,
-                email_addresses ea WHERE ea.id = er.email_address_id
-                AND ea.deleted = 0 AND er.deleted = 0 AND er.bean_module = 'Users' AND email_address_caps IN ('{$db->quote($email1)}') )";
-
-            $row = $db->fetchByAssoc($db->query($q));
-
-            if ($row && $row['id'] != $params['id'])
-                throw (new BadRequestException("Email already exists."))->setErrorCode('duplicateEmail1');
-
-            $email1 = htmlspecialchars(stripslashes(trim($params['email1'])));
-            if (!filter_var($email1, FILTER_VALIDATE_EMAIL))
-                throw (new BadRequestException("Invalid email format."))->setErrorCode('invalidEmailFormat');
-        }
-
         $KRESTModuleHandler = new ModuleHandler();
         $beanResponse = $KRESTModuleHandler->add_bean("Users", $args['id'], $params);
 

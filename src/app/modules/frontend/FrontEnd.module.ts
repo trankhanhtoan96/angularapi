@@ -8,6 +8,7 @@ import {FECategoryID} from "./FECategoryID";
 import {FEBlog} from "./FEBlog";
 import {FEBlogID} from "./FEBlogID";
 import {FEProfile} from "./FEProfile";
+import {FEProfileSave} from "./FEProfileSave";
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import {FEProfile} from "./FEProfile";
         FECategoryID,
         FEBlog,
         FEBlogID,
-        FEProfile
+        FEProfile,
+        FEProfileSave
     ],
     exports: [],
     imports: [

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Session} from "./Session.service";
 import {environment} from "../../environments/environment";
 import {Metadata} from "./Metadata.service";
+import {ToastComponent} from "../globalcomponents/components/toast.component";
 
 @Injectable()
 export class Backend {
@@ -12,7 +13,8 @@ export class Backend {
         private http: HttpClient,
         private session: Session,
         private router: Router,
-        private metadata: Metadata
+        private metadata: Metadata,
+        private toast: ToastComponent
     ) {
     }
 
@@ -93,7 +95,9 @@ export class Backend {
             },
             error: err => {
                 this.handleError(err, route, 'GET', {getParams: params});
-                subject.error(err);
+                subject.next(err.status);
+                subject.complete();
+                this.toast.error(err.statusText);
             }
         });
         return subject.asObservable();
