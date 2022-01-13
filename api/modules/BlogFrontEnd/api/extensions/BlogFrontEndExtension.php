@@ -76,5 +76,32 @@ $routes = [
         'options' => ['noAuth' => true],
         'parameters' => []
     ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/blogcomment/{slug}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getBlogComment',
+        'description' => 'getBlogComment',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'post',
+        'route' => '/frontend/blogcomment/{blog_id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'saveBlogComment',
+        'description' => 'saveBlogComment',
+        'options' => ['noAuth' => false],
+        'parameters' => []
+    ],
+    [
+        'method' => 'post',
+        'route' => '/frontend/blogcommentreact/{comment_id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'reactBlogComment',
+        'description' => 'reactBlogComment',
+        'options' => ['noAuth' => false],
+        'parameters' => []
+    ],
 ];
 RESTManager::getInstance()->registerExtension('blogfrontend', '1.0', [], $routes);

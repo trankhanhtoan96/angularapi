@@ -4,7 +4,7 @@ import {Session} from "../../services/Session.service";
 @Component({
     selector: 'FEBAdsMidComponent',
     template: `
-        <div *ngIf="showAds" class="container-sm">
+        <div *ngIf="showAds" class="container">
             <div class="row m-3">
                 <div class="col text-center">
                     <img *ngIf="showAdsType=='image'" [src]="session.setting.ads_midimage" style="width:100%;max-width: 900px" alt="">

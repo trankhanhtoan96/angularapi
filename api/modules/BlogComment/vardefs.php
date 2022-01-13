@@ -30,6 +30,12 @@ $dictionary['BlogComment'] = [
             'type' => 'html',
             'dbType' => 'text'
         ],
+
+        'reaction' => [
+            'name' => 'reaction',
+            'vname' => 'LBL_REACTION',
+            'type' => 'int',
+        ],
     ],
     'indices' => [],
     'relationships' => []

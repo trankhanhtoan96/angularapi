@@ -14,10 +14,12 @@ import {Metadata} from "../../services/Metadata.service";
                 <div class="container-sm">
                     <div class="row">
                         <div *ngIf="bean" class="col-md-8">
-                            <h1 style="font-size:30px;margin-top:1rem;margin-bottom: 3rem;">{{bean.name}}</h1>
+                            <h1 style="font-size:30px;margin-top:1rem;margin-bottom: 3rem;color:#0d0f39">{{bean.name}}</h1>
                             <FEBAuthor [bean]="author" [blog]="bean"></FEBAuthor>
                             <div class="style-articleDetail p-3" [innerHTML]="bean.content"></div>
                             <FEBAdsMidComponent></FEBAdsMidComponent>
+                            <h1 class="my-large-title">THẢO LUẬN </h1>
+                            <FEB5 [blog]="bean"></FEB5>
                         </div>
                         <div class="col-md-4">
                             <h1 class="m-3 my-large-title">CÙNG CHỦ ĐỀ</h1>
@@ -70,7 +72,7 @@ export class FEBlog implements OnInit {
             if (res) {
                 this.router.params.subscribe(params => {
                     this.slug = params.slug;
-                    this.backend.getRequest('frontend/blog/' + this.slug).subscribe(res => {
+                    this.backend.getRequestNoAuth('frontend/blog/' + this.slug).subscribe(res => {
                         console.log(res);
                         this.bean = res.bean;
                         this.author = res.author;
@@ -86,7 +88,7 @@ export class FEBlog implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref=>{
-                    this.backend.getRequest('frontend/blogdata/' + params.slug).subscribe(res => {
+                    this.backend.getRequestNoAuth('frontend/blogdata/' + params.slug).subscribe(res => {
                         console.log(res);
                         this.data = res;
                         ref.instance.self.destroy();

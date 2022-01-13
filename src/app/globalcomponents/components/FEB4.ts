@@ -48,7 +48,8 @@ export class FEB4 {
 
     loadMore() {
         this.metadata.spinnerLoading().then(ref => {
-            this.backend.getRequest('frontend/categoryloadmore/'+this.category, {offset: this.beanList.length})
+            const url = this.category ? 'frontend/categoryloadmore/' + this.category : 'frontend/home/loadmore';
+            this.backend.getRequestNoAuth(url, {offset: this.beanList.length})
                 .subscribe(res => {
                     ref.instance.self.destroy();
                     this.beanList = this.beanList.concat(res);

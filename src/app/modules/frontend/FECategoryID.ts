@@ -19,7 +19,7 @@ export class FECategoryID implements OnInit {
     ngOnInit() {
         this.router.params.subscribe(params => {
             this.id = params.id;
-            this.backend.getRequest('frontend/getcategoryslug/' + this.id).subscribe(res => {
+            this.backend.getRequestNoAuth('frontend/getcategoryslug/' + this.id).subscribe(res => {
                 this.route.navigate(['/category/'+res.slug]);
             });
         });
