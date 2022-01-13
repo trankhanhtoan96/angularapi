@@ -63,7 +63,7 @@ export class Model {
 
     list(module: string, limit: number, offset: number): Observable<any> {
         let subject = new Subject();
-        this.backend.getRequest('module/' + module, {limit: limit, offset: offset})
+        this.backend.getRequest('module/' + module, {limit: limit, offset: offset, sortfields: [{"sortfield": "date_entered", "sortdirection": "DESC"}]})
             .subscribe(res => {
                 subject.next(res);
                 subject.complete();
@@ -73,7 +73,7 @@ export class Model {
 
     search(module: string, searchterm: string, limit: number, offset: number): Observable<any> {
         let subject = new Subject();
-        this.backend.getRequest('module/' + module, {limit: limit, offset: offset, searchterm: searchterm})
+        this.backend.getRequest('module/' + module, {limit: limit, offset: offset, searchterm: searchterm, sortfields: encodeURI('[{"sortfield":"date_entered","sortdirection":"DESC"}')})
             .subscribe(res => {
                 subject.next(res);
                 subject.complete();

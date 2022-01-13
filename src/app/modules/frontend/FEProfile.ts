@@ -7,31 +7,36 @@ import {ActivatedRoute} from "@angular/router";
 import {Metadata} from "../../services/Metadata.service";
 
 @Component({
-    selector: 'FEBlog',
+    selector: 'FEProfile',
     template: `
-        <div class="page-wrapper" style="background-color:#fff">
+        <div *ngIf="bean" class="page-wrapper" style="background-color: rgb(255, 255, 255);">
+            <div class="page-body">
+                <div class="container-sm">
+                    <div class="card" style="border: none; box-shadow: none;">
+                        <div class="card-body p-4 text-center"><span class="avatar avatar-2xl mb-3 avatar-rounded" style="background-image: url({{bean.user_image}});"></span>
+                            <h3 class="m-0 mb-1">
+                                {{bean.name}}
+                                <i *ngIf="session.authData.userid==id" class="ti ti-edit" style="font-size: 20px" (click)="editProfile()"></i>
+                            </h3>
+                            <div class="text-muted">{{bean.t_email}}</div>
+                            <div class="mt-3">
+                                <span class="badge bg-danger">Writer</span>
+                                <div class="style-articleDetail" [innerHTML]="bean.description"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
             <div class="page-body">
                 <div class="container-sm">
                     <div class="row">
-                        <div *ngIf="bean" class="col-md-8">
-                            <h1 style="font-size:30px;margin-top:1rem;margin-bottom: 3rem;color:#0d0f39">{{bean.name}}</h1>
-                            <p>{{bean.description}}</p>
-                            <FEBAuthor [bean]="author" [blog]="bean"></FEBAuthor>
-                            <div class="style-articleDetail p-3" [innerHTML]="bean.content"></div>
-                            <FEBAdsMidComponent></FEBAdsMidComponent>
-                            <h1 class="my-large-title">THẢO LUẬN </h1>
-                            <FEB5 [blog]="bean"></FEB5>
+                        <div class="col-md-8">
+                            <h1 class="m-3 my-large-title">GẦN ĐÂY</h1>
+                            <FEB4 *ngIf="id" [userid]="id" [beanList]="data.recent"></FEB4>
                         </div>
                         <div class="col-md-4">
-                            <h1 class="m-3 my-large-title">CÙNG CHỦ ĐỀ</h1>
-                            <ng-container *ngFor="let item of data.recent">
-                                <div class="row row-0 align-items-center m-1">
-                                    <div class="col">
-                                        <FEB2 [bean]="item"></FEB2>
-                                    </div>
-                                </div>
-                            </ng-container>
-                            <br/>
                             <h1 class="m-3 my-large-title">XEM NHIỀU</h1>
                             <ng-container *ngFor="let item of data.topViews">
                                 <div class="row row-0 align-items-center m-1">
@@ -48,10 +53,9 @@ import {Metadata} from "../../services/Metadata.service";
         </div>
     `
 })
-export class FEBlog implements OnInit {
-    public slug: string;
+export class FEProfile implements OnInit {
+    public id: string;
     public bean: any;
-    public author: any;
     public data: any = {
         recent: [],
         topViews: []
@@ -72,14 +76,13 @@ export class FEBlog implements OnInit {
         this.model.$loadedSystemInfo.subscribe(res => {
             if (res) {
                 this.router.params.subscribe(params => {
-                    this.slug = params.slug;
-                    this.backend.getRequestNoAuth('frontend/blog/' + this.slug).subscribe(res => {
+                    this.id = params.id;
+                    this.backend.getRequestNoAuth('frontend/profile/' + this.id).subscribe(res => {
                         console.log(res);
-                        this.bean = res.bean;
-                        this.author = res.author;
-                        this.title.setTitle(this.bean.seo_title?this.bean.seo_title:this.bean.name);
+                        this.bean = res;
+                        this.title.setTitle(this.bean.name + ' - ' + this.session.setting.system_name);
                         this.meta.addTags([
-                            {name: 'description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description}
+                            {name: 'description', content: this.session.setting.system_info}
                         ]);
                     });
                 });
@@ -89,7 +92,7 @@ export class FEBlog implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref=>{
-                    this.backend.getRequestNoAuth('frontend/blogdata/' + params.slug).subscribe(res => {
+                    this.backend.getRequestNoAuth('frontend/profiledata/' + params.id).subscribe(res => {
                         console.log(res);
                         this.data = res;
                         ref.instance.self.destroy();
@@ -97,5 +100,9 @@ export class FEBlog implements OnInit {
                 });
             });
         }
+    }
+
+    editProfile() {
+
     }
 }

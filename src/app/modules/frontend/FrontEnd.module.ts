@@ -6,13 +6,17 @@ import {AppRoutingModule} from "../../app-routing.module";
 import {FECategory} from "./FECategory";
 import {FECategoryID} from "./FECategoryID";
 import {FEBlog} from "./FEBlog";
+import {FEBlogID} from "./FEBlogID";
+import {FEProfile} from "./FEProfile";
 
 @NgModule({
     declarations: [
         FEHome,
         FECategory,
         FECategoryID,
-        FEBlog
+        FEBlog,
+        FEBlogID,
+        FEProfile
     ],
     exports: [],
     imports: [

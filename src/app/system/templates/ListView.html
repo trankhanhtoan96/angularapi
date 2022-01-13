@@ -36,6 +36,6 @@
         </div>
     </div>
     <div class="page-body">
-        <TableListComponent (refreshBeanList)="refreshBeanList()" (loadMore)="loadMore()" [beanName]="beanName" [beanList]="beanList" [config]="config" [moduleName]="moduleName"></TableListComponent>
+        <TableListComponent [totalCount]="totalCount" (refreshBeanList)="refreshBeanList()" (loadMore)="loadMore()" [beanName]="beanName" [beanList]="beanList" [config]="config" [moduleName]="moduleName"></TableListComponent>
     </div>
 </div>

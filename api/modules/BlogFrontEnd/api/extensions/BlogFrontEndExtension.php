@@ -60,6 +60,15 @@ $routes = [
     //blog
     [
         'method' => 'get',
+        'route' => '/frontend/getblogslug/{id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getBlogSlug',
+        'description' => 'getBlogSlug',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'get',
         'route' => '/frontend/blog/{slug}',
         'class' => BlogFrontEndController::class,
         'function' => 'getBlog',
@@ -101,6 +110,34 @@ $routes = [
         'function' => 'reactBlogComment',
         'description' => 'reactBlogComment',
         'options' => ['noAuth' => false],
+        'parameters' => []
+    ],
+    //profile
+    [
+        'method' => 'get',
+        'route' => '/frontend/profile/{id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getProfile',
+        'description' => 'getProfile',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/profiledata/{id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getProfileData',
+        'description' => 'getProfileData',
+        'options' => ['noAuth' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'get',
+        'route' => '/frontend/profileloadmore/{id}',
+        'class' => BlogFrontEndController::class,
+        'function' => 'getProfileLoadMore',
+        'description' => 'getProfileLoadMore',
+        'options' => ['noAuth' => true],
         'parameters' => []
     ],
 ];

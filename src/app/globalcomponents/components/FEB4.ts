@@ -42,13 +42,15 @@ import {Backend} from "../../services/Backend.service";
 export class FEB4 {
     @Input() beanList = [];
     @Input() category;
+    @Input() userid;
 
     constructor(public session: Session, public utils: Utils, private metadata: Metadata, private backend: Backend) {
     }
 
     loadMore() {
         this.metadata.spinnerLoading().then(ref => {
-            const url = this.category ? 'frontend/categoryloadmore/' + this.category : 'frontend/home/loadmore';
+            let url = this.category ? 'frontend/categoryloadmore/' + this.category : 'frontend/home/loadmore';
+            url = this.userid ? 'frontend/profileloadmore/' + this.userid : url;
             this.backend.getRequestNoAuth(url, {offset: this.beanList.length})
                 .subscribe(res => {
                     ref.instance.self.destroy();

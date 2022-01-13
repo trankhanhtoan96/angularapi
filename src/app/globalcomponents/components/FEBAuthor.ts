@@ -24,7 +24,7 @@ import {Component, Input} from '@angular/core';
                     </div>
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-primary"><i class="ti ti-clock"></i> Xem sau</button>
+                    <button class="btn btn-primary"><i class="ti ti-clock"></i> Lưu</button>
                 </div>
             </div>
         </div>
