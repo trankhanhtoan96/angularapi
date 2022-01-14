@@ -26,7 +26,8 @@ $dictionary['Blog'] = [
         'slug' => [
             'name' => 'slug',
             'vname' => 'LBL_SLUG',
-            'type' => 'varchar',
+            'type'=>'slug',
+            'dbType' => 'varchar',
             'len' => 255
         ],
         'seo_title' => [

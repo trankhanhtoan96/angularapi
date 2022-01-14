@@ -31,6 +31,7 @@ import {FEBAuthor} from "./components/FEBAuthor";
 import {FEB5} from "./components/FEB5";
 import {FEB6} from "./components/FEB6";
 import {FEB7} from "./components/FEB7";
+import {FormFieldSlugComponent} from "./components/FormFieldSlug.component";
 
 @NgModule({
     declarations: [
@@ -58,7 +59,8 @@ import {FEB7} from "./components/FEB7";
         FEBAuthor,
         FEB5,
         FEB6,
-        FEB7
+        FEB7,
+        FormFieldSlugComponent
     ],
     exports: [
         HeaderComponent,
@@ -85,7 +87,8 @@ import {FEB7} from "./components/FEB7";
         FEBAuthor,
         FEB5,
         FEB6,
-        FEB7
+        FEB7,
+        FormFieldSlugComponent
     ],
     imports: [
         CommonModule,
