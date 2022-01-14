@@ -214,7 +214,15 @@ class AuthenticationController
                 $userObj->retrieve_by_string_fields([
                     'apikey' => $apikey
                 ]);
-                if (empty($userObj->id)) throw new \Exception("Apikey not found");
+                if (empty($userObj->id)) {
+                    $u = base64_decode($apikey);
+                    $u = explode(':', $u);
+                    if (count($u) == 2) {
+                        $userObj = $this->handleUserPassAuth($u[0], $u[1], $impersonationUser);
+                    } else {
+                        throw new \Exception("Apikey not found");
+                    }
+                }
             } else {
                 throw new UnauthorizedException("Invalid authentication method", 6);
             }

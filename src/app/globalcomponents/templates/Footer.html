@@ -15,47 +15,60 @@
                 <br>
                 <h3>Theo dõi chúng tôi</h3>
                 <div class="row g-2 align-items-center mb-n3">
-                    <div class="col-auto mb-3"><a class="btn btn-youtube w-100 btn-icon" href="https://www.youtube.com/channel/UCc7zbfRjxK20QZtSkascI7A">
-                        <i class="ti ti-brand-youtube"></i>
-                    </a></div>
+                    <div class="col-auto mb-3">
+                        <a class="btn btn-youtube w-100 btn-icon" href="https://www.youtube.com/channel/UCc7zbfRjxK20QZtSkascI7A">
+                            <i class="ti ti-brand-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="col-auto mb-3">
+                        <a class="btn btn-dark w-100 btn-icon" href="https://www.tiktok.com/@kinhtehocgiandon">
+                            <i class="ti ti-brand-tiktok"></i>
+                        </a>
+                    </div>
+                    <div class="col-auto mb-3">
+                        <a class="btn btn-facebook w-100 btn-icon" href="https://www.facebook.com/KinhTeHocGianDon1">
+                            <i class="ti ti-brand-facebook"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
                 <ul>
                     <li class="list-unstyled"><h3 style="color: black;">Thành viên</h3></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Đăng ký thành viên</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Đăng nhập</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Trang thành viên</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Khôi phục mật khẩu</h4></li>
+                    <li class="list-unstyled"><h4 class="cursor-pointer"></h4></li>
+                    <li class="list-unstyled"><h4 routerLink="/login" class="cursor-pointer">Đăng nhập</h4></li>
+                    <li class="list-unstyled"><h4 class="">Trang thành viên</h4></li>
+                    <li class="list-unstyled"><h4 class="">Khôi phục mật khẩu</h4></li>
                 </ul>
             </div>
             <div class="col-md-2">
                 <ul>
                     <li class="list-unstyled"><h3 style="color: black;">Chuyên mục</h3></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Vĩ mô</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Đầu tư</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Kinh doanh</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Khởi nghiệp</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Bất động sản</h4></li>
+                    <li class="list-unstyled"><h4 routerLink="/category/vi-mo" class="cursor-pointer">Vĩ mô</h4></li>
+                    <li class="list-unstyled"><h4 routerLink="/category/dautu" class="cursor-pointer">Đầu tư</h4></li>
+                    <li class="list-unstyled"><h4 routerLink="/category/business" class="cursor-pointer">Kinh doanh</h4></li>
+                    <li class="list-unstyled"><h4 class="">Khởi nghiệp</h4></li>
+                    <li class="list-unstyled"><h4 class="">Bất động sản</h4></li>
                 </ul>
             </div>
             <div class="col-md-2">
                 <ul>
                     <li class="list-unstyled"><h3 style="color: black;">Loạt bài</h3></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Tại sao</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Toàn cảnh</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Giải nghĩa</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Covid</h4></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Digital</h4></li>
+                    <li class="list-unstyled"><h4 class="">Tại sao</h4></li>
+                    <li class="list-unstyled"><h4 class="">Toàn cảnh</h4></li>
+                    <li class="list-unstyled"><h4 class="">Giải nghĩa</h4></li>
+                    <li class="list-unstyled"><h4 class="">Covid</h4></li>
+                    <li class="list-unstyled"><h4 class="">Digital</h4></li>
                 </ul>
             </div>
             <div class="col-md-2">
                 <ul>
                     <li class="list-unstyled"><h3 style="color: black;">Videos</h3></li>
-                    <li class="list-unstyled"><h4 class="cursor-pointer">Videos</h4></li>
+                    <li class="list-unstyled"><h4 routerLink="https://www.youtube.com/channel/UCc7zbfRjxK20QZtSkascI7A" class="cursor-pointer">Videos</h4></li>
                 </ul>
                 <label class="form-label font-weight-bold" style="color: black;">Đăng ký nhận bài mới</label>
-                <div class="input-group mb-2"><input type="text" class="form-control" placeholder="Email" value="">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" placeholder="Email" value="">
                     <button class="btn btn-yellow" type="button">
                         <i class="ti ti-send"></i>
                     </button>

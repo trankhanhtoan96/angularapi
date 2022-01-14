@@ -90,7 +90,8 @@ export class Backend {
         let subject = new Subject<any>();
         let theaders = new HttpHeaders();
         theaders = theaders.set('Accept', 'application/json');
-        theaders = theaders.set('Authorization', 'Basic ' + window.btoa(params.username + ':' + params.password));
+        // theaders = theaders.set('Authorization', 'Basic ' + window.btoa(params.username + ':' + params.password));
+        theaders = theaders.set('apiup', window.btoa(params.username + ':' + params.password));
         this.http.get(environment.apiUrl + "/" + encodeURI(route), {headers: theaders, observe: "response"}).subscribe({
             next: (res) => {
                 subject.next(res.body);

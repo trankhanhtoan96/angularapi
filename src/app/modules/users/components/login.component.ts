@@ -9,8 +9,8 @@ import {Metadata} from "../../../services/Metadata.service";
     templateUrl: '../templates/login.html'
 })
 export class LoginComponent implements OnInit {
-    public username: string = 'admin';
-    public password: string = 'simplyinvest@123';
+    public username: string = '';
+    public password: string = '';
 
     constructor(
         private backend: Backend,

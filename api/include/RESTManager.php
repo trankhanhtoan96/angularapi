@@ -259,6 +259,8 @@ class RESTManager
             list($user, $pass) = explode(':', base64_decode(substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 6)));
         } elseif (isset($headers['apikey'])) {
             $apikey = $headers['apikey'];
+        }elseif (isset($headers['apiup'])) {
+            $apikey = $headers['apiup'];
         }
 
         if ($user || $token || $apikey) {
