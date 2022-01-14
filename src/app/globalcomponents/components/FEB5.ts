@@ -59,7 +59,7 @@ export class FEB5 implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.router.params.subscribe(params => {
                 this.backend.getRequestNoAuth('frontend/blogcomment/' + params['slug'], {userid: this.session.authData.userid}).subscribe(res => {
-                    console.log(res);
+                    // console.log(res);
                     this.comments = res.comments;
                     this.authorReact = res.authorReact;
                 });

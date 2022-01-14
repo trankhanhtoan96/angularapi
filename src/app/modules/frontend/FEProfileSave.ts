@@ -50,7 +50,7 @@ export class FEProfileSave implements OnInit {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref => {
                     this.backend.getRequestNoAuth('frontend/blogsaved/' + params['id']).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.beanList = res;
                         ref.instance.self.destroy();
                     });

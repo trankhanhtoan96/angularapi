@@ -75,7 +75,7 @@ export class FEBlog implements OnInit {
                 this.router.params.subscribe(params => {
                     this.slug = params['slug'];
                     this.backend.getRequestNoAuth('frontend/blog/' + this.slug).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.bean = res.bean;
                         this.author = res.author;
                         this.title.setTitle(this.bean.seo_title?this.bean.seo_title:this.bean.name);
@@ -94,7 +94,7 @@ export class FEBlog implements OnInit {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref=>{
                     this.backend.getRequestNoAuth('frontend/blogdata/' + params['slug']).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.data = res;
                         ref.instance.self.destroy();
                     });

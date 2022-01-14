@@ -34,7 +34,7 @@ export class EditViewComponent implements OnInit {
                         this.model.get(this.moduleName, this.bean.id).subscribe(res => {
                             this.bean = res;
                             ref.instance.self.destroy();
-                            console.log(res);
+                            // console.log(res);
                         });
                     });
                 }

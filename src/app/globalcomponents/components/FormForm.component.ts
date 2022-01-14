@@ -126,7 +126,7 @@ export class FormFormComponent implements OnInit {
             if (this.getFieldType(_field) == 'relate' && this.fieldsDef[_field].id_name == fieldName) {
                 // @ts-ignore
                 this.model.list(this.fieldsDef[_field].module, 1000, 0).subscribe(res => {
-                    console.log(res);
+                    // console.log(res);
                     let result = [{id: '', text: ''}];
                     for (let bean of res.list) {
                         result.push({id: bean.id, text: bean.name});

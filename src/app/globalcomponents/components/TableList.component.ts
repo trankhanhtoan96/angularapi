@@ -113,7 +113,7 @@ export class TableListComponent implements OnInit {
                     }
                     this.refreshBeanList.emit(true);
                     ref.instance.self.destroy();
-                    console.log(res);
+                    // console.log(res);
                 });
             }
         });

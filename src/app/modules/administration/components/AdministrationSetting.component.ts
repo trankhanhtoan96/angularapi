@@ -121,7 +121,7 @@ export class AdministrationSettingComponent implements OnInit {
     ngOnInit(): void {
         this.model.$loadedSystemInfo.subscribe(res => {
             if (res) {
-                console.log('loaded system info');
+                // console.log('loaded system info');
                 this.bean = this.session.setting;
                 this.loadedSystemInfo = true;
             }

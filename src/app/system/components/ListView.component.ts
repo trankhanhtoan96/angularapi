@@ -31,7 +31,7 @@ export class ListViewComponent implements OnInit {
 
     refreshBeanList() {
         this.metadata.spinnerLoading().then(ref => {
-            this.model.list(this.moduleName, 20, 0).subscribe(res => {console.log(res)
+            this.model.list(this.moduleName, 20, 0).subscribe(res => {
                 this.beanList = res.list;
                 this.totalCount = res.totalcount;
                 ref.instance.self.destroy();

@@ -44,7 +44,7 @@ export class FEBAuthor {
     save() {
         this.metadata.spinnerLoading().then(ref => {
             this.backend.postRequest('frontend/blogsaveprofile/' + this.blog.id + '/' + this.session.authData.userid).subscribe(res => {
-                console.log(res);
+                // console.log(res);
                 this.toast.success('Đã lưu');
                 ref.instance.self.destroy();
             });

@@ -84,7 +84,7 @@ export class FECategory implements OnInit {
                 this.router.params.subscribe(params => {
                     this.slug = params['slug'];
                     this.backend.getRequestNoAuth('frontend/category/' + this.slug).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.bean = res;
                         this.title.setTitle(this.bean.name + ' - ' + this.session.setting.system_name);
                         this.meta.addTags([
@@ -99,7 +99,7 @@ export class FECategory implements OnInit {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref=>{
                     this.backend.getRequestNoAuth('frontend/categorydata/' + params['slug']).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.data = res;
                         this.recent4 = [];
                         for (let i = 1; i < this.data.recent.length && i <= 4; i++) {

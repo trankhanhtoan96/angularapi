@@ -79,7 +79,7 @@ export class FEProfile implements OnInit {
                 this.router.params.subscribe(params => {
                     this.id = params['id'];
                     this.backend.getRequestNoAuth('frontend/profile/' + this.id).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.bean = res;
                         this.title.setTitle(this.bean.name + ' - ' + this.session.setting.system_name);
                         this.meta.addTags([
@@ -94,7 +94,7 @@ export class FEProfile implements OnInit {
             this.router.params.subscribe(params => {
                 this.metadata.spinnerLoading().then(ref => {
                     this.backend.getRequestNoAuth('frontend/profiledata/' + params['id']).subscribe(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.data = res;
                         ref.instance.self.destroy();
                     });

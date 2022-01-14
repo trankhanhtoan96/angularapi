@@ -93,7 +93,7 @@ export class FEHome implements OnInit {
         if (typeof sessionStorage != "undefined") {
             this.metadata.spinnerLoading().then(ref => {
                 this.backend.getRequestNoAuth('frontend/home').subscribe(res => {
-                    console.log(res);
+                    // console.log(res);
                     this.data = res;
                     this.recent4 = [];
                     for (let i = 1; i < this.data.recent.length && i <= 4; i++) {
