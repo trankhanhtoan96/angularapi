@@ -101,7 +101,7 @@ class RESTManager
         $this->app = $app;
 
         $this->initGlobals();
-        $this->initRateLimiter();
+//        $this->initRateLimiter();
 
         $this->app->options('/{routes:.+}', function ($request, $response, $args) {
             return $response;
@@ -409,9 +409,14 @@ class RESTManager
     private function initExtensions()
     {
         // check if we have extension in the local path
-        $checkRootPaths = ['include', 'modules',
-            'extensions/include', 'extensions/modules',
-            'custom/modules', 'custom/include'];
+        $checkRootPaths = [
+            'include',
+            'modules',
+//            'extensions/include',
+//            'extensions/modules',
+//            'custom/modules',
+//            'custom/include'
+        ];
         foreach ($checkRootPaths as $checkRootPath) {
             $KRestDirHandle = opendir("./$checkRootPath");
             if ($KRestDirHandle) {
@@ -459,32 +464,32 @@ class RESTManager
             if (isset($route['method']) && isset($route['route']) && isset($route['class'])
                 && isset($route['function'])) {
 
-                if (isset($route['options']['noAuth']) && $route['options']['noAuth'] == false
-                    && AuthenticationController::getInstance()->isAuthenticated() === false) {
-                    continue;
-                }
+//                if (isset($route['options']['noAuth']) && $route['options']['noAuth'] == false
+//                    && AuthenticationController::getInstance()->isAuthenticated() === false) {
+//                    continue;
+//                }
 
                 $routeObject = $this->app->{$route['method']}($route['route'], [new $route['class'](), $route['function']]);
 
-                if (isset($route['options']['adminOnly']) && $route['options']['adminOnly'] == true) {
-                    $routeObject->add(AdminOnlyAccessMiddleware::class);
-                }
+//                if (isset($route['options']['adminOnly']) && $route['options']['adminOnly'] == true) {
+//                    $routeObject->add(AdminOnlyAccessMiddleware::class);
+//                }
+//
+//                if (isset($route['options']['moduleRoute']) && $route['options']['moduleRoute'] == true) {
+//                    $routeObject->add(ModuleRouteMiddleware::class);
+//                }
+//
+//                if (isset($route['options']['validate']) && $route['options']['validate'] == true) {
+//                    $routeObject->add(ValidationMiddleware::class);
+//                }
 
-                if (isset($route['options']['moduleRoute']) && $route['options']['moduleRoute'] == true) {
-                    $routeObject->add(ModuleRouteMiddleware::class);
-                }
-
-                if (isset($route['options']['validate']) && $route['options']['validate'] == true) {
-                    $routeObject->add(ValidationMiddleware::class);
-                }
-
-                if (isset($route['options']['middleware']) && is_array($route['options']['middleware'])) {
-                    foreach ($route['options']['middleware'] as $middlewareClass) {
-                        if (class_exists($middlewareClass)) {
-                            $routeObject->add($middlewareClass);
-                        }
-                    }
-                }
+//                if (isset($route['options']['middleware']) && is_array($route['options']['middleware'])) {
+//                    foreach ($route['options']['middleware'] as $middlewareClass) {
+//                        if (class_exists($middlewareClass)) {
+//                            $routeObject->add($middlewareClass);
+//                        }
+//                    }
+//                }
             }
         }
     }

@@ -246,44 +246,44 @@ class AuthenticationController
 
             $this->setCurrentUser($userObj);
 
-            if (($username && $password) || $tokenIssuer !== 'SpiceCRM') { //login was via user/pass therefore create session and log login
+//            if (($username && $password) || $tokenIssuer !== 'SpiceCRM') { //login was via user/pass therefore create session and log login
                 $this->token = SpiceCRMAuthenticate::createSession($this->currentUser);
 
-                //should we log successful login?
-                if (array_key_exists("logSuccessLogin", $config)) {
-                    $this->logSuccessLogin($userObj);
-                }
+//                //should we log successful login?
+//                if (array_key_exists("logSuccessLogin", $config)) {
+//                    $this->logSuccessLogin($userObj);
+//                }
 
-            }
+//            }
 
-            $this->handleTenants();
+//            $this->handleTenants();
 
         } catch (UnauthorizedException $e) {
             /** @var UserAccessLog $userAccessLogObj */
 
             # isUserBlocked() in case the login or password check has not happened, because the user is already blocked (temporary or permanent).
             # Otherwise the check has happened and failed, so log the failed attempt:
-            if (!$e->isUserBlocked() and !empty($username)) {
-                $userAccessLogObj = BeanFactory::getBean('UserAccessLogs');
-                $userAccessLogObj->addRecord("loginfail", empty($impersonationUser) ? $username : $impersonationUser . '#as#' . $username);
-                unset($userAccessLogObj);
-                if ($config['login_attempt_restriction']['user_enabled']) {
-                    $amountFailedLogins = UserAccessLog::getAmountFailedLoginsWithinByUsername($username, $config['login_attempt_restriction']['user_monitored_period']);
-                    if ($amountFailedLogins >= $config['login_attempt_restriction']['user_number_attempts']) {
-                        User::blockUserByName($username, $config['login_attempt_restriction']['user_blocking_duration']);
-                    }
-                }
-            }
+//            if (!$e->isUserBlocked() and !empty($username)) {
+//                $userAccessLogObj = BeanFactory::getBean('UserAccessLogs');
+//                $userAccessLogObj->addRecord("loginfail", empty($impersonationUser) ? $username : $impersonationUser . '#as#' . $username);
+//                unset($userAccessLogObj);
+//                if ($config['login_attempt_restriction']['user_enabled']) {
+//                    $amountFailedLogins = UserAccessLog::getAmountFailedLoginsWithinByUsername($username, $config['login_attempt_restriction']['user_monitored_period']);
+//                    if ($amountFailedLogins >= $config['login_attempt_restriction']['user_number_attempts']) {
+//                        User::blockUserByName($username, $config['login_attempt_restriction']['user_blocking_duration']);
+//                    }
+//                }
+//            }
 
             # In case the max. failed login attempts are reached, black list the IP address.
             # ( But only if IP restriction is enabled and the IP address is not white listed and the IP address has not been black listed just before (isIPblocked). )
-            if ($config['login_attempt_restriction']['ip_enabled']
-                and UserAccessLog::getNumberLoginAttemptsByIp() >= (int)$config['login_attempt_restriction']['ip_number_attempts']
-                and !IpAddresses::ipAddressIsWhite()
-                and !$e->isIPblocked()) {
-                IpAddresses::addIpAddress('b');
-                $e->setIPblocked(true);
-            };
+//            if ($config['login_attempt_restriction']['ip_enabled']
+//                and UserAccessLog::getNumberLoginAttemptsByIp() >= (int)$config['login_attempt_restriction']['ip_number_attempts']
+//                and !IpAddresses::ipAddressIsWhite()
+//                and !$e->isIPblocked()) {
+//                IpAddresses::addIpAddress('b');
+//                $e->setIPblocked(true);
+//            };
 
             $this->errorReason = $e->getMessage();
             $this->errorCode = $e->getErrorCode();

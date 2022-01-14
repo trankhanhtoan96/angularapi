@@ -1,6 +1,5 @@
 <?php
 require_once 'vendor/autoload.php';
-require_once 'include/vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
 use DI\Container;
@@ -36,15 +35,6 @@ try {
     $slimContainer = new Container();
     AppFactory::setContainer($slimContainer);
     $app = AppFactory::create(new SpiceResponseFactory());
-
-    $app->add(new Tuupola\Middleware\CorsMiddleware([
-        "origin" => ["http://dominio.com.br"],
-        "methods" => ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-        "headers.allow" => ["Origin", "Content-Type", "Authorization", "Accept", "ignoreLoadingBar", "X-Requested-With", "Access-Control-Allow-Origin"],
-        "headers.expose" => [],
-        "credentials" => true,
-        "cache" => 0,
-    ]));
 
     $app->addBodyParsingMiddleware();
     $app->mode = 'production';
