@@ -50,6 +50,7 @@ export class Session {
         if (!this.authData.id) this.getSessionData();
         let headers = new HttpHeaders();
         headers = headers.set('OAuth-Token', this.authData.id);
+        headers = headers.set('apitoken', this.authData.id);
         return headers;
     }
 

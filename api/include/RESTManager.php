@@ -261,6 +261,9 @@ class RESTManager
             $apikey = $headers['apikey'];
         }elseif (isset($headers['apiup'])) {
             $apikey = $headers['apiup'];
+        }elseif(isset($headers['apitoken'])){
+            $token = $headers['apitoken'];
+            $tokenIssuer = "SpiceCRM";
         }
 
         if ($user || $token || $apikey) {
