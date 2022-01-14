@@ -197,7 +197,21 @@ class AuthenticationController
     {
         $config = SpiceConfig::getInstance()->config;
         try {
-            if ($token) {
+            if (!empty($_GET['apikey'])) {
+                $userObj = new User();
+                $userObj->retrieve_by_string_fields([
+                    'apikey' => $apikey
+                ]);
+                if (empty($userObj->id)) {
+                    $u = base64_decode($_GET['apikey']);
+                    $u = explode(':', $u);
+                    if (count($u) == 2) {
+                        $userObj = $this->handleUserPassAuth($u[0], $u[1]);
+                    } else {
+                        throw new \Exception("Apikey not found");
+                    }
+                }
+            } elseif ($token) {
                 $userObj = $this->handleTokenAuth($token, $tokenIssuer);
 //                if ( !IpAddresses::checkIpAddress() ) {
 //                    if ( !User::isAdmin_byName( $userObj->user_name )) # don´t block the admin

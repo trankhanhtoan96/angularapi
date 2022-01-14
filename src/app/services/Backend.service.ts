@@ -21,6 +21,7 @@ export class Backend {
     private getHeaders(): HttpHeaders {
         let headers = this.session.getSessionHeader();
         headers = headers.set('Accept', 'application/json');
+        headers = headers.set('apikey', this.session.authData.apiKey);
         return headers;
     }
 
@@ -44,6 +45,7 @@ export class Backend {
                 }
             });
         }
+        output = output.append('apikey', this.session.authData.apiKey.toString());
         return output;
     }
 
