@@ -1,5 +1,5 @@
-FROM php:7.4-apache
-WORKDIR /var/www/html
+FROM webdevops/php-apache:7.4
+WORKDIR /app/api
 COPY . .
-RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 777 /app
 EXPOSE 80
