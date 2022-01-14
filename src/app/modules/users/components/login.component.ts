@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
                             last_name: res.last_name,
                             user_image: res.user_image,
                             user_name: res.user_name,
-                            userid: res.userid
+                            userid: res.userid,
+                            apiKey:res.apikey
                         });
                         this.router.navigate(['/']);
                     }

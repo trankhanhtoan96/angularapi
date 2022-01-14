@@ -12,6 +12,7 @@ interface IFAuthData {
     first_name: string;
     email: string;
     admin: boolean;
+    apiKey:string
 }
 
 @Injectable()
@@ -43,14 +44,15 @@ export class Session {
         last_name: "",
         user_image: "",
         user_name: "",
-        userid: ""
+        userid: "",
+        apiKey:""
     };
 
     getSessionHeader(): HttpHeaders {
         if (!this.authData.id) this.getSessionData();
         let headers = new HttpHeaders();
         headers = headers.set('OAuth-Token', this.authData.id);
-        headers = headers.set('apitoken', this.authData.id);
+        headers = headers.set('apikey', this.authData.apiKey);
         return headers;
     }
 
@@ -83,7 +85,8 @@ export class Session {
             last_name: "",
             user_image: "",
             user_name: "",
-            userid: ""
+            userid: "",
+            apiKey:""
         };
         localStorage.clear();
     }

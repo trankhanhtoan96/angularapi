@@ -394,38 +394,20 @@ class AuthenticationController
             throw new UnauthorizedException($authenticationController->errorReason, $authenticationController->errorCode);
         }
         $currentUser = $this->getCurrentUser();
+        if (empty($currentUser->apikey)) $currentUser->apikey = md5(time());
+        $currentUser->save();
 
         $loginData = [
             'admin' => $currentUser->is_admin == '1' ? true : false,
-            'is_api_user' => $currentUser->is_api_user == '1' ? true : false,
-            'display_name' => $currentUser->get_summary_text(),
             'email' => $currentUser->email1,
             'first_name' => $currentUser->first_name,
-            'address_country' => $currentUser->address_country,
             'id' => session_id(),
             'last_name' => $currentUser->last_name,
-            'portal_only' => $currentUser->portal_only == '1' ? true : false,
             'user_name' => $currentUser->user_name,
             'userid' => $currentUser->id,
             'user_image' => $currentUser->user_image,
-            'companycode_id' => $currentUser->companycode_id,
-            'tenant_id' => $currentUser->systemtenant_id,
-            'tenant_name' => $this->systemtenantname,
-            'obtainGDPRconsent' => false,
-            'canchangepassword' => AuthenticationController::getInstance()->getCanChangePassword(),
-            'expiringPasswordValidityDays' => AuthenticationController::getInstance()->expiringPasswordValidityDays
+            'apikey' => $currentUser->apikey,
         ];
-
-        // Is it a portal user? And the GDPR consent for portal users is configured?
-        if ($currentUser->portal_only and @SpiceConfig::getInstance()->config['portal_gdpr']['obtain_consent']) {
-            $contactOfPortalUser = BeanFactory::getBean('Contacts');
-            $contactOfPortalUser->retrieve_by_string_fields(['portal_user_id' => $this->getCurrentUser()->id]);
-            // gdpr_marketing_agreement not 'g' and not 'r' indicates that the user has not yet been asked for consent of GDPR in general (data AND marketing)
-            if (($contactOfPortalUser->gdpr_marketing_agreement !== 'g' and $contactOfPortalUser->gdpr_marketing_agreement !== 'r')
-                and !$contactOfPortalUser->gdpr_data_agreement) {
-                $loginData['obtainGDPRconsent'] = true;
-            }
-        }
 
         return $loginData;
     }
