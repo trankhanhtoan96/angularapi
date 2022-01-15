@@ -31,7 +31,9 @@ class BlogHooks
 
     public function before_save(&$bean, $event, $arguments)
     {
-        $bean->slug = $this->slugify($bean->name) . '-' . time();
+        if(empty($bean->slug)) {
+            $bean->slug = $this->slugify($bean->name) . '-' . time();
+        }
     }
     public function after_retrieve(&$bean, $event, $arguments)
     {
