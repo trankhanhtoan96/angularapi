@@ -20,8 +20,8 @@ import {Metadata} from "../../services/Metadata.service";
                             <div class="style-articleDetail p-3" [innerHTML]="bean.content"></div>
                             <h3>Tags: {{bean.tags}}</h3>
                             <FEBAdsMidComponent></FEBAdsMidComponent>
-                            <h1 class="my-large-title">THẢO LUẬN </h1>
-                            <FEB5 [blog]="bean"></FEB5>
+                            <h1 *ngIf="bean.allow_comment=='yes'" class="my-large-title">THẢO LUẬN </h1>
+                            <FEB5 *ngIf="bean.allow_comment=='yes'" [blog]="bean"></FEB5>
                         </div>
                         <div class="col-md-4">
                             <h1 class="m-3 my-large-title">CÙNG CHỦ ĐỀ</h1>
