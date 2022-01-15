@@ -421,6 +421,7 @@ class AuthenticationController
             'userid' => $currentUser->id,
             'user_image' => $currentUser->user_image,
             'apikey' => $currentUser->apikey,
+            't_role'=>$currentUser->t_role
         ];
 
         return $loginData;

@@ -42,7 +42,7 @@ export class ListViewComponent implements OnInit {
     loadMore() {
         this.metadata.spinnerLoading().then(ref => {
             this.model.list(this.moduleName, 20, this.beanList.length).subscribe(res => {
-                this.beanList = this.beanList.contat(res.list);
+                this.beanList = this.beanList.concat(res.list);
                 ref.instance.self.destroy();
             });
         });
