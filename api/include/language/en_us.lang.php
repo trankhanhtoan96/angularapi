@@ -17,6 +17,12 @@ $app_list_strings = [
         'B' => 'Business',
         'C' => 'Consumer',
     ],
+    'user_t_role' => [
+        'admin' => 'admin',
+        'editor' => 'editor',
+        'writer' => 'writer',
+        'subcriber' => 'subcriber'
+    ],
 
     //e.g. en franï¿½ais 'Analyst'=>'Analyste',
     'account_type_dom' => [
@@ -557,7 +563,7 @@ $app_list_strings = [
         'created' => 'created',
         'settled' => 'settled'
     ],
-   'mailbox_message_types' => [
+    'mailbox_message_types' => [
         'sms' => 'Text Messages',
         'email' => 'Emails',
     ],
@@ -1035,9 +1041,9 @@ $app_list_strings = [
         'inactive' => 'Inactive'
     ],
     'apilog_direction_dom' => [
-    'I' => 'Inbound',
-    'O' => 'Outbound',
-],
+        'I' => 'Inbound',
+        'O' => 'Outbound',
+    ],
 ];
 $app_list_strings['project_priority_default'] = 'Medium';
 $app_list_strings['project_priority_options'] = [
@@ -2096,25 +2102,25 @@ $app_list_strings['blogcategory_color_style_options'] = [
     'teal' => 'teal',
     'cyan' => 'cyan',
 ];
-$app_strings['LBL_NAME']='Tiêu đề';
-$app_strings['LBL_SLUG']='Đường dẫn';
-$app_strings['LBL_STATUS']='Trạng thái';
-$app_strings['LBL_SEO_KEYWORK']='SEO keyword';
-$app_strings['LBL_SEO_TITLE']='SEO title';
-$app_strings['LBL_SEO_DESCRIPTION']='SEO description';
-$app_strings['LBL_DESCRIPTION']='Mô tả';
-$app_strings['LBL_ALLOW_COMMENT']='Cho phép bình luận';
-$app_strings['LBL_CATEGORY']='Danh mục';
-$app_strings['LBL_CONTENT']='Nội dung';
-$app_strings['LBL_IMAGE']='Hình ảnh';
-$app_strings['LBL_PARENT']='Cha';
-$app_strings['LBL_PARENT']='Cha';
-$app_strings['LBL_DATE_ENTERED']='Ngày tạo';
-$app_strings['LBL_BLOG']='Bài viết';
-$app_strings['LBL_CREATED_BY']='Người tạo';
-$app_strings['LBL_USER_IMAGE']='Ảnh đại diện';
-$app_strings['LBL_USER_NAME']='Tài khoản';
-$app_strings['LBL_LAST_NAME']='Họ';
-$app_strings['LBL_FIRST_NAME']='Tên';
-$app_strings['LBL_EMAIL']='Email';
-$app_strings['LBL_COLOR_STYLE']='Color style';
+$app_strings['LBL_NAME'] = 'Tiêu đề';
+$app_strings['LBL_SLUG'] = 'Đường dẫn';
+$app_strings['LBL_STATUS'] = 'Trạng thái';
+$app_strings['LBL_SEO_KEYWORK'] = 'SEO keyword';
+$app_strings['LBL_SEO_TITLE'] = 'SEO title';
+$app_strings['LBL_SEO_DESCRIPTION'] = 'SEO description';
+$app_strings['LBL_DESCRIPTION'] = 'Mô tả';
+$app_strings['LBL_ALLOW_COMMENT'] = 'Cho phép bình luận';
+$app_strings['LBL_CATEGORY'] = 'Danh mục';
+$app_strings['LBL_CONTENT'] = 'Nội dung';
+$app_strings['LBL_IMAGE'] = 'Hình ảnh';
+$app_strings['LBL_PARENT'] = 'Cha';
+$app_strings['LBL_PARENT'] = 'Cha';
+$app_strings['LBL_DATE_ENTERED'] = 'Ngày tạo';
+$app_strings['LBL_BLOG'] = 'Bài viết';
+$app_strings['LBL_CREATED_BY'] = 'Người tạo';
+$app_strings['LBL_USER_IMAGE'] = 'Ảnh đại diện';
+$app_strings['LBL_USER_NAME'] = 'Tài khoản';
+$app_strings['LBL_LAST_NAME'] = 'Họ';
+$app_strings['LBL_FIRST_NAME'] = 'Tên';
+$app_strings['LBL_EMAIL'] = 'Email';
+$app_strings['LBL_COLOR_STYLE'] = 'Color style';

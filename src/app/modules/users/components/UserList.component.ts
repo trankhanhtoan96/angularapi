@@ -32,6 +32,9 @@ export class UserListComponent {
             name: 'status'
         },
         {
+          name:'t_role'
+        },
+        {
             name: 'date_entered'
         }
     ];

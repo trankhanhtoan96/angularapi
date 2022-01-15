@@ -12,7 +12,8 @@ interface IFAuthData {
     first_name: string;
     email: string;
     admin: boolean;
-    apiKey:string
+    apiKey:string;
+    role:string;
 }
 
 @Injectable()
@@ -45,7 +46,8 @@ export class Session {
         user_image: "",
         user_name: "",
         userid: "",
-        apiKey:""
+        apiKey:"",
+        role:''
     };
 
     getSessionHeader(): HttpHeaders {
@@ -54,6 +56,11 @@ export class Session {
         // headers = headers.set('OAuth-Token', this.authData.id);
         headers = headers.set('apikey', this.authData.apiKey);
         return headers;
+    }
+
+    checkRole(roleName:string[]):boolean{
+        return roleName.indexOf(this.authData.role) >= 0;
+
     }
 
     setSessionData(data: IFAuthData): void {
@@ -86,7 +93,8 @@ export class Session {
             user_image: "",
             user_name: "",
             userid: "",
-            apiKey:""
+            apiKey:"",
+            role:''
         };
         localStorage.clear();
     }

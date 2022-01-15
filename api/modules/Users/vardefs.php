@@ -914,6 +914,11 @@ $dictionary['User'] = [
             'name' => 'apikey',
             'type' => 'varchar',
             'len' => 32
+        ],
+        't_role' => [
+            'name' => 't_role',
+            'type' => 'enum',
+            'options'=>'user_t_role'
         ]
     ],
     'indices' => [

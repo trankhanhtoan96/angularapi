@@ -27,8 +27,11 @@ export class UserEditComponent {
         ],
         [
             {
+                name: 't_role'
+            },
+            {
                 name: 'description',
-                span: 12
+                span: 8
             }
         ]
     ];

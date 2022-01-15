@@ -34,7 +34,7 @@
                             <i class="ti ti-bookmark"></i>
                             Bài viết đã lưu
                         </a>
-                        <a [routerLink]="'/admin/blog/create'" class="dropdown-item">
+                        <a *ngIf="session.checkRole(['admin','editor','writer'])" [routerLink]="'/admin/blog/create'" class="dropdown-item">
                             <i class="ti ti-edit"></i>
                             Viết Bài
                         </a>
@@ -42,7 +42,7 @@
                             <i class="ti ti-lock"></i>
                             Đổi mật khẩu
                         </a>
-                        <a class="dropdown-item" routerLink="/admin">
+                        <a *ngIf="session.checkRole(['admin','editor','writer'])" class="dropdown-item" routerLink="/admin">
                             <i class="ti ti-settings"></i>
                             Quản trị
                         </a>
