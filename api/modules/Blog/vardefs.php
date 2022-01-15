@@ -77,6 +77,11 @@ $dictionary['Blog'] = [
             'vname'=>'LBL_VIEW_COUNT',
             'type' => 'int'
         ),
+        'schedule_post' => array(
+            'name' => 'schedule_post',
+            'vname'=>'LBL_SCHEDULE_POST',
+            'type' => 'int'
+        ),
     ],
     'indices' => [],
     'relationships' => []

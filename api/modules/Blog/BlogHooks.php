@@ -2,11 +2,42 @@
 
 namespace SpiceCRM\modules\Blog;
 
+use SpiceCRM\includes\database\DBManagerFactory;
+
 class BlogHooks
 {
+    function slugify($text)
+    {
+        // Strip html tags
+        $text = strip_tags($text);
+        // Replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+        // Transliterate
+        setlocale(LC_ALL, 'en_US.utf8');
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        // Remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+        // Trim
+        $text = trim($text, '-');
+        // Remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+        // Lowercase
+        $text = strtolower($text);
+        if (empty($text)) {
+            return 'n-a';
+        }
+        return $text;
+    }
+
     public function before_save(&$bean, $event, $arguments)
     {
-        $bean->slug = strtolower(trim(preg_replace('/[\s-]+/', '-', preg_replace('/[^A-Za-z0-9-]+/', '-', preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $bean->name))))), '-'));
-        $bean->slug = $bean->slug . '-' . time();
+        $bean->slug = $this->slugify($bean->name) . '-' . time();
+    }
+    public function after_retrieve(&$bean, $event, $arguments)
+    {
+        if(strtotime($bean->schedule_post)>time()){
+            DBManagerFactory::getInstance()->query("update blog set status='publish' where id='$bean->id'");
+            $bean->status='publish';
+        }
     }
 }

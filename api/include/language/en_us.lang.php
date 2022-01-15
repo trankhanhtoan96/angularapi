@@ -2124,3 +2124,4 @@ $app_strings['LBL_LAST_NAME'] = 'Họ';
 $app_strings['LBL_FIRST_NAME'] = 'Tên';
 $app_strings['LBL_EMAIL'] = 'Email';
 $app_strings['LBL_COLOR_STYLE'] = 'Color style';
+$app_strings['LBL_SCHEDULE_POST'] = 'Ngày đăng bài';

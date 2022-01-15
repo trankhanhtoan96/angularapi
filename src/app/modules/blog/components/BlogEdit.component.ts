@@ -34,25 +34,28 @@ export class BlogEditComponent {
                 name: 'seo_keywork'
             },
             {
-                name: 'seo_description'
+                name:'schedule_post'
             }
         ],
         [
+            {
+                name: 'seo_description'
+            },
             {
                 name: 'description',
             },
             {
                 name: 'allow_comment'
-            },
-            {
-                name: 'category_id'
             }
         ],
         [
             {
                 name: 'tags',
                 span: 8
-            }
+            },
+            {
+                name: 'category_id'
+            },
         ],
         [
             {
