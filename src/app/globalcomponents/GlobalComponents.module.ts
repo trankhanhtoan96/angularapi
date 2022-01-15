@@ -32,6 +32,7 @@ import {FEB5} from "./components/FEB5";
 import {FEB6} from "./components/FEB6";
 import {FEB7} from "./components/FEB7";
 import {FormFieldSlugComponent} from "./components/FormFieldSlug.component";
+import {FormFieldDateTimeComponent} from "./components/FormFieldDateTime.component";
 
 @NgModule({
     declarations: [
@@ -60,7 +61,8 @@ import {FormFieldSlugComponent} from "./components/FormFieldSlug.component";
         FEB5,
         FEB6,
         FEB7,
-        FormFieldSlugComponent
+        FormFieldSlugComponent,
+        FormFieldDateTimeComponent
     ],
     exports: [
         HeaderComponent,
@@ -88,7 +90,8 @@ import {FormFieldSlugComponent} from "./components/FormFieldSlug.component";
         FEB5,
         FEB6,
         FEB7,
-        FormFieldSlugComponent
+        FormFieldSlugComponent,
+        FormFieldDateTimeComponent
     ],
     imports: [
         CommonModule,

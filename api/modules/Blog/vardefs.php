@@ -80,7 +80,7 @@ $dictionary['Blog'] = [
         'schedule_post' => array(
             'name' => 'schedule_post',
             'vname'=>'LBL_SCHEDULE_POST',
-            'type' => 'int'
+            'type' => 'datetime'
         ),
     ],
     'indices' => [],
