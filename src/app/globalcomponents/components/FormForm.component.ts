@@ -21,6 +21,8 @@ export class FormFormComponent implements OnInit {
         'id',
         'relate',
         'text',
+        'date',
+        'datetime'
     ];
     optionsOfField = {};
     beingOptionsOfField = [];

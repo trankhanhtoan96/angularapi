@@ -24,7 +24,8 @@ export class TableListComponent implements OnInit {
         'image',
         'datetime',
         'text',
-        'relate'
+        'relate',
+        'date'
     ];
     checked: string[] = [];
 

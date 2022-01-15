@@ -31,6 +31,7 @@
                     <span *ngIf="getFieldType(field)=='varchar'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='enum'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='date'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='relate'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='text'">{{bean[field.name]}}</span>
                     <div *ngIf="getFieldType(field)=='html'" [innerHTML]="bean[field.name]"></div>
@@ -40,6 +41,7 @@
                     <span *ngIf="getFieldType(field)=='varchar'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='enum'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='datetime'">{{bean[field.name]}}</span>
+                    <span *ngIf="getFieldType(field)=='date'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='relate'">{{bean[field.name]}}</span>
                     <span *ngIf="getFieldType(field)=='text'">{{bean[field.name]}}</span>
                     <div *ngIf="getFieldType(field)=='html'" [innerHTML]="bean[field.name]"></div>
