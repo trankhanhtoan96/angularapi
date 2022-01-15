@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {environment} from "../../../environments/environment";
+import {Session} from "../../services/Session.service";
 
 @Component({
     selector: 'FormFieldImageComponent',
@@ -16,7 +17,7 @@ export class FormFieldImageComponent implements OnInit {
     @Output() onData = new EventEmitter();
     @ViewChild('inputFile') inputFile;
 
-    constructor() {
+    constructor(private session: Session) {
     }
 
     ngOnInit(): void {
@@ -34,11 +35,10 @@ export class FormFieldImageComponent implements OnInit {
     imageUploadHandler() {
         this.getBase64(this.inputFile.nativeElement.files[0]).then(res => {
             if (res) {
-                fetch(environment.apiUrl + '/common/bean/file/upload', {
+                fetch(environment.apiUrl + '/common/bean/file/upload?apikey=' + this.session.authData.apiKey, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': environment.apiKey
+                        'Content-Type': 'application/json'
                     },
                     // @ts-ignore
                     body: JSON.stringify({file: res.replace(/^data:image\/.+;base64,/, '')})

@@ -20,7 +20,7 @@ $routes = [
         'class' => ModuleController::class,
         'function' => 'uploadFile',
         'description' => 'Attachment upload',
-        'options' => ['noAuth' => false, 'adminOnly' => false, 'validate' => true],
+        'options' => ['noAuth' => true],
         'parameters' => [
             'file' => [
                 'in' => 'body',
