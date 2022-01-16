@@ -49,9 +49,9 @@ export class FormFieldDateTimeComponent implements OnInit {
             this.month = parseInt(tmp[1]);
             this.year = parseInt(tmp[0]);
         }
-        this.yearOptions = this.range(new Date().getFullYear() - 10, new Date().getFullYear() + 10);
-        this.monthOptions = this.range(1, 12);
-        this.dayOptions = this.range(1, 31);
+        this.yearOptions = this.range(new Date().getFullYear() - 10, new Date().getFullYear() + 11);
+        this.monthOptions = this.range(1, 13);
+        this.dayOptions = this.range(1, 32);
     }
 
     range(start, end) {
