@@ -5,7 +5,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     template: `
         <div class="row g-2">
             <div class="col-2">
-                <input [(ngModel)]="time" type="text" placeholder="__:__">
+                <input [(ngModel)]="time" type="text" placeholder="__:__" class="form-control">
             </div>
             <div class="col-3">
                 <select [(ngModel)]="day" class="form-select" (change)="sendData()">

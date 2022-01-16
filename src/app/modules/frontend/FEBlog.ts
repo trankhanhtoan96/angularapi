@@ -5,6 +5,7 @@ import {Model} from "../../services/Model.service";
 import {Backend} from "../../services/Backend.service";
 import {ActivatedRoute} from "@angular/router";
 import {Metadata} from "../../services/Metadata.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
     selector: 'FEBlog',
@@ -81,9 +82,16 @@ export class FEBlog implements OnInit {
                         this.title.setTitle(this.bean.seo_title?this.bean.seo_title:this.bean.name);
                         this.meta.addTags([
                             {name:'og:title', content:this.bean.seo_title?this.bean.seo_title:this.bean.name},
+                            {name:'twitter:text:title', content:this.bean.seo_title?this.bean.seo_title:this.bean.name},
                             {name: 'og:description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description},
                             {name: 'description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description},
-                            {name: 'og:image', content: this.bean.image}
+                            {name: 'og:image', content: this.bean.image},
+                            {name: 'og:image:secure_url', content: this.bean.image},
+                            {name:'og:url',content:this.router.url},
+                            {name:'keywords',content:this.bean.tags},
+                            {name:'article:author',content:this.bean.created_by_name},
+                            {name:'article:tag',content:this.bean.tags},
+                            {name:'article:published_time',content:this.bean.date_entered},
                         ]);
                     });
                 });
