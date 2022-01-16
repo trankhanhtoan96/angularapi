@@ -87,7 +87,7 @@ export class FEBlog implements OnInit {
                             {name: 'description', content: this.bean.seo_description?this.bean.seo_description:this.bean.description},
                             {name: 'og:image', content: this.bean.image},
                             {name: 'og:image:secure_url', content: this.bean.image},
-                            {name:'og:url',content:this.router.url+'?v='+String(new Date().getTime())},
+                            {name:'og:url',content:'https://simplyinvest.vn/blog/'+this.slug},
                             {name:'keywords',content:this.bean.tags},
                             {name:'article:author',content:this.bean.created_by_name},
                             {name:'article:tag',content:this.bean.tags},
