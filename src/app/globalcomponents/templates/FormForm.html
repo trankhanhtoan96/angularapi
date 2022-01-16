@@ -4,16 +4,16 @@
 
             <label *ngIf="!isFieldNoLabel(field)" [class]="'form-label '+getFieldRequired(field)">{{getLabel(field)}}</label>
 
-            <input *ngIf="getFieldType(field)=='varchar'" [maxLength]="getFieldLen(field)" [(ngModel)]="bean[getFieldName(field)]" type="text" class="form-control">
-            <textarea *ngIf="getFieldType(field)=='text'" [(ngModel)]="bean[getFieldName(field)]" class="form-control"></textarea>
-            <input *ngIf="getFieldType(field)=='bool'" [(ngModel)]="bean[getFieldName(field)]" type="checkbox" class="form-check-input">
-            <FormFieldEditorComponent *ngIf="getFieldType(field)=='html'" (onData)="bean[getFieldName(field)]=$event" [content]="bean[getFieldName(field)]"></FormFieldEditorComponent>
-            <ng-select2 *ngIf="getFieldType(field)=='enum'" width="100%" [(ngModel)]="bean[getFieldName(field)]" [data]="getFieldOptions(field)"></ng-select2>
+            <input *ngIf="getFieldType(field)=='varchar' && checkRole(field)" [maxLength]="getFieldLen(field)" [(ngModel)]="bean[getFieldName(field)]" type="text" class="form-control">
+            <textarea *ngIf="getFieldType(field)=='text' && checkRole(field)" [(ngModel)]="bean[getFieldName(field)]" class="form-control"></textarea>
+            <input *ngIf="getFieldType(field)=='bool' && checkRole(field)" [(ngModel)]="bean[getFieldName(field)]" type="checkbox" class="form-check-input">
+            <FormFieldEditorComponent *ngIf="getFieldType(field)=='html' && checkRole(field)" (onData)="bean[getFieldName(field)]=$event" [content]="bean[getFieldName(field)]"></FormFieldEditorComponent>
+            <ng-select2 *ngIf="getFieldType(field)=='enum' && checkRole(field)" width="100%" [(ngModel)]="bean[getFieldName(field)]" [data]="getFieldOptions(field)"></ng-select2>
             <FormFieldImageComponent *ngIf="getFieldType(field)=='image'" [name]="getFieldName(field)" [src]="bean[getFieldName(field)]" (onData)="bean[getFieldName(field)]=$event"></FormFieldImageComponent>
-            <FormFieldSlugComponent *ngIf="getFieldType(field)=='slug'" [content]="bean[getFieldName(field)]" (onData)="bean[getFieldName(field)]=$event"></FormFieldSlugComponent>
-            <ng-select2 *ngIf="getFieldType(field)=='id' && enableFieldRelate(field)" width="100%" [(ngModel)]="bean[getFieldName(field)]" [data]="getFieldRelateOptions(field)"></ng-select2>
-            <FormFieldDateComponent *ngIf="field.type=='date'" [data]="bean[field.name]" (onData)="bean[field.name]=$event"></FormFieldDateComponent>
-            <FormFieldDateTimeComponent *ngIf="field.type=='datetime'" [data]="bean[field.name]" (onData)="bean[field.name]=$event"></FormFieldDateTimeComponent>
+            <FormFieldSlugComponent *ngIf="getFieldType(field)=='slug' && checkRole(field)" [content]="bean[getFieldName(field)]" (onData)="bean[getFieldName(field)]=$event"></FormFieldSlugComponent>
+            <ng-select2 *ngIf="getFieldType(field)=='id' && enableFieldRelate(field) && checkRole(field)" width="100%" [(ngModel)]="bean[getFieldName(field)]" [data]="getFieldRelateOptions(field)"></ng-select2>
+            <FormFieldDateComponent *ngIf="getFieldType(field)=='date' && checkRole(field)" [data]="bean[field.name]" (onData)="bean[field.name]=$event"></FormFieldDateComponent>
+            <FormFieldDateTimeComponent *ngIf="getFieldType(field)=='datetime' && checkRole(field)" [data]="bean[field.name]" (onData)="bean[field.name]=$event"></FormFieldDateTimeComponent>
         </div>
     </div>
 </ng-container>

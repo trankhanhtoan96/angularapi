@@ -57,7 +57,8 @@ $dictionary['Blog'] = [
             'name' => 'status',
             'vname' => 'LBL_STATUS',
             'type' => 'enum',
-            'options' => 'blog_status_options'
+            'options' => 'blog_status_options',
+            'default'=>'wait approve'
         ],
         'category_id' => array(
             'name' => 'category_id',

@@ -149,4 +149,11 @@ export class FormFormComponent implements OnInit {
         this.getFieldRelateOptions(field);
         return false;
     }
+
+    checkRole(field: any): boolean {
+        if (field.role) {
+            return this.session.checkRole(field.role);
+        }
+        return true;
+    }
 }

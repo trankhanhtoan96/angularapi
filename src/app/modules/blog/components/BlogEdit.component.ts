@@ -23,7 +23,8 @@ export class BlogEditComponent {
                 name: 'slug'
             },
             {
-                name: 'status'
+                name: 'status',
+                role: ['admin','editor']
             }
         ],
         [
@@ -56,7 +57,8 @@ export class BlogEditComponent {
                 name: 'category_id'
             },
             {
-                name: 'created_by'
+                name: 'created_by',
+                role: ['admin', 'editor']
             }
         ],
         [
