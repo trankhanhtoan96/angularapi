@@ -26,7 +26,7 @@ $dictionary['Blog'] = [
         'slug' => [
             'name' => 'slug',
             'vname' => 'LBL_SLUG',
-            'type'=>'slug',
+            'type' => 'slug',
             'dbType' => 'varchar',
             'len' => 255
         ],
@@ -51,22 +51,22 @@ $dictionary['Blog'] = [
             'name' => 'allow_comment',
             'vname' => 'LBL_ALLOW_COMMENT',
             'type' => 'enum',
-            'options'=>'blog_allow_comment_options'
+            'options' => 'blog_allow_comment_options'
         ],
         'status' => [
             'name' => 'status',
             'vname' => 'LBL_STATUS',
             'type' => 'enum',
-            'options'=>'blog_status_options'
+            'options' => 'blog_status_options'
         ],
         'category_id' => array(
             'name' => 'category_id',
             'type' => 'id',
-            'vname'=>'LBL_CATEGORY'
+            'vname' => 'LBL_CATEGORY'
         ),
         'category_name' => array(
             'id_name' => 'category_id',
-            'vname'=>'LBL_CATEGORY',
+            'vname' => 'LBL_CATEGORY',
             'name' => 'category_name',
             'type' => 'relate',
             'source' => 'non-db',
@@ -74,12 +74,13 @@ $dictionary['Blog'] = [
         ),
         'view_count' => array(
             'name' => 'view_count',
-            'vname'=>'LBL_VIEW_COUNT',
-            'type' => 'int'
+            'vname' => 'LBL_VIEW_COUNT',
+            'type' => 'int',
+            'default' => 0
         ),
         'schedule_post' => array(
             'name' => 'schedule_post',
-            'vname'=>'LBL_SCHEDULE_POST',
+            'vname' => 'LBL_SCHEDULE_POST',
             'type' => 'datetime'
         ),
     ],

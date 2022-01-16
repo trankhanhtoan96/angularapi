@@ -34,7 +34,7 @@ export class BlogEditComponent {
                 name: 'seo_keywork'
             },
             {
-                name:'schedule_post'
+                name: 'schedule_post'
             }
         ],
         [
@@ -50,12 +50,14 @@ export class BlogEditComponent {
         ],
         [
             {
-                name: 'tags',
-                span: 8
+                name: 'tags'
             },
             {
                 name: 'category_id'
             },
+            {
+                name: 'created_by'
+            }
         ],
         [
             {

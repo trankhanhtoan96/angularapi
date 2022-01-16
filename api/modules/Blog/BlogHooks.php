@@ -31,15 +31,17 @@ class BlogHooks
 
     public function before_save(&$bean, $event, $arguments)
     {
-        if(empty($bean->slug)) {
+        if (empty($bean->slug)) {
             $bean->slug = $this->slugify($bean->name) . '-' . time();
         }
+        $bean->set_created_by = false;
     }
+
     public function after_retrieve(&$bean, $event, $arguments)
     {
-        if(strtotime($bean->schedule_post)>time()){
+        if (strtotime($bean->schedule_post) > time()) {
             DBManagerFactory::getInstance()->query("update blog set status='publish' where id='$bean->id'");
-            $bean->status='publish';
+            $bean->status = 'publish';
         }
     }
 }
