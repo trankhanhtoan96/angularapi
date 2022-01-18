@@ -2,6 +2,7 @@
 
 namespace SpiceCRM\modules\BlogFrontEnd\api\controllers;
 
+use Couchbase\View;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use SpiceCRM\data\BeanFactory;
 use SpiceCRM\includes\database\DBManagerFactory;
@@ -13,6 +14,7 @@ use SpiceCRM\modules\Blog\Blog;
 use SpiceCRM\modules\BlogCategory\BlogCategory;
 use SpiceCRM\modules\BlogComment\BlogComment;
 use SpiceCRM\modules\Users\User;
+use SpiceCRM\modules\ViewTracker\ViewTracker;
 
 class BlogFrontEndController
 {
@@ -27,6 +29,7 @@ class BlogFrontEndController
 
         return $res->withJson(['success' => 1]);
     }
+
     public function blogsaved(Request $req, Response $res, array $args): Response
     {
         $data = [];
@@ -39,6 +42,7 @@ class BlogFrontEndController
         }
         return $res->withJson($data);
     }
+
     public function changePass(Request $req, Response $res, array $args): Response
     {
         $body = $req->getParsedBody();
@@ -110,8 +114,14 @@ class BlogFrontEndController
     public function getBlog(Request $req, Response $res, array $args): Response
     {
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
+        $db = DBManagerFactory::getInstance();
         $bean = new Blog();
         $bean->retrieve_by_string_fields(['slug' => $args['slug']]);
+
+        $db->query("update blog set view_count=view_count+1 where id='$bean->id'");
+        $viewTracker = new ViewTracker();
+        $viewTracker->parent_id = $bean->id;
+        $viewTracker->save();
 
         $author = new User();
         $author->retrieve($bean->created_by);
@@ -130,7 +140,6 @@ class BlogFrontEndController
         $db = DBManagerFactory::getInstance();
         $moduleHandler = new ModuleHandler(RESTManager::getInstance()->app);
         $cid = $db->getOne("select blogcategory.id  from blog inner join blogcategory on blog.category_id=blogcategory.id where blog.slug='{$args['slug']}'");
-        $db->query("update blog set view_count=view_count+1 where blog.slug='{$args['slug']}'");
 
         $result = $db->query("select id from blog where status='publish' and category_id='$cid' order by date_entered desc limit 5");
         while ($row = $db->fetchByAssoc($result)) {
@@ -141,6 +150,7 @@ class BlogFrontEndController
         while ($row = $db->fetchByAssoc($result)) {
             $data['topViews'][] = $moduleHandler->mapBeanToArray('Blog', BeanFactory::getBean('Blog', $row['id']));
         }
+
         return $res->withJson($data);
     }
 
