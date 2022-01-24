@@ -1238,3 +1238,8 @@ sa-spinner-circular-fixed > svg > circle:last-child {
 .badge {
     padding-top: 5px;
 }
+
+.style-articleDetail img{
+    width: auto;
+    height: auto;
+}

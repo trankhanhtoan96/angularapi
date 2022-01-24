@@ -7,7 +7,12 @@ import {Session} from "../../services/Session.service";
         <div *ngIf="showAds" class="container-sm">
             <div class="row m-3">
                 <div class="col text-center">
-                    <img *ngIf="showAdsType=='image'" [src]="session.setting.ads_topimage" style="width:100%;max-width: 900px" alt="">
+                    <a *ngIf="session.setting.ads_toplink; else noLink" [href]="session.setting.ads_toplink" target="_blank">
+                        <img *ngIf="showAdsType=='image'" [src]="session.setting.ads_topimage" style="width:100%;max-width: 900px" alt="">
+                    </a>
+                    <ng-template #noLink>
+                        <img *ngIf="showAdsType=='image'" [src]="session.setting.ads_topimage" style="width:100%;max-width: 900px" alt="">
+                    </ng-template>
                     <div *ngIf="showAdsType=='code'" [innerHTML]="session.setting.ads_topgg"></div>
                 </div>
             </div>

@@ -34,8 +34,11 @@ export class Session {
         system_info: '',
         system_name: '',
         ads_topgg:'',
+        ads_toplink: '',
         ads_midgg:'',
-        ads_sidegg:''
+        ads_midlink: '',
+        ads_sidegg:'',
+        ads_sidelink: ''
     };
     public authData: IFAuthData = {
         admin: false,

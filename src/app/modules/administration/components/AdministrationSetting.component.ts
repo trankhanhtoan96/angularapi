@@ -42,60 +42,78 @@ export class AdministrationSettingComponent implements OnInit {
             {
                 name: 'ads_toptime',
                 type: 'datetime',
-                span: 4,
+                span: 3,
                 label: 'Thời gian hết hạn Banner QC TOP'
             },
             {
                 name: 'ads_topimage',
                 type: 'image',
-                span: 4,
+                span: 3,
                 label: 'Banner'
             },
             {
                 name: 'ads_topgg',
                 type: 'text',
-                span: 4,
+                span: 3,
                 label: 'Google Ads Code'
+            },
+            {
+                name: 'ads_toplink',
+                type: 'text',
+                span: 3,
+                label: 'Link'
             },
         ],
         [
             {
                 name: 'ads_midtime',
                 type: 'datetime',
-                span: 4,
+                span: 3,
                 label: 'Thời gian hết hạn Banner QC Mid'
             },
             {
                 name: 'ads_midimage',
                 type: 'image',
-                span: 4,
+                span: 3,
                 label: 'Banner'
             },
             {
                 name: 'ads_midgg',
                 type: 'text',
-                span: 4,
+                span: 3,
                 label: 'Google Ads Code'
+            },
+            {
+                name: 'ads_midlink',
+                type: 'text',
+                span: 3,
+                label: 'Link'
             },
         ],
         [
             {
                 name: 'ads_sidetime',
                 type: 'datetime',
-                span: 4,
+                span: 3,
                 label: 'Thời gian hết hạn Banner QC Side Bar'
             },
             {
                 name: 'ads_sideimage',
                 type: 'image',
-                span: 4,
+                span: 3,
                 label: 'Banner'
             },
             {
                 name: 'ads_sidegg',
                 type: 'text',
-                span: 4,
+                span: 3,
                 label: 'Google Ads Code'
+            },
+            {
+                name: 'ads_sidelink',
+                type: 'text',
+                span: 3,
+                label: 'Link'
             },
         ],
         [
