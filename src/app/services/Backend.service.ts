@@ -110,6 +110,35 @@ export class Backend {
         return subject.asObservable();
     }
 
+    auth3rd(route: string, body: {
+        email: string,
+        firstName: string,
+        lastName: string,
+        id: string,
+        idToken: string,
+        photoUrl: string,
+        provider: string
+    }): Observable<any> {
+        let subject = new Subject<any>();
+        let theaders = new HttpHeaders();
+        theaders = theaders.set('Accept', 'application/json');
+        this.http.post(environment.apiUrl + "/" + encodeURI(route), body, {headers: theaders, observe: "response"}).subscribe({
+            next: (res) => {
+                subject.next(res.body);
+                subject.complete();
+            },
+            error: err => {
+                // @ts-ignore
+                this.handleError(err, route, 'POST', {getParams: {}, body: body});
+                subject.next(err.status);
+                subject.complete();
+                this.toast.error(err.statusText);
+            }
+        });
+        return subject.asObservable();
+    }
+
+
     postRequestNoAuth(route: string = "", params: any = {}, body: any = {}): Observable<any> {
         let responseSubject = new Subject<any>();
 

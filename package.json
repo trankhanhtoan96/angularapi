@@ -25,6 +25,7 @@
     "@angular/router": "~13.1.0",
     "@nguniversal/express-engine": "^13.0.1",
     "@tinymce/tinymce-angular": "^4.2.4",
+    "angularx-social-login": "^4.0.1",
     "express": "^4.15.2",
     "jquery": "^3.6.0",
     "ng-select2": "^1.4.1",

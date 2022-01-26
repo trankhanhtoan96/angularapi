@@ -261,12 +261,18 @@ class RESTManager
             $apikey = $headers['apikey'];
         }elseif (isset($headers['apiup'])) {
             $apikey = $headers['apiup'];
+        }else{
+            try {
+                $auth3rd=json_decode(file_get_contents('php://input'),true);
+            }catch (Exception $e){
+                throw new UnauthorizedException("Invalid 3rd authentication", 6);
+            }
         }
 
-        if ($user || $token || $apikey) {
+        if ($user || $token || $apikey || $auth3rd) {
             $authController = AuthenticationController::getInstance();
             $impersonationUser = @SpiceConfig::getInstance()->config['system']['impersonation_enabled'] === true ? $_GET['impersonationuser'] : null;
-            return $authController->authenticate($user, $pass, $token, $tokenIssuer, $impersonationUser, $apikey);
+            return $authController->authenticate($user, $pass, $token, $tokenIssuer, $impersonationUser, $apikey,$auth3rd);
         }
     }
 

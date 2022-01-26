@@ -193,7 +193,7 @@ class AuthenticationController
      * @return array
      * @throws UnauthorizedException
      */
-    public function authenticate($username = null, $password = null, $token = null, $tokenIssuer = null, $impersonationUser = null, $apikey = null)
+    public function authenticate($username = null, $password = null, $token = null, $tokenIssuer = null, $impersonationUser = null, $apikey = null, $auth3rd = null)
     {
         $config = SpiceConfig::getInstance()->config;
         try {
@@ -236,6 +236,28 @@ class AuthenticationController
                     } else {
                         throw new \Exception("Apikey not found");
                     }
+                }
+            } elseif ($auth3rd){
+                /***********
+                 * GOOGLE *
+                 ***********/
+                $userObj = new User();
+                $userObj->retrieve_by_string_fields(['user_name' => $auth3rd['email']]);
+                if (empty($userObj->id)){
+                    //Register new user
+                    $userObj->user_name = $auth3rd['email'];
+                    $userObj->user_image = $auth3rd['photoUrl'];
+                    $userObj->first_name = $auth3rd['firstName'];
+                    $userObj->last_name = $auth3rd['lastName'];
+                    $userObj->authenticate_id = $auth3rd['id'];
+                    $userObj->t_role = 'subcriber';
+                    $userObj->apikey = md5(time());
+                    $userObj->status = 'Active';
+                    $userObj->sugar_login = 1;
+                    $userObj->created_by = '1';
+                    $userObj->modified_user_id = '1';
+                    $userObj->login_blocked = 0;
+                    $userObj->save();
                 }
             } else {
                 throw new UnauthorizedException("Invalid authentication method", 6);

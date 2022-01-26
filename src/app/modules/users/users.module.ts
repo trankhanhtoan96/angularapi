@@ -7,6 +7,8 @@ import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.mo
 import {UserListComponent} from "./components/UserList.component";
 import {SystemModule} from "../../system/System.module";
 import {CommonModule} from "@angular/common";
+import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider} from 'angularx-social-login';
+import {environment} from "../../../environments/environment";
 
 @NgModule({
     declarations: [
@@ -24,9 +26,22 @@ import {CommonModule} from "@angular/common";
         FormsModule,
         GlobalComponentsModule,
         SystemModule,
-        CommonModule
+        CommonModule,
+        SocialLoginModule
     ],
     providers: [
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider(environment.GoogleClientID)
+                    }
+                ]
+            } as SocialAuthServiceConfig,
+        }
     ]
 })
 export class UsersModule {
