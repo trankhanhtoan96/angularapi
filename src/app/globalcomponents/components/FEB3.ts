@@ -6,7 +6,7 @@ import {Session} from "../../services/Session.service";
     selector: 'FEB3',
     template: `
         <div *ngIf="bean" class="post-feature d-none d-md-block">
-            <img class="d-block w-100" [src]="bean.image" alt="">
+            <img class="d-block w-100" [src]="bean.image" alt="" style="width: auto;height: 470px;object-fit: cover">
             <div class="post-feature-content">
                 <h2 class="card-title m-0">
                     <a class="style-title m-0" style="color: #f1f1f1" [routerLink]="'/blog/'+bean.slug">
