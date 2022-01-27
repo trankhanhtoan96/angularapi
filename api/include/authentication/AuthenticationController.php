@@ -195,12 +195,12 @@ class AuthenticationController
      */
     public function authenticate($username = null, $password = null, $token = null, $tokenIssuer = null, $impersonationUser = null, $apikey = null, $auth3rd = null)
     {
-        $config = SpiceConfig::getInstance()->config;
+//        $config = SpiceConfig::getInstance()->config;
         try {
             if (!empty($_GET['apikey'])) {
                 $userObj = new User();
                 $userObj->retrieve_by_string_fields([
-                    'apikey' => $apikey
+                    'apikey' => $_GET['apikey']
                 ]);
                 if (empty($userObj->id)) {
                     $u = base64_decode($_GET['apikey']);
