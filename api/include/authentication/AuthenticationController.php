@@ -208,7 +208,7 @@ class AuthenticationController
                     if (count($u) == 2) {
                         $userObj = $this->handleUserPassAuth($u[0], $u[1]);
                     } else {
-                        throw new \Exception("Apikey not found");
+                        throw new UnauthorizedException("Apikey not found");
                     }
                 }
             } elseif ($token) {
@@ -234,7 +234,7 @@ class AuthenticationController
                     if (count($u) == 2) {
                         $userObj = $this->handleUserPassAuth($u[0], $u[1], $impersonationUser);
                     } else {
-                        throw new \Exception("Apikey not found");
+                        throw new UnauthorizedException("Apikey not found");
                     }
                 }
             } elseif ($auth3rd){

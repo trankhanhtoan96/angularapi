@@ -21,7 +21,7 @@ import {FEB6} from "../../globalcomponents/components/FEB6";
                             </h3>
                             <div class="text-muted">{{bean.t_email}}</div>
                             <div class="mt-3">
-                                <span class="badge bg-danger">Writer</span>
+                                <span class="badge bg-danger">{bean.t_role}</span>
                                 <div class="style-articleDetail" [innerHTML]="bean.description"></div>
                             </div>
                         </div>
