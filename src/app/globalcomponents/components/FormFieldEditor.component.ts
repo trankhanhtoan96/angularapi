@@ -17,10 +17,9 @@ export class FormFieldEditorComponent implements OnInit {
             base_url: '/tinymce',
             suffix: '.min',
             height: 400,
-            plugins: ['fullscreen link image code media table lists paste image paste'],
-            toolbar: 'fullscreen formatselect paste | bold italic | alignleft aligncenter alignright | bullist numlist | image',
-            images_upload_handler: this.imageUploadHandler,
-            paste_data_images: true
+            plugins: ['fullscreen link image code media table lists image powerpaste'],
+            toolbar: 'fullscreen formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image',
+            images_upload_handler: this.imageUploadHandler
         }
     }
 
@@ -40,6 +39,6 @@ export class FormFieldEditorComponent implements OnInit {
         response = await response.json();
         progress(100);
         // @ts-ignore
-        success(environment.apiUrl + '/upload/' + response.file_md5);
+        success('/api/upload/' + response.file_md5);
     };
 }
