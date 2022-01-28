@@ -6,6 +6,7 @@ import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.mo
 import {RouterModule} from "@angular/router";
 import {NgSelect2Module} from "ng-select2";
 import {CommonModule} from "@angular/common";
+import {DateTimePickerModule} from "ngx-datetime-picker";
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import {CommonModule} from "@angular/common";
         RouterModule,
         NgSelect2Module,
         CommonModule,
+        DateTimePickerModule,
     ],
     providers: [
     ]

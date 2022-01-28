@@ -21,6 +21,8 @@ export class AdminTopViewsComponent implements OnInit {
     public topList: ITopRow[] = [];
     private _interval: number = 0;
     private _topic: string = '';
+    private _start: any = '';
+    private _end: any = '';
 
     @Input() set interval(value: number) {
         // track when interval has been change from parent component
@@ -30,6 +32,18 @@ export class AdminTopViewsComponent implements OnInit {
 
     @Input() set topic(value: string) {
         this._topic = value;
+        this.loadTopList();
+    }
+
+    @Input() set startdate(value: any) {
+        // track when interval has been change from parent component
+        this._start = value;
+        this.loadTopList();
+    }
+
+    @Input() set enddate(value: any) {
+        // track when interval has been change from parent component
+        this._end = value;
         this.loadTopList();
     }
 
@@ -53,7 +67,7 @@ export class AdminTopViewsComponent implements OnInit {
 
     private loadTopList() {
         this.metadata.spinnerLoading().then(ref => {
-            this.backend.getRequestNoAuth('views/top', {period: this.interval, top: this.top, topic: this.topic}).subscribe(res => {
+            this.backend.getRequestNoAuth('views/top', {period: this.interval, top: this.top, topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
                 //clear old list
                 this.topList = [];
                 for (let i = 0; i < res.result.length; i++) {

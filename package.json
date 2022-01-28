@@ -32,6 +32,7 @@
     "jquery": "^3.6.0",
     "ng-select2": "^1.4.1",
     "ng2-charts": "^3.0.8",
+    "ngx-datetime-picker": "^3.0.0",
     "ngx-toastr": "^14.2.1",
     "rxjs": "~7.4.0",
     "select2": "^4.1.0-rc.0",

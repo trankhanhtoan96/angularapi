@@ -16,6 +16,8 @@ export class AdminChartViewsComponent implements OnInit {
     public loaded: boolean = false;
     private _interval: number;
     private _topic: string;
+    private _start: any;
+    private _end: any;
 
     @Input() set interval(value: number) {
         // track when interval has been change from parent component
@@ -26,6 +28,18 @@ export class AdminChartViewsComponent implements OnInit {
     @Input() set topic(value: string) {
         // track when interval has been change from parent component
         this._topic = value;
+        this.reloadChart();
+    }
+
+    @Input() set startdate(value: any) {
+        // track when interval has been change from parent component
+        this._start = value;
+        this.reloadChart();
+    }
+
+    @Input() set enddate(value: any) {
+        // track when interval has been change from parent component
+        this._end = value;
         this.reloadChart();
     }
 
@@ -93,7 +107,7 @@ export class AdminChartViewsComponent implements OnInit {
             //clear total views
             this.totalViews = 0;
 
-            this.backend.getRequestNoAuth('views/analyze', {period: this.interval, topic: this.topic}).subscribe(res => {
+            this.backend.getRequestNoAuth('views/analyze', {period: this.interval, topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
                 let gotData = [];
                 let gotLabels = [];
                 for (let i = 0; i < res.result.length; i++) {
