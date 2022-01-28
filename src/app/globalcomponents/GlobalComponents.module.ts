@@ -33,6 +33,9 @@ import {FEB6} from "./components/FEB6";
 import {FEB7} from "./components/FEB7";
 import {FormFieldSlugComponent} from "./components/FormFieldSlug.component";
 import {FormFieldDateTimeComponent} from "./components/FormFieldDateTime.component";
+import {AdminChartViewsComponent} from "./components/AdminChartViews.component";
+import {NgChartsModule} from "ng2-charts";
+import {AdminTopViewsComponent} from "./components/AdminTopViews.component";
 
 @NgModule({
     declarations: [
@@ -62,7 +65,9 @@ import {FormFieldDateTimeComponent} from "./components/FormFieldDateTime.compone
         FEB6,
         FEB7,
         FormFieldSlugComponent,
-        FormFieldDateTimeComponent
+        FormFieldDateTimeComponent,
+        AdminChartViewsComponent,
+        AdminTopViewsComponent
     ],
     exports: [
         HeaderComponent,
@@ -91,7 +96,9 @@ import {FormFieldDateTimeComponent} from "./components/FormFieldDateTime.compone
         FEB6,
         FEB7,
         FormFieldSlugComponent,
-        FormFieldDateTimeComponent
+        FormFieldDateTimeComponent,
+        AdminChartViewsComponent,
+        AdminTopViewsComponent
     ],
     imports: [
         CommonModule,
@@ -105,6 +112,7 @@ import {FormFieldDateTimeComponent} from "./components/FormFieldDateTime.compone
         RouterModule,
         SpinnerDottedModule,
         NgSelect2Module,
+        NgChartsModule
     ],
     providers: [
         {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'},

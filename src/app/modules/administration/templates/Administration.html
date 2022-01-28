@@ -1,1 +1,54 @@
-<h1 class="text-center">Adminnitration</h1>
+<div class="page-wrapper">
+    <div class="page-header d-print-none">
+        <div class="container-xl">
+            <div class="page-header d-print-none">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <!-- Page pre-title -->
+                        <div class="page-pretitle">
+                            Overview
+                        </div>
+                        <h2 class="page-title">
+                            Dashboard
+                        </h2>
+                    </div>
+                    <!-- Page title actions -->
+                    <div class="col-auto ms-auto d-print-none">
+                        <div class="btn-list">
+                            <a id="interval-select" class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                           <circle cx="12" cy="12" r="9"></circle>
+                           <polyline points="12 7 12 12 15 15"></polyline>
+                        </svg>
+                    </span>
+                                <span class="nav-link-title">
+                      {{displayInterval}}
+                    </span>
+                            </a>
+                            <div id="interval-menu"  class="dropdown-menu">
+                                <i class="dropdown-item cursor-pointer" (click)="selectInterval(7)">
+                                    1 tuần qua
+                                </i>
+                                <i class="dropdown-item cursor-pointer" (click)="selectInterval(30)">
+                                    30 ngày qua
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="container-xl mt-2">
+            <div class="row row-deck row-cards">
+                <div class="col-md-12 col-lg-8" AdminChartViewsComponent [interval]="selectedInterval">
+                </div>
+                <div class="col-md-6 col-lg-4" AdminTopViewsComponent [interval]="selectedInterval">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

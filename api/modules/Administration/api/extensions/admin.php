@@ -55,6 +55,24 @@ $routes = [
             ]
         ]
     ],
+    [
+        'method' => 'get',
+        'route' => '/views/analyze',
+        'class' => AdminController::class,
+        'function' => 'getViewsAnalysis',
+        'description' => 'get views analysis in the period',
+        'options' => ['noAuth' => false, 'adminOnly' => true, 'validate' => true],
+        'parameters' => []
+    ],
+    [
+        'method' => 'get',
+        'route' => '/views/top',
+        'class' => AdminController::class,
+        'function' => 'getTopViews',
+        'description' => 'get top views blogs in the period',
+        'options' => ['noAuth' => false, 'adminOnly' => true, 'validate' => true],
+        'parameters' => []
+    ],
 ];
 
 /**

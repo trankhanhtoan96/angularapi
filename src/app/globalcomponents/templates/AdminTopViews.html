@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Top {{top}} lượt xem cao nhất trong {{displayInterval}}</h3>
+    </div>
+    <table class="table card-table table-vcenter">
+        <thead>
+        <tr>
+            <th></th>
+            <th colspan="2">Bài viết</th>
+            <th>Lượt xem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let row of topList; let i = index">
+            <tr>
+                <td>{{i+1}}</td>
+                <td>
+                    <span class="avatar" [style]="{'background-image': 'url('+ row.image +')'}"></span>
+                </td>
+                <td>{{row.title}}</td>
+                <td>{{row.views}}</td>
+                <!--            <td class="w-50">-->
+                <!--                <div class="progress progress-xs">-->
+                <!--                    <div class="progress-bar bg-primary" style="width: 71.0%"></div>-->
+                <!--                </div>-->
+                <!--            </td>-->
+            </tr>
+        </ng-container>
+        </tbody>
+    </table>
+</div>

@@ -907,4 +907,69 @@ class AdminController
                 return 'utf8_general_ci';
         }
     }
+
+    public function getViewsAnalysis(Request $req, Response $res, array $args): Response
+    {
+        $result = [];
+        $now = time();
+        $previous = strtotime('- '. $_GET['period']  .'day', $now);
+        $beginDate = date('Y-m-d', $previous);
+        $endDate = date('Y-m-d', $now);
+
+        $db = DBManagerFactory::getInstance();
+
+        $query = "select date(v.date_entered) as day, count(v.id) as views
+                    from viewtracker v
+                    where
+                        date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
+                    group by date(v.date_entered);";
+        $qResult = $db->query($query);
+        while ($row = $db->fetchByAssoc($qResult)) {
+            $result[] = array(
+                'date' => $row['day'],
+                'views' => $row['views']
+            );
+        }
+
+        return $res->withJson(array(
+            'period' => $_GET['period'],
+            'now' => date('Y-m-d', $now),
+            'previous' => date('Y-m-d', $previous),
+            'result' => $result
+        ));
+    }
+
+    public function getTopViews(Request $req, Response $res, array $args): Response
+    {
+        $result = [];
+        $now = time();
+        $top = (int)$_GET['top'];
+        $previous = strtotime('- '. $_GET['period']  .'day', $now);
+        $beginDate = date('Y-m-d', $previous);
+        $endDate = date('Y-m-d', $now);
+
+        $db = DBManagerFactory::getInstance();
+
+        $query = "select distinctrow b.id, b.name, b.image, count(v.id) as views
+                            from viewtracker v
+                            inner join blog b on v.parent_id = b.id
+                            where b.deleted = 0 and
+                                  date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
+                            group by b.id, b.name, b.image
+                            order by views desc
+                            limit {$top};";
+
+        $qResult = $db->query($query);
+        while ($row = $db->fetchByAssoc($qResult)) {
+            $result[] = $row;
+        }
+
+        return $res->withJson(array(
+            'period' => $_GET['period'],
+            'now' => date('Y-m-d', $now),
+            'previous' => date('Y-m-d', $previous),
+            'top'=> $top,
+            'result' => $result
+        ));
+    }
 }
