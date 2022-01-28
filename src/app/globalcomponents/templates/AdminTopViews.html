@@ -17,7 +17,7 @@
                 <td>
                     <span class="avatar" [style]="{'background-image': 'url('+ row.image +')'}"></span>
                 </td>
-                <td>{{row.title}}</td>
+                <td><a [routerLink]="'/blog/'+row.slug" title="Mở để xem bài viết" target="_blank">{{row.title}}</a></td>
                 <td>{{row.views}}</td>
                 <!--            <td class="w-50">-->
                 <!--                <div class="progress progress-xs">-->

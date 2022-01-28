@@ -950,7 +950,7 @@ class AdminController
 
         $db = DBManagerFactory::getInstance();
 
-        $query = "select distinctrow b.id, b.name, b.image, count(v.id) as views
+        $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
                             from viewtracker v
                             inner join blog b on v.parent_id = b.id
                             where b.deleted = 0 and

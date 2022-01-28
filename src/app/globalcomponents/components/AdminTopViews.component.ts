@@ -9,6 +9,7 @@ interface ITopRow {
     image: string;
     title: string;
     views: string;
+    slug?: string;
 }
 
 @Component({
@@ -52,7 +53,8 @@ export class AdminTopViewsComponent implements OnInit {
                         blogId: row.id,
                         image: row.image,
                         title: row.name,
-                        views: row.views
+                        views: row.views,
+                        slug: row.slug
                     });
                 }
                 ref.instance.self.destroy();
