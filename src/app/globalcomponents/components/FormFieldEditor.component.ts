@@ -39,6 +39,6 @@ export class FormFieldEditorComponent implements OnInit {
         response = await response.json();
         progress(100);
         // @ts-ignore
-        success('https://simplyinvest.vn/api/upload/' + response.file_md5);
+        success('/api/upload/' + response.file_md5);
     };
 }
