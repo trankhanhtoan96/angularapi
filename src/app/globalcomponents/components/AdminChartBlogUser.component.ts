@@ -14,6 +14,7 @@ export class AdminChartBlogUserComponent implements OnInit {
 
     public loaded: boolean = false;
     private _interval: number;
+    private _topic: string;
 
     @Input() set interval(value: number) {
         // track when interval has been change from parent component
@@ -21,8 +22,18 @@ export class AdminChartBlogUserComponent implements OnInit {
         this.reloadChart();
     }
 
+    @Input() set topic(value: string) {
+        // track when interval has been change from parent component
+        this._topic = value;
+        this.reloadChart();
+    }
+
     get interval(): number {
         return this._interval;
+    }
+
+    get topic(): string {
+        return this._topic;
     }
 
     @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -33,15 +44,15 @@ export class AdminChartBlogUserComponent implements OnInit {
         scales: {
             x: {
                 beginAtZero: true,
-                ticks:{
-                    font:{
+                ticks: {
+                    font: {
                         size: 10
                     }
                 }
             },
             y: {
                 beginAtZero: true,
-                ticks:{
+                ticks: {
                     precision: 0
                 }
             },
@@ -78,8 +89,7 @@ export class AdminChartBlogUserComponent implements OnInit {
 
     private reloadChart() {
         this.metadata.spinnerLoading().then(ref => {
-            this.backend.getRequestNoAuth('blogs/groupbyuser', {period: this.interval}).subscribe(res => {
-                console.log(res);
+            this.backend.getRequestNoAuth('blogs/groupbyuser', {period: this.interval, topic: this.topic}).subscribe(res => {
                 let gotData = [];
                 let gotLabels = [];
                 for (let i = 0; i < res.result.length; i++) {

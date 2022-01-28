@@ -15,6 +15,7 @@ export class AdminChartViewsComponent implements OnInit {
     public totalViews: number = 0;
     public loaded: boolean = false;
     private _interval: number;
+    private _topic: string;
 
     @Input() set interval(value: number) {
         // track when interval has been change from parent component
@@ -22,8 +23,18 @@ export class AdminChartViewsComponent implements OnInit {
         this.reloadChart();
     }
 
+    @Input() set topic(value: string) {
+        // track when interval has been change from parent component
+        this._topic = value;
+        this.reloadChart();
+    }
+
     get interval(): number {
         return this._interval;
+    }
+
+    get topic(): string {
+        return this._topic;
     }
 
     public lineChartData: ChartConfiguration['data'] = {
@@ -82,7 +93,7 @@ export class AdminChartViewsComponent implements OnInit {
             //clear total views
             this.totalViews = 0;
 
-            this.backend.getRequestNoAuth('views/analyze', {period: this.interval}).subscribe(res => {
+            this.backend.getRequestNoAuth('views/analyze', {period: this.interval, topic: this.topic}).subscribe(res => {
                 let gotData = [];
                 let gotLabels = [];
                 for (let i = 0; i < res.result.length; i++) {

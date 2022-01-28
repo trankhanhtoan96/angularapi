@@ -1017,6 +1017,9 @@ class AdminController
             $previous = strtotime('- ' . $_GET['period'] . 'day', $now);
             $beginDate = date('Y-m-d', $previous);
             $endDate = date('Y-m-d', $now);
+            if($_GET['topic']){
+
+            }
             $query = "select distinctrow u.id , u.user_name, u.first_name, u.last_name, count(b.id) as num_of_blogs from
                               blog b
                             left join users u on u.id = b.created_by
