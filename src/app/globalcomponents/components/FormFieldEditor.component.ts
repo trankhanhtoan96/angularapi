@@ -17,8 +17,8 @@ export class FormFieldEditorComponent implements OnInit {
             base_url: '/tinymce',
             suffix: '.min',
             height: 400,
-            plugins: ['fullscreen link image code media table lists paste image paste'],
-            toolbar: 'fullscreen formatselect paste | bold italic | alignleft aligncenter alignright | bullist numlist | image',
+            plugins: ['fullscreen link image code media table lists paste image'],
+            toolbar: 'fullscreen formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image',
             images_upload_handler: this.imageUploadHandler,
             paste_data_images: true
         }
