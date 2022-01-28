@@ -1,13 +1,10 @@
 <div class="page-wrapper">
-    <div class="page-header d-print-none">
-        <div class="container-xl">
+    <div class="page-header d-print-none mt-0">
+        <div class="container-sm">
             <div class="page-header d-print-none">
                 <div class="row align-items-center">
                     <div class="col">
                         <!-- Page pre-title -->
-                        <div class="page-pretitle">
-                            Overview
-                        </div>
                         <h2 class="page-title">
                             Dashboard
                         </h2>
@@ -28,12 +25,11 @@
                     </span>
                             </a>
                             <div id="interval-menu"  class="dropdown-menu">
-                                <i class="dropdown-item cursor-pointer" (click)="selectInterval(7)">
-                                    1 tuần qua
-                                </i>
-                                <i class="dropdown-item cursor-pointer" (click)="selectInterval(30)">
-                                    30 ngày qua
-                                </i>
+                                <ng-container *ngFor="let interval of intervalOptions">
+                                    <i class="dropdown-item cursor-pointer" (click)="selectInterval(interval.value)">
+                                        {{interval.display}}
+                                    </i>
+                                </ng-container>
                             </div>
                         </div>
                     </div>
@@ -42,11 +38,18 @@
         </div>
     </div>
     <div class="page-body">
-        <div class="container-xl mt-2">
-            <div class="row row-deck row-cards">
-                <div class="col-md-12 col-lg-8" AdminChartViewsComponent [interval]="selectedInterval">
+        <div class="container-sm">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="row">
+                        <div class="col-12" AdminChartViewsComponent [interval]="selectedInterval"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12" AdminChartBlogUserComponent [interval]="selectedInterval"></div>
+                    </div>
                 </div>
-                <div class="col-md-6 col-lg-4" AdminTopViewsComponent [interval]="selectedInterval">
+                <div class="col-md-12 col-lg-4" AdminTopViewsComponent [interval]="selectedInterval">
                 </div>
             </div>
         </div>

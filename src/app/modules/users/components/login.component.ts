@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Backend} from "../../../services/Backend.service";
 import {Session} from "../../../services/Session.service";
 import {Router} from "@angular/router";
@@ -81,5 +81,12 @@ export class LoginComponent implements OnInit {
 
     loginWithGoogle() {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    }
+
+    @HostListener('document:keypress', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+        if (event.keyCode === 13) {
+            this.login();
+        }
     }
 }

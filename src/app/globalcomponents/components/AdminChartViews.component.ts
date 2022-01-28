@@ -19,7 +19,7 @@ export class AdminChartViewsComponent implements OnInit {
     @Input() set interval(value: number) {
         // track when interval has been change from parent component
         this._interval = value;
-        this.reloadDashboard();
+        this.reloadChart();
     }
 
     get interval(): number {
@@ -76,7 +76,7 @@ export class AdminChartViewsComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    private reloadDashboard() {
+    private reloadChart() {
         this.metadata.spinnerLoading().then(ref => {
 
             //clear total views
