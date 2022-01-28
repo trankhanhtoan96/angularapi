@@ -4,7 +4,7 @@ import {environment} from "../../../environments/environment";
 @Component({
     selector: 'FormFieldEditorComponent',
     template: `
-        <editor  (onChange)="onData.emit(content)" [(ngModel)]="content" [init]="config"></editor>
+        <editor (onChange)="onData.emit(content)" [(ngModel)]="content" [init]="config"></editor>
     `
 })
 export class FormFieldEditorComponent implements OnInit {
@@ -40,6 +40,6 @@ export class FormFieldEditorComponent implements OnInit {
         response = await response.json();
         progress(100);
         // @ts-ignore
-        success('/api/upload/' + response.file_md5);
+        success(environment.apiUrl + '/upload/' + response.file_md5);
     };
 }
