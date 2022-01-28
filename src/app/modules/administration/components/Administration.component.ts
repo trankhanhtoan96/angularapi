@@ -7,7 +7,8 @@ export interface IInterval {
 
 export const  listInterval: IInterval[] = [
     {display: "1 tuần qua", value: 7},
-    {display: "30 ngày qua", value: 30}
+    {display: "30 ngày qua", value: 30},
+    {display: "Tất cả", value: 0}
 ];
 
 @Component({
@@ -17,7 +18,7 @@ export const  listInterval: IInterval[] = [
 export class AdministrationComponent implements OnInit {
 
     public selectedInterval = 7;
-
+    public intervalOptions = listInterval;
 
     constructor() {
     }

@@ -2,17 +2,16 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Session} from "../../services/Session.service";
 import {Backend} from "../../services/Backend.service";
 import {listInterval} from "../../modules/administration/components/Administration.component";
-import {ChartConfiguration, ChartEvent, ChartType} from 'chart.js';
+import {ChartConfiguration, ChartData, ChartEvent, ChartType} from 'chart.js';
 import {BaseChartDirective} from 'ng2-charts';
 import {Metadata} from "../../services/Metadata.service";
 
 @Component({
-    selector: '[AdminChartViewsComponent]',
-    templateUrl: '../templates/AdminChartViews.html'
+    selector: '[AdminChartBlogUserComponent]',
+    templateUrl: '../templates/AdminChartBlogUser.html'
 })
-export class AdminChartViewsComponent implements OnInit {
+export class AdminChartBlogUserComponent implements OnInit {
 
-    public totalViews: number = 0;
     public loaded: boolean = false;
     private _interval: number;
 
@@ -26,48 +25,49 @@ export class AdminChartViewsComponent implements OnInit {
         return this._interval;
     }
 
-    public lineChartData: ChartConfiguration['data'] = {
-        datasets: [
-            {
-                data: [],
-                label: 'Lượt xem',
-                backgroundColor: 'rgba(148,159,177,0.2)',
-                borderColor: '#f8d674',
-                pointBackgroundColor: '#f8d388',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-                fill: 'origin',
-            }
-        ],
-        labels: []
-    };
+    @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-    public lineChartOptions: ChartConfiguration['options'] = {
-        elements: {
-            line: {
-                tension: 0
-            }
-        },
-        scales: {
-            // We use this empty structure as a placeholder for dynamic theming.
-            x: {},
-            'y-axis-0':
-                {
-                    position: 'left',
-                }
-        },
-
-        plugins: {
-            legend: {display: false}
-        },
+    public barChartOptions: ChartConfiguration['options'] = {
         responsive: true,
+        // We use these empty structures as placeholders for dynamic theming.
+        scales: {
+            x: {
+                beginAtZero: true,
+                ticks:{
+                    font:{
+                        size: 10
+                    }
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks:{
+                    precision: 0
+                }
+            },
+        },
+        elements: {
+            bar: {
+                backgroundColor: '#ffe5b0',
+                hoverBackgroundColor: '#f8d674',
+            }
+        },
         maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false,
+            }
+        },
+
     };
+    public barChartType: any = 'bar';
 
-    public lineChartType: ChartType = 'line';
-
-    @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+    public barChartData: ChartData<'bar'> = {
+        labels: [],
+        datasets: [
+            {data: [], label: 'Bài viết'},
+        ]
+    };
 
 
     constructor(public session: Session, public backend: Backend, public metadata: Metadata) {
@@ -78,24 +78,21 @@ export class AdminChartViewsComponent implements OnInit {
 
     private reloadChart() {
         this.metadata.spinnerLoading().then(ref => {
-
-            //clear total views
-            this.totalViews = 0;
-
-            this.backend.getRequestNoAuth('views/analyze', {period: this.interval}).subscribe(res => {
+            this.backend.getRequestNoAuth('blogs/groupbyuser', {period: this.interval}).subscribe(res => {
+                console.log(res);
                 let gotData = [];
                 let gotLabels = [];
                 for (let i = 0; i < res.result.length; i++) {
                     const item = res.result[i];
                     // @ts-ignore
-                    gotData.push(item.views);
+                    gotData.push(parseInt(item.num_of_blogs));
                     // @ts-ignore
-                    gotLabels.push(item.date);
+                    gotLabels.push(item.last_name + ' ' + item.first_name);
 
-                    this.totalViews += parseInt(item.views);
                 }
-                this.lineChartData.datasets[0].data = gotData;
-                this.lineChartData.labels = gotLabels;
+                console.log(gotData);
+                this.barChartData.datasets[0].data = gotData;
+                this.barChartData.labels = gotLabels;
                 this.chart?.ngOnChanges({}); //re-render chart
                 this.loaded = true;
                 ref.instance.self.destroy();

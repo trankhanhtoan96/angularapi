@@ -36,6 +36,7 @@ import {FormFieldDateTimeComponent} from "./components/FormFieldDateTime.compone
 import {AdminChartViewsComponent} from "./components/AdminChartViews.component";
 import {NgChartsModule} from "ng2-charts";
 import {AdminTopViewsComponent} from "./components/AdminTopViews.component";
+import {AdminChartBlogUserComponent} from "./components/AdminChartBlogUser.component";
 
 @NgModule({
     declarations: [
@@ -67,7 +68,8 @@ import {AdminTopViewsComponent} from "./components/AdminTopViews.component";
         FormFieldSlugComponent,
         FormFieldDateTimeComponent,
         AdminChartViewsComponent,
-        AdminTopViewsComponent
+        AdminTopViewsComponent,
+        AdminChartBlogUserComponent
     ],
     exports: [
         HeaderComponent,
@@ -98,7 +100,8 @@ import {AdminTopViewsComponent} from "./components/AdminTopViews.component";
         FormFieldSlugComponent,
         FormFieldDateTimeComponent,
         AdminChartViewsComponent,
-        AdminTopViewsComponent
+        AdminTopViewsComponent,
+        AdminChartBlogUserComponent
     ],
     imports: [
         CommonModule,

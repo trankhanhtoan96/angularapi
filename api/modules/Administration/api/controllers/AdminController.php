@@ -911,22 +911,28 @@ class AdminController
     public function getViewsAnalysis(Request $req, Response $res, array $args): Response
     {
         $result = [];
-        $now = time();
-        $previous = strtotime('- '. $_GET['period']  .'day', $now);
-        $beginDate = date('Y-m-d', $previous);
-        $endDate = date('Y-m-d', $now);
-
-        $db = DBManagerFactory::getInstance();
-
-        $query = "select date(v.date_entered) as day, count(v.id) as views
+        if ($_GET['period'] != '0'){
+            $now = time();
+            $previous = strtotime('- '. $_GET['period']  .'day', $now);
+            $beginDate = date('Y-m-d', $previous);
+            $endDate = date('Y-m-d', $now);
+            $query = "select date(v.date_entered) as day, count(v.id) as views
                     from viewtracker v
                     where
                         date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
                     group by date(v.date_entered);";
+        }else{
+            $query = "select date(v.date_entered) as day, count(v.id) as views
+                    from viewtracker v
+                    group by date(v.date_entered);";
+        }
+
+
+        $db = DBManagerFactory::getInstance();
         $qResult = $db->query($query);
         while ($row = $db->fetchByAssoc($qResult)) {
             $result[] = array(
-                'date' => $row['day'],
+                'date' => date('d-m-Y',strtotime($row['day'])),
                 'views' => $row['views']
             );
         }
@@ -942,15 +948,13 @@ class AdminController
     public function getTopViews(Request $req, Response $res, array $args): Response
     {
         $result = [];
-        $now = time();
         $top = (int)$_GET['top'];
-        $previous = strtotime('- '. $_GET['period']  .'day', $now);
-        $beginDate = date('Y-m-d', $previous);
-        $endDate = date('Y-m-d', $now);
-
-        $db = DBManagerFactory::getInstance();
-
-        $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
+        if ($_GET['period'] != '0'){
+            $now = time();
+            $previous = strtotime('- '. $_GET['period']  .'day', $now);
+            $beginDate = date('Y-m-d', $previous);
+            $endDate = date('Y-m-d', $now);
+            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
                             from viewtracker v
                             inner join blog b on v.parent_id = b.id
                             where b.deleted = 0 and
@@ -958,7 +962,17 @@ class AdminController
                             group by b.id, b.name, b.image
                             order by views desc
                             limit {$top};";
+        }else{
+            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
+                            from viewtracker v
+                            inner join blog b on v.parent_id = b.id
+                            where b.deleted = 0
+                            group by b.id, b.name, b.image
+                            order by views desc
+                            limit {$top};";
+        }
 
+        $db = DBManagerFactory::getInstance();
         $qResult = $db->query($query);
         while ($row = $db->fetchByAssoc($qResult)) {
             $result[] = $row;
@@ -969,6 +983,43 @@ class AdminController
             'now' => date('Y-m-d', $now),
             'previous' => date('Y-m-d', $previous),
             'top'=> $top,
+            'result' => $result
+        ));
+    }
+
+    public function getBlogsGroupByUser(Request $req, Response $res, array $args): Response
+    {
+        $result = [];
+        if ($_GET['period'] != '0'){
+            $now = time();
+            $previous = strtotime('- '. $_GET['period']  .'day', $now);
+            $beginDate = date('Y-m-d', $previous);
+            $endDate = date('Y-m-d', $now);
+            $query = "select distinctrow u.id , u.user_name, u.first_name, u.last_name, count(b.id) as num_of_blogs from
+                              blog b
+                            left join users u on u.id = b.created_by
+                            where b.deleted = 0 and u.deleted = 0
+                            and    date(b.date_entered) <= '{$endDate}' and date(b.date_entered) >= '{$beginDate}'
+                            group by u.id, u.user_name;";
+        }else{
+            $query = "select distinctrow u.id , u.user_name, u.first_name, u.last_name, count(b.id) as num_of_blogs from
+                              blog b
+                            left join users u on u.id = b.created_by
+                            where b.deleted = 0 and u.deleted = 0
+                            group by u.id, u.user_name;";
+        }
+
+
+        $db = DBManagerFactory::getInstance();
+        $qResult = $db->query($query);
+        while ($row = $db->fetchByAssoc($qResult)) {
+            $result[] = $row;
+        }
+
+        return $res->withJson(array(
+            'period' => $_GET['period'],
+            'now' => date('Y-m-d', $now),
+            'previous' => date('Y-m-d', $previous),
             'result' => $result
         ));
     }

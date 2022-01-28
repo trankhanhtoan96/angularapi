@@ -73,6 +73,15 @@ $routes = [
         'options' => ['noAuth' => false, 'adminOnly' => true, 'validate' => true],
         'parameters' => []
     ],
+    [
+        'method' => 'get',
+        'route' => '/blogs/groupbyuser',
+        'class' => AdminController::class,
+        'function' => 'getBlogsGroupByUser',
+        'description' => 'get blogs group by user in the period',
+        'options' => ['noAuth' => false, 'adminOnly' => true, 'validate' => true],
+        'parameters' => []
+    ],
 ];
 
 /**

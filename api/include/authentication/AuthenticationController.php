@@ -257,6 +257,7 @@ class AuthenticationController
                     $userObj->created_by = '1';
                     $userObj->modified_user_id = '1';
                     $userObj->login_blocked = 0;
+                    $userObj->t_email = $auth3rd['email'];
                     $userObj->save();
                 }
             } else {
