@@ -17,7 +17,7 @@ export class FormFieldEditorComponent implements OnInit {
             base_url: '/tinymce',
             suffix: '.min',
             height: 400,
-            plugins: ['fullscreen link image code media table lists paste image powerpaste'],
+            plugins: ['fullscreen link image code media table lists paste image powerpaste searchreplace textcolor imagetools mediaembed'],
             toolbar: 'fullscreen formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image',
             images_upload_handler: this.imageUploadHandler
         }
@@ -39,6 +39,6 @@ export class FormFieldEditorComponent implements OnInit {
         response = await response.json();
         progress(100);
         // @ts-ignore
-        success(environment.apiUrl + '/upload/' + response.file_md5);
+        success('https://simplyinvest.vn/api/upload/' + response.file_md5);
     };
 }
