@@ -19,7 +19,8 @@ export class FormFieldEditorComponent implements OnInit {
             height: 400,
             plugins: ['fullscreen link image code media table lists image powerpaste'],
             toolbar: 'fullscreen formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image',
-            images_upload_handler: this.imageUploadHandler
+            images_upload_handler: this.imageUploadHandler,
+            convert_urls: false
         }
     }
 
