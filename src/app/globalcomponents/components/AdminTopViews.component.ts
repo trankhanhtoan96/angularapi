@@ -1,10 +1,11 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Session} from "../../services/Session.service";
 import {Backend} from "../../services/Backend.service";
 import {listInterval} from "../../modules/administration/components/Administration.component";
 import {Metadata} from "../../services/Metadata.service";
 
 interface ITopRow {
+    user: any;
     blogId: string;
     image: string;
     title: string;
@@ -77,7 +78,8 @@ export class AdminTopViewsComponent implements OnInit {
                         image: row.image,
                         title: row.name,
                         views: row.views,
-                        slug: row.slug
+                        slug: row.slug,
+                        user: row.user
                     });
                 }
                 ref.instance.self.destroy();

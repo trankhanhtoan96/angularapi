@@ -944,18 +944,20 @@ class AdminController
         $beginDate = $_GET['start'];
         $endDate = $_GET['end'];
         if ($topic) {
-            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
+            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views, concat(u.last_name,' ',u.first_name) as user
                             from viewtracker v
                             inner join blog b on v.parent_id = b.id and b.category_id='$topic'
+                            inner join users u on u.id=b.created_by and u.deleted=0
                             where b.deleted = 0 and
                                   date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
                             group by b.id, b.name, b.image
                             order by views desc
                             limit {$top};";
         } else {
-            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
+            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views, concat(u.last_name,' ',u.first_name) as user
                             from viewtracker v
-                            inner join blog b on v.parent_id = b.id
+                            inner join blog b on v.parent_id = b.id 
+                            inner join users u on u.id=b.created_by and u.deleted=0
                             where b.deleted = 0 and
                                   date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
                             group by b.id, b.name, b.image
