@@ -3,7 +3,7 @@ import {Backend} from "../../../services/Backend.service";
 import {Session} from "../../../services/Session.service";
 import {Router} from "@angular/router";
 import {Metadata} from "../../../services/Metadata.service";
-import {GoogleLoginProvider, SocialAuthService} from "angularx-social-login";
+import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService} from "angularx-social-login";
 
 @Component({
     selector: 'LoginComponent',
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.socialAuthService.authState.subscribe((user)=>{
+            console.log(user);
             this.metadata.spinnerLoading().then(ref => {
                 this.backend.auth3rd('authentication/login',{
                     email: user.email,
@@ -81,6 +82,10 @@ export class LoginComponent implements OnInit {
 
     loginWithGoogle() {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    }
+
+    loginWithFacebook(){
+        this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
     }
 
     @HostListener('document:keypress', ['$event'])

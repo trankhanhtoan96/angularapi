@@ -7,7 +7,7 @@ import {GlobalComponentsModule} from "../../globalcomponents/GlobalComponents.mo
 import {UserListComponent} from "./components/UserList.component";
 import {SystemModule} from "../../system/System.module";
 import {CommonModule} from "@angular/common";
-import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider} from 'angularx-social-login';
+import {SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 import {environment} from "../../../environments/environment";
 
 @NgModule({
@@ -38,6 +38,12 @@ import {environment} from "../../../environments/environment";
                     {
                         id: GoogleLoginProvider.PROVIDER_ID,
                         provider: new GoogleLoginProvider(environment.GoogleClientID)
+                    },
+                    {
+                        id: FacebookLoginProvider.PROVIDER_ID,
+                        provider: new FacebookLoginProvider(
+                            environment.FacebookAppID
+                        )
                     }
                 ]
             } as SocialAuthServiceConfig,
