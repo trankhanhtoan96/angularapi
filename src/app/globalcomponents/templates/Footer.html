@@ -68,8 +68,8 @@
                 </ul>
                 <label class="form-label font-weight-bold" style="color: black;">Đăng ký nhận bài mới</label>
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" placeholder="Email" value="">
-                    <button class="btn btn-yellow" type="button">
+                    <input [(ngModel)]="emailsubcribe" type="text" class="form-control" placeholder="Email" value="">
+                    <button (click)="subcribeEmail()" class="btn btn-yellow" type="button">
                         <i class="ti ti-send"></i>
                     </button>
                 </div>

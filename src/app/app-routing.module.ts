@@ -22,6 +22,8 @@ import {FEBlog} from "./modules/frontend/FEBlog";
 import {FEBlogID} from "./modules/frontend/FEBlogID";
 import {FEProfile} from "./modules/frontend/FEProfile";
 import {FEProfileSave} from "./modules/frontend/FEProfileSave";
+import {BlogSubcribeEmailListComponent} from "./modules/blogsubcribeemail/components/BlogSubcribeEmailList.component";
+import {BlogSubcribeEmailEditComponent} from "./modules/blogsubcribeemail/components/BlogSubcribeEmailEdit.component";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -40,6 +42,9 @@ const routes: Routes = [
 
     {path: 'admin/blog', component: BlogListComponent, canActivate: [LoginCheck]},
     {path: 'admin/blog/:id', component: BlogEditComponent, canActivate: [LoginCheck]},
+
+    {path: 'admin/blogsubcribeemail', component: BlogSubcribeEmailListComponent, canActivate: [LoginCheck]},
+    {path: 'admin/blogsubcribeemail/:id', component: BlogSubcribeEmailEditComponent, canActivate: [LoginCheck]},
 
     {path: 'admin/blogcomment', component: BlogCommentListComponent, canActivate: [LoginCheck]},
     {path: 'admin/blogcomment/:id', component: BlogCommentEditComponent, canActivate: [LoginCheck]},

@@ -22,6 +22,7 @@ import {BlogModule} from "./modules/blog/Blog.module";
 import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
 import { BlogCommentModule} from "./modules/blogcomment/BlogComment.module";
 import {FrontEndModule} from "./modules/frontend/FrontEnd.module";
+import {BlogSubcribeEmailModule} from "./modules/blogsubcribeemail/BlogSubcribeEmail.module";
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {FrontEndModule} from "./modules/frontend/FrontEnd.module";
         BlogPageModule,
         BlogCommentModule,
         FrontEndModule,
+        BlogSubcribeEmailModule
     ],
     providers: [
         Title,
