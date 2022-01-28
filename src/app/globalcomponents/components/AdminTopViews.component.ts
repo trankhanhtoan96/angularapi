@@ -20,14 +20,25 @@ export class AdminTopViewsComponent implements OnInit {
 
     public topList: ITopRow[] = [];
     private _interval: number = 0;
+    private _topic: string = '';
+
     @Input() set interval(value: number) {
         // track when interval has been change from parent component
         this._interval = value;
         this.loadTopList();
     }
 
+    @Input() set topic(value: string) {
+        this._topic = value;
+        this.loadTopList();
+    }
+
     get interval(): number {
         return this._interval;
+    }
+
+    get topic(): string {
+        return this._topic;
     }
 
     public totalViews = 0;
@@ -37,16 +48,14 @@ export class AdminTopViewsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
     }
 
-    private loadTopList(){
+    private loadTopList() {
         this.metadata.spinnerLoading().then(ref => {
-
-            //clear old list
-            this.topList = [];
-
-            this.backend.getRequestNoAuth('views/top', {period: this.interval, top: this.top}).subscribe(res => {
-                console.log(res);
+            this.backend.getRequestNoAuth('views/top', {period: this.interval, top: this.top, topic: this.topic}).subscribe(res => {
+                //clear old list
+                this.topList = [];
                 for (let i = 0; i < res.result.length; i++) {
                     const row = res.result[i];
                     this.topList.push({
@@ -62,8 +71,8 @@ export class AdminTopViewsComponent implements OnInit {
         });
     }
 
-    public get displayInterval(){
-        const interval = listInterval.find(i=> i.value ==this.interval);
+    public get displayInterval() {
+        const interval = listInterval.find(i => i.value == this.interval);
         // @ts-ignore
         return interval.display;
     }

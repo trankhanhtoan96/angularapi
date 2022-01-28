@@ -13,21 +13,24 @@
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
                             <a id="interval-select" class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
-                    <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                           <circle cx="12" cy="12" r="9"></circle>
-                           <polyline points="12 7 12 12 15 15"></polyline>
-                        </svg>
-                    </span>
-                                <span class="nav-link-title">
-                      {{displayInterval}}
-                    </span>
+                                <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="ti ti-clock"></i></span>
+                                <span class="nav-link-title">{{displayInterval}}</span>
                             </a>
-                            <div id="interval-menu"  class="dropdown-menu">
+                            <div id="interval-menu" class="dropdown-menu">
                                 <ng-container *ngFor="let interval of intervalOptions">
                                     <i class="dropdown-item cursor-pointer" (click)="selectInterval(interval.value)">
                                         {{interval.display}}
+                                    </i>
+                                </ng-container>
+                            </div>
+                            <a id="topic-select" class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="ti ti-folder"></i></span>
+                                <span class="nav-link-title">{{displayTopic}}</span>
+                            </a>
+                            <div id="topic-menu" class="dropdown-menu">
+                                <ng-container *ngFor="let item of topicOptions">
+                                    <i class="dropdown-item cursor-pointer" (click)="selectTopic(item.id)">
+                                        {{item.name}}
                                     </i>
                                 </ng-container>
                             </div>
@@ -49,7 +52,7 @@
                         <div class="col-12" AdminChartBlogUserComponent [interval]="selectedInterval"></div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4" AdminTopViewsComponent [interval]="selectedInterval">
+                <div class="col-md-12 col-lg-4" AdminTopViewsComponent [interval]="selectedInterval" [topic]="selectedTopic">
                 </div>
             </div>
         </div>
