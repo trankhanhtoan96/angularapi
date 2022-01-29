@@ -917,13 +917,14 @@ class AdminController
         if($topic){
             $query = "select date(v.date_entered) as day, count(v.id) as views
                     from viewtracker v
-                     inner join blog b on v.parent_id = b.id and b.category_id='$topic'
+                     inner join blog b on v.parent_id = b.id and b.category_id='$topic' and b.deleted=0
                     where
                         date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '$beginDate'
                     group by date(v.date_entered);";
         }else{
             $query = "select date(v.date_entered) as day, count(v.id) as views
                     from viewtracker v
+                    inner join blog b on v.parent_id = b.id and b.deleted=0
                     where
                         date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '$beginDate'
                     group by date(v.date_entered);";

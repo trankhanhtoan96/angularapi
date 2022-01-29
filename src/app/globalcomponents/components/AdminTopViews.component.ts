@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Session} from "../../services/Session.service";
 import {Backend} from "../../services/Backend.service";
-import {listInterval} from "../../modules/administration/components/Administration.component";
 import {Metadata} from "../../services/Metadata.service";
 
 interface ITopRow {
@@ -20,16 +19,9 @@ interface ITopRow {
 export class AdminTopViewsComponent implements OnInit {
 
     public topList: ITopRow[] = [];
-    private _interval: number = 0;
     private _topic: string = '';
     private _start: any = '';
     private _end: any = '';
-
-    @Input() set interval(value: number) {
-        // track when interval has been change from parent component
-        this._interval = value;
-        this.loadTopList();
-    }
 
     @Input() set topic(value: string) {
         this._topic = value;
@@ -48,10 +40,6 @@ export class AdminTopViewsComponent implements OnInit {
         this.loadTopList();
     }
 
-    get interval(): number {
-        return this._interval;
-    }
-
     get topic(): string {
         return this._topic;
     }
@@ -63,12 +51,12 @@ export class AdminTopViewsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.loadTopList();
     }
 
     private loadTopList() {
         this.metadata.spinnerLoading().then(ref => {
-            this.backend.getRequestNoAuth('views/top', {period: this.interval, top: this.top, topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
+            this.backend.getRequestNoAuth('views/top', { top: this.top, topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
                 //clear old list
                 this.topList = [];
                 for (let i = 0; i < res.result.length; i++) {
@@ -85,11 +73,5 @@ export class AdminTopViewsComponent implements OnInit {
                 ref.instance.self.destroy();
             });
         });
-    }
-
-    public get displayInterval() {
-        const interval = listInterval.find(i => i.value == this.interval);
-        // @ts-ignore
-        return interval.display;
     }
 }
