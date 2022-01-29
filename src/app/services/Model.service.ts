@@ -65,9 +65,9 @@ export class Model {
         return subject.asObservable();
     }
 
-    list(module: string, limit: number, offset: number): Observable<any> {
+    list(module: string, limit: number, offset: number, searchterm: string = ''): Observable<any> {
         let subject = new Subject();
-        this.backend.getRequest('module/' + module, {limit: limit, offset: offset, sortfields: [{"sortfield": "date_entered", "sortdirection": "DESC"}]})
+        this.backend.getRequest('module/' + module, {limit: limit, searchterm: searchterm, offset: offset, sortfields: [{"sortfield": "date_entered", "sortdirection": "DESC"}]})
             .subscribe(res => {
                 subject.next(res);
                 subject.complete();

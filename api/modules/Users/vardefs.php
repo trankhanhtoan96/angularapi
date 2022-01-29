@@ -37,6 +37,7 @@ global $dictionary;
 $dictionary['User'] = [
     'table' => 'users',
     'audited' => true,
+    'unified_search' => true,
     'fields' => [
         'id' => [
             'name' => 'id',
@@ -60,6 +61,7 @@ $dictionary['User'] = [
                 'basic_search' => false,
                 'advanced_search' => false,
             ],
+            'unified_search' => true,
         ],
         'user_hash' => [
             'name' => 'user_hash',
@@ -145,6 +147,7 @@ $dictionary['User'] = [
             'dbType' => 'varchar',
             'type' => 'name',
             'len' => '30',
+            'unified_search' => true,
         ],
         'last_name' => [
             'name' => 'last_name',
@@ -154,6 +157,7 @@ $dictionary['User'] = [
             'len' => '30',
             'importable' => 'required',
             'required' => true,
+            'unified_search' => true,
         ],
         'degree1' => [
             'name' => 'degree1',
@@ -632,7 +636,8 @@ $dictionary['User'] = [
             'name' => 't_email',
             'vname' => 'LBL_EMAIL',
             'type' => 'varchar',
-            'len'=>255
+            'len'=>255,
+            'unified_search' => true,
         ],
         'primary_address' => [
             'name' => 'primary_address',
@@ -918,7 +923,8 @@ $dictionary['User'] = [
         't_role' => [
             'name' => 't_role',
             'type' => 'enum',
-            'options'=>'user_t_role'
+            'options'=>'user_t_role',
+            'unified_search' => true,
         ]
     ],
     'indices' => [

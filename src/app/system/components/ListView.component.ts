@@ -11,8 +11,8 @@ export class ListViewComponent implements OnInit {
     @Input() moduleName: string = '';
     @Input() beanList: any = [];
     @Input() totalCount: number = 0;
-    @Input() config:any;
-
+    @Input() config: any;
+    public searchterm = '';
 
     constructor(
         private model: Model,
@@ -31,7 +31,7 @@ export class ListViewComponent implements OnInit {
 
     refreshBeanList() {
         this.metadata.spinnerLoading().then(ref => {
-            this.model.list(this.moduleName, 20, 0).subscribe(res => {
+            this.model.list(this.moduleName, 20, 0, this.searchterm).subscribe(res => {
                 this.beanList = res.list;
                 this.totalCount = res.totalcount;
                 ref.instance.self.destroy();

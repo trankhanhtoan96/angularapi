@@ -3,21 +3,29 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col">
-                    <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs" style="font-weight: 700;">
-                        <li class="breadcrumb-item"><a href="#">
-                            <i class="ti ti-home"></i>
-                        </a></li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            <a [routerLink]="'/admin/'+routerModule">{{moduleName}}</a>
-                        </li>
-                    </ol>
-                    <span data-bs-toggle="dropdown">
-                        Bộ lọc: Tất cả <i class="ti ti-chevron-down"></i>
-                    </span>
-                    <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
-                        <a href="#" class="dropdown-item">Tất cả</a>
+                    <div class="row">
+                        <div class="col-auto">
+                            <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs" style="font-weight: 700;">
+                                <li class="breadcrumb-item"><a href="#">
+                                    <i class="ti ti-home"></i>
+                                </a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <a [routerLink]="'/admin/'+routerModule">{{moduleName}}</a>
+                                </li>
+                            </ol>
+                            <span data-bs-toggle="dropdown">Bộ lọc: Tất cả <i class="ti ti-chevron-down"></i></span>
+                            <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
+                                <a href="#" class="dropdown-item">Tất cả</a>
+                            </div>
+                            <div class="text-muted mt-1">{{beanList.length}}/{{totalCount}}</div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-2" style="width: 250px;">
+                                <input [(ngModel)]="searchterm" type="text" class="form-control" placeholder="Search for…" />
+                                <button (click)="refreshBeanList()" class="btn" type="button"><i class="ti ti-search"></i></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-muted mt-1">{{beanList.length}}/{{totalCount}}</div>
                 </div>
                 <div class="col-auto ms-auto d-print-none">
                     <div class="d-flex">
