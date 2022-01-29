@@ -911,22 +911,24 @@ class AdminController
     public function getViewsAnalysis(Request $req, Response $res, array $args): Response
     {
         $result = [];
-        if ($_GET['period'] != '0') {
-            $now = time();
-            $previous = strtotime('- ' . $_GET['period'] . 'day', $now);
-            $beginDate = date('Y-m-d', $previous);
-            $endDate = date('Y-m-d', $now);
+        $beginDate = $_GET['start'];
+        $endDate = $_GET['end'];
+        $topic=$_GET['topic'];
+        if($topic){
             $query = "select date(v.date_entered) as day, count(v.id) as views
                     from viewtracker v
+                     inner join blog b on v.parent_id = b.id and b.category_id='$topic' and b.deleted=0
                     where
-                        date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
+                        date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '$beginDate'
                     group by date(v.date_entered);";
-        } else {
+        }else{
             $query = "select date(v.date_entered) as day, count(v.id) as views
                     from viewtracker v
+                    inner join blog b on v.parent_id = b.id and b.deleted=0
+                    where
+                        date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '$beginDate'
                     group by date(v.date_entered);";
         }
-
 
         $db = DBManagerFactory::getInstance();
         $qResult = $db->query($query);
@@ -938,9 +940,6 @@ class AdminController
         }
 
         return $res->withJson(array(
-            'period' => $_GET['period'],
-            'now' => date('Y-m-d', $now),
-            'previous' => date('Y-m-d', $previous),
             'result' => $result
         ));
     }
@@ -950,48 +949,31 @@ class AdminController
         $result = [];
         $top = (int)$_GET['top'];
         $topic = $_GET['topic'];
-        if ($_GET['period'] != '0') {
-            $now = time();
-            $previous = strtotime('- ' . $_GET['period'] . 'day', $now);
-            $beginDate = date('Y-m-d', $previous);
-            $endDate = date('Y-m-d', $now);
-            if ($topic) {
-                $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
+        $now = time();
+        $previous = strtotime('- ' . $_GET['period'] . 'day', $now);
+
+        $beginDate = $_GET['start'];
+        $endDate = $_GET['end'];
+        if ($topic) {
+            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views, concat(u.last_name,' ',u.first_name) as user
                             from viewtracker v
                             inner join blog b on v.parent_id = b.id and b.category_id='$topic'
+                            inner join users u on u.id=b.created_by and u.deleted=0
                             where b.deleted = 0 and
                                   date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
                             group by b.id, b.name, b.image
                             order by views desc
                             limit {$top};";
-            } else {
-                $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
-                            from viewtracker v
-                            inner join blog b on v.parent_id = b.id
-                            where b.deleted = 0 and
-                                  date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
-                            group by b.id, b.name, b.image
-                            order by views desc
-                            limit {$top};";
-            }
         } else {
-            if ($topic) {
-                $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
+            $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views, concat(u.last_name,' ',u.first_name) as user
                             from viewtracker v
-                            inner join blog b on v.parent_id = b.id and b.category_id='$topic'
-                            where b.deleted = 0
+                            inner join blog b on v.parent_id = b.id 
+                            inner join users u on u.id=b.created_by and u.deleted=0
+                            where b.deleted = 0 and
+                                  date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '{$beginDate}'
                             group by b.id, b.name, b.image
                             order by views desc
                             limit {$top};";
-            } else {
-                $query = "select distinctrow b.id, b.name, b.image, b.slug, count(v.id) as views
-                            from viewtracker v
-                            inner join blog b on v.parent_id = b.id
-                            where b.deleted = 0
-                            group by b.id, b.name, b.image
-                            order by views desc
-                            limit {$top};";
-            }
         }
 
         $db = DBManagerFactory::getInstance();
@@ -1012,15 +994,16 @@ class AdminController
     public function getBlogsGroupByUser(Request $req, Response $res, array $args): Response
     {
         $result = [];
-        if ($_GET['period'] != '0') {
-            $now = time();
-            $previous = strtotime('- ' . $_GET['period'] . 'day', $now);
-            $beginDate = date('Y-m-d', $previous);
-            $endDate = date('Y-m-d', $now);
+        $now = time();
+        $previous = strtotime('- ' . $_GET['period'] . 'day', $now);
+        $beginDate = $_GET['start'];
+        $endDate = $_GET['end'];
+        $topic = $_GET['topic'];
+        if ($topic) {
             $query = "select distinctrow u.id , u.user_name, u.first_name, u.last_name, count(b.id) as num_of_blogs from
                               blog b
                             left join users u on u.id = b.created_by
-                            where b.deleted = 0 and u.deleted = 0
+                            where b.deleted = 0 and u.deleted = 0 and b.category_id='$topic'
                             and    date(b.date_entered) <= '{$endDate}' and date(b.date_entered) >= '{$beginDate}'
                             group by u.id, u.user_name;";
         } else {
@@ -1028,6 +1011,7 @@ class AdminController
                               blog b
                             left join users u on u.id = b.created_by
                             where b.deleted = 0 and u.deleted = 0
+                            and    date(b.date_entered) <= '{$endDate}' and date(b.date_entered) >= '{$beginDate}'
                             group by u.id, u.user_name;";
         }
 

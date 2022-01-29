@@ -40,6 +40,7 @@
                             "src/assets/iconfont/tabler-icons.min.css",
                             "node_modules/ngx-toastr/toastr.css",
                             "node_modules/select2/dist/css/select2.min.css",
+                            "node_modules/ngx-datetime-picker/ngx-datetime-picker.css",
                             "src/styles.css"
                         ],
                         "scripts": [

@@ -23,6 +23,7 @@ import {BlogPageModule} from "./modules/blogpage/BlogPage.module";
 import { BlogCommentModule} from "./modules/blogcomment/BlogComment.module";
 import {FrontEndModule} from "./modules/frontend/FrontEnd.module";
 import {BlogSubcribeEmailModule} from "./modules/blogsubcribeemail/BlogSubcribeEmail.module";
+import { DateTimePickerModule} from 'ngx-datetime-picker';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {BlogSubcribeEmailModule} from "./modules/blogsubcribeemail/BlogSubcribeE
         BlogPageModule,
         BlogCommentModule,
         FrontEndModule,
-        BlogSubcribeEmailModule
+        BlogSubcribeEmailModule,
+        DateTimePickerModule
     ],
     providers: [
         Title,

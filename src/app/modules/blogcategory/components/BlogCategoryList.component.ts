@@ -17,7 +17,7 @@ export class BlogCategoryListComponent {
             link: true
         },
         {
-            name:'color_style'
+            name:'slug'
         },
         {
             name: 'parent_name'

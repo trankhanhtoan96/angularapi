@@ -12,17 +12,10 @@
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <a id="interval-select" class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="ti ti-clock"></i></span>
-                                <span class="nav-link-title">{{displayInterval}}</span>
-                            </a>
-                            <div id="interval-menu" class="dropdown-menu">
-                                <ng-container *ngFor="let interval of intervalOptions">
-                                    <i class="dropdown-item cursor-pointer" (click)="selectInterval(interval.value)">
-                                        {{interval.display}}
-                                    </i>
-                                </ng-container>
-                            </div>
+                            <span>Từ</span>
+                            <ngx-date-picker  [disableInput]="true" [(selectedDate)]="startdate"></ngx-date-picker>
+                            <span>Đến</span>
+                            <ngx-date-picker  [disableInput]="true" [(selectedDate)]="enddate"></ngx-date-picker>
                             <a id="topic-select" class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="ti ti-folder"></i></span>
                                 <span class="nav-link-title">{{displayTopic}}</span>
@@ -45,14 +38,14 @@
             <div class="row">
                 <div class="col-md-12 col-lg-8">
                     <div class="row">
-                        <div class="col-12" AdminChartViewsComponent [interval]="selectedInterval"></div>
+                        <div class="col-12" AdminChartViewsComponent [topic]="selectedTopic" [startdate]="startdate" [enddate]="enddate"></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-12" AdminChartBlogUserComponent [interval]="selectedInterval"></div>
+                        <div class="col-12" AdminChartBlogUserComponent [topic]="selectedTopic" [startdate]="startdate" [enddate]="enddate"></div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4" AdminTopViewsComponent [interval]="selectedInterval" [topic]="selectedTopic">
+                <div class="col-md-12 col-lg-4" AdminTopViewsComponent [topic]="selectedTopic" [startdate]="startdate" [enddate]="enddate">
                 </div>
             </div>
         </div>

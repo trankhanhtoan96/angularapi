@@ -1,8 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Session} from "../../services/Session.service";
 import {Backend} from "../../services/Backend.service";
-import {listInterval} from "../../modules/administration/components/Administration.component";
-import {ChartConfiguration, ChartData, ChartEvent, ChartType} from 'chart.js';
+import {ChartConfiguration, ChartData, ChartEvent} from 'chart.js';
 import {BaseChartDirective} from 'ng2-charts';
 import {Metadata} from "../../services/Metadata.service";
 
@@ -13,16 +12,30 @@ import {Metadata} from "../../services/Metadata.service";
 export class AdminChartBlogUserComponent implements OnInit {
 
     public loaded: boolean = false;
-    private _interval: number;
+    private _topic: string;
+    private _start: any;
+    private _end: any;
 
-    @Input() set interval(value: number) {
+    @Input() set topic(value: string) {
         // track when interval has been change from parent component
-        this._interval = value;
+        this._topic = value;
         this.reloadChart();
     }
 
-    get interval(): number {
-        return this._interval;
+    @Input() set startdate(value: any) {
+        // track when interval has been change from parent component
+        this._start = value;
+        this.reloadChart();
+    }
+
+    @Input() set enddate(value: any) {
+        // track when interval has been change from parent component
+        this._end = value;
+        this.reloadChart();
+    }
+
+    get topic(): string {
+        return this._topic;
     }
 
     @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
@@ -33,15 +46,15 @@ export class AdminChartBlogUserComponent implements OnInit {
         scales: {
             x: {
                 beginAtZero: true,
-                ticks:{
-                    font:{
+                ticks: {
+                    font: {
                         size: 10
                     }
                 }
             },
             y: {
                 beginAtZero: true,
-                ticks:{
+                ticks: {
                     precision: 0
                 }
             },
@@ -78,8 +91,7 @@ export class AdminChartBlogUserComponent implements OnInit {
 
     private reloadChart() {
         this.metadata.spinnerLoading().then(ref => {
-            this.backend.getRequestNoAuth('blogs/groupbyuser', {period: this.interval}).subscribe(res => {
-                console.log(res);
+            this.backend.getRequestNoAuth('blogs/groupbyuser', {topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
                 let gotData = [];
                 let gotLabels = [];
                 for (let i = 0; i < res.result.length; i++) {
@@ -88,9 +100,7 @@ export class AdminChartBlogUserComponent implements OnInit {
                     gotData.push(parseInt(item.num_of_blogs));
                     // @ts-ignore
                     gotLabels.push(item.last_name + ' ' + item.first_name);
-
                 }
-                console.log(gotData);
                 this.barChartData.datasets[0].data = gotData;
                 this.barChartData.labels = gotLabels;
                 this.chart?.ngOnChanges({}); //re-render chart
@@ -98,12 +108,6 @@ export class AdminChartBlogUserComponent implements OnInit {
                 ref.instance.self.destroy();
             });
         });
-    }
-
-    public get displayInterval() {
-        const interval = listInterval.find(i => i.value == this.interval);
-        // @ts-ignore
-        return interval.display;
     }
 
     // events

@@ -1,12 +1,13 @@
 <div class="card mt-1">
     <div class="card-header">
-        <h3 class="card-title">Top {{top}} lượt xem cao nhất trong {{displayInterval}}</h3>
+        <h3 class="card-title">Top {{top}} lượt xem cao nhất</h3>
     </div>
     <table class="table card-table table-vcenter">
         <thead>
         <tr>
             <th></th>
             <th colspan="2">Bài viết</th>
+            <th>Tác giả</th>
             <th>Lượt xem</th>
         </tr>
         </thead>
@@ -18,12 +19,8 @@
                     <span class="avatar" [style]="{'background-image': 'url('+ row.image +')'}"></span>
                 </td>
                 <td><a [routerLink]="'/blog/'+row.slug" title="Mở để xem bài viết" target="_blank">{{row.title}}</a></td>
+                <td>{{row.user}}</td>
                 <td>{{row.views}}</td>
-                <!--            <td class="w-50">-->
-                <!--                <div class="progress progress-xs">-->
-                <!--                    <div class="progress-bar bg-primary" style="width: 71.0%"></div>-->
-                <!--                </div>-->
-                <!--            </td>-->
             </tr>
         </ng-container>
         </tbody>

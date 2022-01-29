@@ -23,7 +23,7 @@ export class BlogCategoryEditComponent {
                 name: 'parent_id'
             },
             {
-                name:'color_style'
+                name:'slug'
             }
         ],
         [
