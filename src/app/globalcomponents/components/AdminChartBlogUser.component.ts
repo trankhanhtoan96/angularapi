@@ -100,9 +100,7 @@ export class AdminChartBlogUserComponent implements OnInit {
                     gotData.push(parseInt(item.num_of_blogs));
                     // @ts-ignore
                     gotLabels.push(item.last_name + ' ' + item.first_name);
-
                 }
-                console.log(gotData);
                 this.barChartData.datasets[0].data = gotData;
                 this.barChartData.labels = gotLabels;
                 this.chart?.ngOnChanges({}); //re-render chart

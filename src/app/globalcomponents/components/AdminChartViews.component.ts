@@ -92,13 +92,11 @@ export class AdminChartViewsComponent implements OnInit {
 
     private reloadChart() {
         this.metadata.spinnerLoading().then(ref => {
-
-            //clear total views
-            this.totalViews = 0;
-
             this.backend.getRequestNoAuth('views/analyze', {topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
                 let gotData = [];
                 let gotLabels = [];
+                //clear total views
+                this.totalViews = 0;
                 for (let i = 0; i < res.result.length; i++) {
                     const item = res.result[i];
                     // @ts-ignore
