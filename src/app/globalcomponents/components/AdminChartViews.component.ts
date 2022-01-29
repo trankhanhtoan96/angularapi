@@ -99,6 +99,7 @@ export class AdminChartViewsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.reloadChart();
     }
 
     private reloadChart() {
