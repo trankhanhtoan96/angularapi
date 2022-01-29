@@ -25,7 +25,7 @@ export class AdministrationComponent implements OnInit {
     public selectedTopic = '';
     public intervalOptions = listInterval;
     public topicOptions = [{id: '', name: 'Tất cả'}];
-    startdate = new Date();
+    startdate = new Date(new Date().getFullYear()+'-'+new Date().getMonth()+'-01');
     enddate = new Date();
 
     constructor(private backend: Backend, private model: Model) {
