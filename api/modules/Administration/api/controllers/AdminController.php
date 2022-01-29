@@ -913,11 +913,21 @@ class AdminController
         $result = [];
         $beginDate = $_GET['start'];
         $endDate = $_GET['end'];
-        $query = "select date(v.date_entered) as day, count(v.id) as views
+        $topic=$_GET['topic'];
+        if($topic){
+            $query = "select date(v.date_entered) as day, count(v.id) as views
+                    from viewtracker v
+                     inner join blog b on v.parent_id = b.id and b.category_id='$topic'
+                    where
+                        date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '$beginDate'
+                    group by date(v.date_entered);";
+        }else{
+            $query = "select date(v.date_entered) as day, count(v.id) as views
                     from viewtracker v
                     where
                         date(v.date_entered) <= '{$endDate}' and date(v.date_entered) >= '$beginDate'
                     group by date(v.date_entered);";
+        }
 
         $db = DBManagerFactory::getInstance();
         $qResult = $db->query($query);
