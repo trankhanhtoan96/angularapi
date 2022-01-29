@@ -95,8 +95,7 @@ export class AdminChartViewsComponent implements OnInit {
             this.backend.getRequestNoAuth('views/analyze', {topic: this.topic, start: this._start.toISOString().substr(0,10), end: this._end.toISOString().substr(0,10)}).subscribe(res => {
                 let gotData = [];
                 let gotLabels = [];
-                //clear total views
-                this.totalViews = 0;
+                let views=0;
                 for (let i = 0; i < res.result.length; i++) {
                     const item = res.result[i];
                     // @ts-ignore
@@ -104,8 +103,9 @@ export class AdminChartViewsComponent implements OnInit {
                     // @ts-ignore
                     gotLabels.push(item.date);
 
-                    this.totalViews += parseInt(item.views);
+                    views += parseInt(item.views);
                 }
+                this.totalViews=views;
                 this.lineChartData.datasets[0].data = gotData;
                 this.lineChartData.labels = gotLabels;
                 this.chart?.ngOnChanges({}); //re-render chart
