@@ -21,8 +21,8 @@
                         </div>
                         <div class="col">
                             <div class="input-group mb-2" style="width: 250px;">
-                                <input [(ngModel)]="searchterm" type="text" class="form-control" placeholder="Search for…" />
-                                <button (click)="refreshBeanList()" class="btn" type="button"><i class="ti ti-search"></i></button>
+                                <input (keyup.enter)="searchtermmodule.click()" [(ngModel)]="searchterm" type="text" class="form-control" placeholder="Search for…" />
+                                <button #searchtermmodule (click)="refreshBeanList()" class="btn" type="button"><i class="ti ti-search"></i></button>
                             </div>
                         </div>
                     </div>

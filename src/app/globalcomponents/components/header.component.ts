@@ -8,6 +8,7 @@ import {FEB7} from "./FEB7";
     templateUrl: '../templates/Header.html'
 })
 export class HeaderComponent implements OnInit {
+    searchterm: string;
 
     constructor(public session: Session, private metadata: Metadata) {
     }

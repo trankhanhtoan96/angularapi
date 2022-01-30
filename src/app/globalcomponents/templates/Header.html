@@ -9,13 +9,20 @@
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
-            <ng-container *ngIf="session.isLogined();else actionnologin">
-                <div class="nav-item dropdown d-none d-md-flex me-3">
-                    <a href="#" class="nav-link px-0" aria-label="Show notifications">
-                        <i class="ti ti-bell" style="font-size: 24px"></i>
-                        <span class="badge bg-red"></span>
-                    </a>
+            <div class="nav-item dropdown d-none d-md-flex me-3">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open search">
+                    <i class="ti ti-search" style="font-size: 24px"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <div class="dropdown-item">
+                        <div class="input-group mb-2" style="width: 250px;">
+                            <input (keyup.enter)="searchclick.click()" [(ngModel)]="searchterm" type="text" class="form-control" placeholder="Tìm kiếm bài viết…"/>
+                            <button #searchclick [routerLink]="'search/'+searchterm" class="btn" type="button"><i class="ti ti-search"></i></button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <ng-container *ngIf="session.isLogined();else actionnologin">
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                         <span class="avatar avatar-sm" [style]="{'background-image': 'url('+session.authData.user_image+')'}"></span>

@@ -24,6 +24,7 @@ import {FEProfile} from "./modules/frontend/FEProfile";
 import {FEProfileSave} from "./modules/frontend/FEProfileSave";
 import {BlogSubcribeEmailListComponent} from "./modules/blogsubcribeemail/components/BlogSubcribeEmailList.component";
 import {BlogSubcribeEmailEditComponent} from "./modules/blogsubcribeemail/components/BlogSubcribeEmailEdit.component";
+import {FESearch} from "./modules/frontend/FESearch";
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -56,6 +57,7 @@ const routes: Routes = [
     {path: 'categoryid/:id', component: FECategoryID},
     {path: 'profile/:id', component: FEProfile},
     {path: 'profilesave/:id', component: FEProfileSave},
+    {path: 'search/:term', component: FESearch},
     {path: "**", component: NotFoundComponent}
 ];
 
