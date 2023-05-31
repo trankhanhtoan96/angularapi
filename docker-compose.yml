@@ -1,12 +1,58 @@
 version: '3'
 services:
-    jenkins:
-        image: jenkins/jenkins:lts
-        privileged: true
-        user: toan
+    backend:
+        image: 'registry.dotb.vn/simplyinvest.vn'
+        restart: unless-stopped
         ports:
-            - 8080:8080
-            - 50000:50000
+            - 443
+        environment:
+            PHP_MAX_EXECUTION_TIME: 0
+            PHP_POST_MAX_SIZE: '256M'
+            PHP_UPLOAD_MAX_FILESIZE: '256M'
+            PHP_MEMORY_LIMIT: '256M'
+            FPM_PM_START_SERVERS: 8
+            FPM_PM_MIN_SPARE_SERVERS: 4
+            FPM_PM_MAX_SPARE_SERVERS: 8
+            FPM_PM_MAX_CHILDREN: 8
+            PHP_DISMOD: "ioncube,redis,opcache"
+            DB_NAME: "app"
+            DB_USER: "root"
+            DB_PASS: "Y9uGAi@dW!jq@hNW2o5C"
+            DB_HOST: db
         volumes:
-            - /home/toan/jenkins/jenkins_home:/var/jenkins_home
-            - /var/run/docker.sock:/var/run/docker.sock
+            - /root/EMS_volumes/angular/upload:/app/api/upload
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints:
+                    - node.labels.name==node2
+    frontend:
+        image: registry.dotb.vn/simplyinvest.vn.frontend
+        restart: unless-stopped
+        ports:
+            - 4000
+        environment:
+            SERVICE_NGINX_CLIENT_MAX_BODY_SIZE: 256M
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints:
+                    - node.labels.name==node2
+    db:
+        image: mariadb:latest
+        restart: unless-stopped
+        ports:
+            - 3306
+        environment:
+            MARIADB_ROOT_PASSWORD: "Y9uGAi@dW!jq@hNW2o5C"
+            MARIADB_DATABASE: "app"
+        volumes:
+            - /root/EMS_volumes/angular/db:/var/lib/mysql
+        deploy:
+            mode: replicated
+            replicas: 1
+            placement:
+                constraints:
+                    - node.labels.name==node2
